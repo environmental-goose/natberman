@@ -1,62 +1,183 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
-import GallerySidebar from "@/components/navigation/GallerySidebar";
-import MasonryGrid, { MasonryItem } from "@/components/gallery/MasonryGrid";
-import GalleryCard from "@/components/gallery/GalleryCard";
-
-const designProjects = [
-  { label: "Brand Systems", path: "/design/brand" },
-  { label: "Product Design", path: "/design/product" },
-  { label: "Web Experiences", path: "/design/web" },
-  { label: "Print & Editorial", path: "/design/print" },
-];
-
-const galleryItems = [
-  { title: "Product Interface", aspectRatio: "landscape" as const },
-  { title: "Brand Identity", aspectRatio: "portrait" as const },
-  { title: "Dashboard Design", aspectRatio: "square" as const },
-  { title: "Mobile Application", aspectRatio: "portrait" as const },
-  { title: "Marketing Site", aspectRatio: "landscape" as const },
-  { title: "Icon System", aspectRatio: "square" as const },
-];
+import Logo from "@/components/navigation/Logo";
+import { designProjects, DesignProject } from "@/data/designProjects";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Design = () => {
+  const [selectedProject, setSelectedProject] = useState<DesignProject | null>(null);
+
   return (
     <GraphPaperLayout>
       <div className="min-h-screen flex">
         {/* Sticky Sidebar */}
-        <GallerySidebar items={designProjects} title="Design" />
+        <aside className="sticky top-0 h-screen w-72 flex-shrink-0 p-8 border-r border-border/30">
+          <Logo />
+          
+          <div className="mb-8">
+            <Link
+              to="/"
+              className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+            >
+              ← Back
+            </Link>
+          </div>
+
+          <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
+            Design
+          </h2>
+
+          <nav className="flex flex-col gap-3">
+            {designProjects.map((project, index) => {
+              const isActive = selectedProject?.id === project.id;
+              
+              return (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className={`text-left text-lg transition-colors ${
+                      isActive
+                        ? "text-foreground font-medium"
+                        : "text-muted-foreground hover:text-foreground font-light"
+                    }`}
+                  >
+                    {project.label}
+                  </button>
+                </motion.div>
+              );
+            })}
+          </nav>
+        </aside>
 
         {/* Main Content */}
         <main className="flex-1 p-8 md:p-12 lg:p-16 overflow-y-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Page Header */}
-            <div className="mb-12">
-              <h1 className="text-3xl md:text-4xl font-light mb-4">Design Work</h1>
-              <p className="text-muted-foreground max-w-xl">
-                A collection of design projects spanning brand systems, product
-                interfaces, and digital experiences. Each piece reflects a
-                commitment to clarity, function, and refined aesthetics.
-              </p>
-            </div>
+          <AnimatePresence mode="wait">
+            {!selectedProject ? (
+              <motion.div
+                key="initial"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="h-full flex flex-col"
+              >
+                {/* Page Header */}
+                <div className="mb-12">
+                  <h1 className="text-3xl md:text-4xl font-light mb-4">Design Work</h1>
+                  <p className="text-muted-foreground max-w-2xl leading-relaxed">
+                    A collection of my engineering projects, both professional and personal. These projects reflect a rigorous commitment to clarity and function, balancing refined industrial design with the technical precision required for high-volume global production and industrial precision.
+                  </p>
+                </div>
 
-            {/* Gallery Wall */}
-            <MasonryGrid>
-              {galleryItems.map((item, index) => (
-                <MasonryItem key={item.title} index={index}>
-                  <GalleryCard
-                    title={item.title}
-                    imageUrl={`https://images.unsplash.com/photo-${1618005182384 + index * 1000}-a83a8bd57fbe?w=600&h=${item.aspectRatio === "portrait" ? 800 : item.aspectRatio === "landscape" ? 450 : 600}&fit=crop`}
-                    aspectRatio={item.aspectRatio}
-                  />
-                </MasonryItem>
-              ))}
-            </MasonryGrid>
-          </motion.div>
+                {/* Explore Prompt */}
+                <div className="flex-1 flex items-center justify-center">
+                  <motion.div
+                    className="flex items-center gap-4 text-muted-foreground"
+                    animate={{ x: [0, -8, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <ArrowLeft className="w-6 h-6" />
+                    <span className="text-lg font-light tracking-wide">Explore Here</span>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key={selectedProject.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                {/* Project Header */}
+                <div className="mb-8">
+                  <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedProject.title}</h1>
+                  <p className="text-muted-foreground max-w-2xl leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                {/* Specs if available */}
+                {selectedProject.specs && (
+                  <div className="mb-8">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                      Specifications
+                    </h3>
+                    <ul className="grid grid-cols-2 gap-2">
+                      {selectedProject.specs.map((spec, i) => (
+                        <li key={i} className="text-sm text-foreground/80">
+                          • {spec}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Tutorial content if available */}
+                {selectedProject.content && (
+                  <div className="mb-8">
+                    <div className="prose prose-invert prose-sm max-w-none">
+                      {selectedProject.content.split('\n\n').map((paragraph, i) => (
+                        <p key={i} className="text-muted-foreground leading-relaxed mb-4">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Code snippet if available */}
+                {selectedProject.codeSnippet && (
+                  <div className="mb-8">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                      Code
+                    </h3>
+                    <div className="border border-border/50 bg-background/50">
+                      <ScrollArea className="h-80">
+                        <pre className="p-4 text-xs font-mono text-foreground/90 overflow-x-auto">
+                          <code>{selectedProject.codeSnippet}</code>
+                        </pre>
+                      </ScrollArea>
+                    </div>
+                  </div>
+                )}
+
+                {/* Gallery */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {selectedProject.images.map((image, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1, duration: 0.4 }}
+                      className="group"
+                    >
+                      <div className="aspect-[4/3] overflow-hidden bg-muted">
+                        <img
+                          src={image.url}
+                          alt={image.caption || selectedProject.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      {image.caption && (
+                        <p className="mt-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                          {image.caption}
+                        </p>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </main>
       </div>
     </GraphPaperLayout>

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Download, FileText } from "lucide-react";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import Logo from "@/components/navigation/Logo";
 
-const About = () => {
+const Resume = () => {
   return (
     <GraphPaperLayout>
       <div className="min-h-screen flex items-center justify-center p-8 md:p-16">
@@ -33,31 +34,35 @@ const About = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
-                Hi, I'm Nat...
+                Resume
               </h1>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  I made this site to have a place document projects, art, and photography, and share it with whoever finds them interesting. If you see something cool - feel free to use it, or ask me about it.
+                  My professional resume is available for download below. It includes my work experience, education, and technical skills.
                 </p>
                 <p>
-                  I don't know everything, but I like learning, so if you find a mistake in my code, or know how to design something more effectively drop a comment or reach out - I like getting better.
-                </p>
-                <p>
-                  I graduated from Northeastern University in 2020 with BS in Mechanical Engineering. Since graduating I've worked as a mechanical designer, working on things like high performance 3D printers at Markforged and high volume consumer devices at aerflo.
-                </p>
-                <p>
-                  I enjoy mechanical design, photography, soccer, sewing, and hold my private pilots license. My professional resume is available for download{" "}
-                  <Link to="/resume" className="text-foreground underline underline-offset-4 hover:text-accent transition-colors">
-                    here
-                  </Link>.
-                </p>
-                <p className="text-sm italic">
-                  Currently working from my Brooklyn closet.
+                  For a more comprehensive view of my projects and capabilities, please explore the Design, Photo, and Art sections of this portfolio.
                 </p>
               </div>
+
+              {/* Download Button */}
+              <motion.div
+                className="mt-8"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
+              >
+                <a
+                  href="#"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-foreground text-background font-mono text-sm uppercase tracking-widest hover:bg-foreground/90 transition-colors"
+                >
+                  <Download className="w-4 h-4" />
+                  Download PDF
+                </a>
+              </motion.div>
             </motion.div>
 
-            {/* Right - Portrait */}
+            {/* Right - PDF Preview Placeholder */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -65,9 +70,10 @@ const About = () => {
               className="flex justify-center md:justify-end"
             >
               <div className="portrait-frame">
-                <div className="w-64 h-80 md:w-72 md:h-96 bg-muted flex items-center justify-center">
+                <div className="w-64 h-80 md:w-72 md:h-96 bg-muted flex flex-col items-center justify-center gap-4">
+                  <FileText className="w-12 h-12 text-muted-foreground/50" />
                   <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
-                    Portrait
+                    PDF Preview
                   </span>
                 </div>
               </div>
@@ -79,4 +85,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Resume;
