@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -12,20 +12,55 @@ const navItems: NavItem[] = [
   { label: "Design", path: "/design" },
   { label: "Photo", path: "/photo" },
   { label: "Art", path: "/art" },
+  { label: "Resume", path: "/resume" },
   { label: "Contact", path: "/contact" },
+];
+
+// 4 distinct shatter animation variants with different trajectories
+const shatterVariants = [
+  // Variant 1: Subtle scatter
+  (index: number) => ({
+    rotate: ((index % 5) - 2) * 1.2,
+    x: ((index % 3) - 1) * 2,
+    y: ((index % 4) - 2) * 1.5,
+  }),
+  // Variant 2: Wave pattern
+  (index: number) => ({
+    rotate: Math.sin(index * 0.8) * 3,
+    x: Math.cos(index * 1.2) * 3,
+    y: Math.sin(index * 0.6) * 2,
+  }),
+  // Variant 3: Explosion from center
+  (index: number) => ({
+    rotate: ((index % 7) - 3) * 1.5,
+    x: (index % 2 === 0 ? 1 : -1) * ((index % 4) + 1) * 0.8,
+    y: (index % 2 === 0 ? -1 : 1) * ((index % 3) + 1),
+  }),
+  // Variant 4: Staggered tilt
+  (index: number) => ({
+    rotate: (index % 2 === 0 ? 1 : -1) * ((index % 4) + 1) * 0.7,
+    x: ((index * 3) % 5 - 2) * 1.2,
+    y: ((index * 2) % 4 - 2) * 1.3,
+  }),
 ];
 
 const ShatterNav = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  // Assign a random variant to each nav item on mount
+  const variantAssignments = useMemo(() => {
+    return navItems.map(() => Math.floor(Math.random() * shatterVariants.length));
+  }, []);
+
   return (
-    <nav className="flex flex-col gap-2">
+    <nav className="flex flex-col gap-2 px-2">
       {navItems.map((item, index) => (
         <ShatterNavItem
           key={item.path}
           item={item}
           index={index}
           hoveredIndex={hoveredIndex}
+          variantIndex={variantAssignments[index]}
           onHover={() => setHoveredIndex(index)}
           onLeave={() => setHoveredIndex(null)}
         />
@@ -38,6 +73,7 @@ interface ShatterNavItemProps {
   item: NavItem;
   index: number;
   hoveredIndex: number | null;
+  variantIndex: number;
   onHover: () => void;
   onLeave: () => void;
 }
@@ -46,6 +82,7 @@ const ShatterNavItem = ({
   item,
   index,
   hoveredIndex,
+  variantIndex,
   onHover,
   onLeave,
 }: ShatterNavItemProps) => {
@@ -64,7 +101,6 @@ const ShatterNavItem = ({
     <motion.div
       animate={{
         y: getYOffset(),
-        opacity: isOtherHovered ? 0.3 : 1,
       }}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
     >
@@ -74,7 +110,7 @@ const ShatterNavItem = ({
         onMouseEnter={onHover}
         onMouseLeave={onLeave}
       >
-        <div className="nav-item flex overflow-hidden">
+        <div className="nav-item flex overflow-visible px-1">
           {item.label.split("").map((letter, letterIndex) => (
             <ShatterLetter
               key={letterIndex}
@@ -82,6 +118,7 @@ const ShatterNavItem = ({
               index={letterIndex}
               isHovered={isHovered}
               isOtherHovered={isOtherHovered}
+              variantIndex={variantIndex}
             />
           ))}
         </div>
@@ -95,6 +132,7 @@ interface ShatterLetterProps {
   index: number;
   isHovered: boolean;
   isOtherHovered: boolean;
+  variantIndex: number;
 }
 
 const ShatterLetter = ({
@@ -102,37 +140,35 @@ const ShatterLetter = ({
   index,
   isHovered,
   isOtherHovered,
+  variantIndex,
 }: ShatterLetterProps) => {
-  // Create varied, subtle angles for the shatter effect
+  // Get shatter transform from assigned variant
   const getShatterTransform = () => {
     if (!isHovered) return { rotate: 0, x: 0, y: 0 };
-    
-    // Pseudo-random based on letter index
-    const seed = index * 7;
-    const rotate = ((seed % 11) - 5) * 0.8; // -4 to 4 degrees
-    const x = ((seed % 7) - 3) * 1.5; // -4.5 to 4.5px
-    const y = ((seed % 5) - 2) * 2; // -4 to 4px
-    
-    return { rotate, x, y };
+    return shatterVariants[variantIndex](index);
   };
 
   const transform = getShatterTransform();
 
   return (
     <motion.span
-      className="text-foreground"
+      initial={{ color: "hsl(0, 0%, 100%)" }}
       animate={{
         rotate: transform.rotate,
         x: transform.x,
         y: transform.y,
-        color: isOtherHovered ? "hsl(215, 16%, 30%)" : "hsl(0, 0%, 100%)",
+        opacity: isOtherHovered ? 0.3 : 1,
       }}
       transition={{
         type: "spring",
         stiffness: 600,
         damping: 25,
+        opacity: { duration: 0.15, ease: "easeOut" },
       }}
-      style={{ display: "inline-block" }}
+      style={{ 
+        display: "inline-block",
+        color: "hsl(0, 0%, 100%)",
+      }}
     >
       {letter}
     </motion.span>

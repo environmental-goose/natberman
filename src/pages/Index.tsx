@@ -29,10 +29,10 @@ const Index = () => {
         >
           <div className="text-right">
             <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2">
-              Portfolio
+              Nathaniel Berman's Portfolio
             </p>
             <p className="text-xs font-mono text-muted-foreground/60">
-              2024
+              2026
             </p>
           </div>
         </motion.div>
