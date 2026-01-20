@@ -1,13 +1,43 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { motion } from "framer-motion";
+import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
+import ShatterNav from "@/components/navigation/ShatterNav";
+import Logo from "@/components/navigation/Logo";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <GraphPaperLayout>
+      <div className="min-h-screen flex">
+        {/* Left Column - Navigation (30%) */}
+        <motion.div
+          className="w-full md:w-[30%] min-h-screen flex flex-col justify-center p-8 md:p-12 lg:p-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="max-w-md">
+            <Logo />
+            <ShatterNav />
+          </div>
+        </motion.div>
+
+        {/* Right Column - Atmospheric Space (70%) */}
+        <motion.div
+          className="hidden md:flex w-[70%] min-h-screen items-end justify-end p-12 lg:p-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <div className="text-right">
+            <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2">
+              Portfolio
+            </p>
+            <p className="text-xs font-mono text-muted-foreground/60">
+              2024
+            </p>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </GraphPaperLayout>
   );
 };
 
