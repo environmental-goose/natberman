@@ -38,15 +38,15 @@ const MobileGalleryList = ({ title, subheader, items, onSelect }: MobileGalleryL
       </div>
 
       {/* Project List */}
-      <nav className="flex-1 flex flex-col gap-4">
+      <nav className="flex-1 flex flex-col gap-1">
         {items.map((item, index) => (
           <motion.button
             key={item.id}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.05 }}
+            transition={{ delay: index * 0.03 }}
             onClick={() => onSelect(item.id)}
-            className="text-left py-4 px-2 border-b border-border/20 text-lg font-light text-muted-foreground hover:text-foreground transition-colors flex items-center justify-between group"
+            className="text-left py-2.5 px-2 border-b border-border/20 text-base font-light text-muted-foreground hover:text-foreground transition-colors flex items-center justify-between group"
           >
             <span>{item.label}</span>
             <ArrowLeft className="w-4 h-4 rotate-180 opacity-0 group-hover:opacity-100 transition-opacity" />
