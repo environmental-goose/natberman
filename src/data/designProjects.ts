@@ -1,17 +1,18 @@
 export interface DesignProject {
   id: string;
+  slug: string; // Supabase slug for image lookup
   label: string;
   title: string;
   description: string;
   specs?: string[];
   content?: string;
   codeSnippet?: string;
-  images: { url: string; caption?: string }[];
 }
 
 export const designProjects: DesignProject[] = [
   {
     id: "automated-blinds-v2",
+    slug: "automated-blinds-v2",
     label: "Automated Blinds V2",
     title: "Automated Blinds V2",
     description: "A second-generation automated window blind system with improved motor control and integration capabilities.",
@@ -21,13 +22,10 @@ export const designProjects: DesignProject[] = [
       "Home Assistant integration",
       "3D printed components"
     ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop", caption: "Motor assembly" },
-      { url: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop", caption: "Control board" },
-    ]
   },
   {
     id: "aer1-system",
+    slug: "aer1-system",
     label: "Aer1 System",
     title: "Aer1 System",
     description: "High-volume consumer air purification device designed for mass production with optimized assembly and cost efficiency.",
@@ -37,13 +35,10 @@ export const designProjects: DesignProject[] = [
       "HEPA filtration system",
       "IoT connectivity"
     ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=600&fit=crop", caption: "Product render" },
-      { url: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop", caption: "Internal components" },
-    ]
   },
   {
     id: "markforged-fx10",
+    slug: "markforged-fx10",
     label: "Markforged FX10",
     title: "Markforged FX10",
     description: "Industrial-grade continuous fiber reinforcement 3D printer designed for factory floor deployment.",
@@ -53,13 +48,10 @@ export const designProjects: DesignProject[] = [
       "Automated material handling",
       "Fleet management integration"
     ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop", caption: "Printer system" },
-      { url: "https://images.unsplash.com/photo-1563770660941-20978e870e26?w=800&h=600&fit=crop", caption: "Print head detail" },
-    ]
   },
   {
     id: "markforged-metal-x-gen2",
+    slug: "markforged-metal-x-gen2",
     label: "Markforged Metal X Gen 2",
     title: "Markforged Metal X Gen 2",
     description: "Second generation metal 3D printing system with improved sintering capabilities and part quality.",
@@ -69,13 +61,10 @@ export const designProjects: DesignProject[] = [
       "High-temperature sintering furnace",
       "Multi-material support"
     ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&h=600&fit=crop", caption: "Metal X system" },
-      { url: "https://images.unsplash.com/photo-1581091877018-dac6a371d50f?w=800&h=600&fit=crop", caption: "Sintered parts" },
-    ]
   },
   {
     id: "split-flap-clock",
+    slug: "split-flap-clock",
     label: "Split Flap Clock",
     title: "Split Flap Clock",
     description: "A modern interpretation of the classic split-flap display, featuring custom mechanics and electronics.",
@@ -85,13 +74,10 @@ export const designProjects: DesignProject[] = [
       "ESP32 control",
       "NTP time sync"
     ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1533749047139-189de3cf06d3?w=800&h=600&fit=crop", caption: "Clock display" },
-      { url: "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800&h=600&fit=crop", caption: "Mechanism detail" },
-    ]
   },
   {
     id: "automated-blind-conversion",
+    slug: "automated-blind-conversion",
     label: "Automated Blind Conversion",
     title: "Automated Blind Conversion Tutorial",
     description: "A step-by-step guide to converting manual blinds into smart, automated window coverings using off-the-shelf components.",
@@ -141,14 +127,10 @@ cover:
       - stepper.set_target:
           id: blind_stepper
           target: !lambda 'return (2000 * pos);'`,
-    images: [
-      { url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop", caption: "Motor mount design" },
-      { url: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop", caption: "Wiring diagram" },
-      { url: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop", caption: "Completed installation" },
-    ]
   },
   {
     id: "5dof-robotic-arm",
+    slug: "5dof-robotic-arm",
     label: "5DOF Robotic Arm",
     title: "5DOF Robotic Arm",
     description: "A desktop-scale robotic arm with five degrees of freedom, designed for precision manipulation and educational purposes.",
@@ -158,10 +140,6 @@ cover:
       "Inverse kinematics control",
       "Gripper end effector"
     ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop", caption: "Full arm assembly" },
-      { url: "https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=800&h=600&fit=crop", caption: "Joint mechanism" },
-    ]
   },
 ];
 
