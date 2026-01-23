@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { supabase, getImageUrls, normalizeSlug } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
+
+const STORAGE_BASE = 'https://dcvbbtdhyymhwqyuvosp.supabase.co/storage/v1/object/public/pages-images/';
 
 export interface SupabasePage {
   slug: string;
@@ -31,10 +33,8 @@ async function fetchAllPages(): Promise<PageWithImages[]> {
   return (data || []).map((page: SupabasePage) => ({
     slug: page.slug,
     title: page.title,
-    imageUrls: getImageUrls(page.images),
-    videoUrls: page.videos ? page.videos.map(v => 
-      `https://dcvbbtdhyymhwqyuvosp.supabase.co/storage/v1/object/public/pages-images/${v}`
-    ) : [],
+    imageUrls: (page.images || []).map(img => STORAGE_BASE + img),
+    videoUrls: (page.videos || []).map(vid => STORAGE_BASE + vid),
   }));
 }
 
@@ -56,11 +56,8 @@ export function useSupabasePages() {
 export function useProjectImages(projectId: string) {
   const { data: pages, isLoading } = useSupabasePages();
   
-  // Normalize the project ID to a slug format for matching
-  const normalizedSlug = normalizeSlug(projectId);
-  
-  // Find matching page
-  const matchingPage = pages?.find(p => p.slug === normalizedSlug);
+  // Find matching page by exact slug match
+  const matchingPage = pages?.find(p => p.slug === projectId);
   
   return {
     imageUrls: matchingPage?.imageUrls || [],
@@ -93,11 +90,9 @@ export function usePageImageMap() {
     // Returns images for a given database slug (use exact slug from pages table)
     getImagesForSlug: (slug: string) => imageMap.get(slug) || [],
     getVideosForSlug: (slug: string) => videoMap.get(slug) || [],
-    // Find a page by matching its slug to a local project ID
-    // This allows matching "thailand-vietnam" (local) to the actual DB slug
+    // Find a page by matching its slug to a local project ID (exact match only)
     findPageByLocalId: (localId: string) => {
-      const normalized = normalizeSlug(localId);
-      return pages?.find(p => p.slug === normalized || p.slug === localId);
+      return pages?.find(p => p.slug === localId);
     },
   };
 }
