@@ -13,16 +13,16 @@ import { usePageImageMap } from "@/hooks/useSupabasePages";
 const Art = () => {
   const [selectedProject, setSelectedProject] = useState<ArtProject | null>(null);
   const isMobile = useIsMobile();
-  const { getImagesForSlug, findPageByLocalId, isLoading: imagesLoading } = usePageImageMap();
+  const { pages } = usePageImageMap();
 
   const handleSelectProject = (id: string) => {
     const project = artProjects.find(p => p.id === id);
     if (project) setSelectedProject(project);
   };
 
-  // Get images for selected project from Supabase using the database slug
-  const dbPage = selectedProject ? findPageByLocalId(selectedProject.id) : null;
-  const projectImages = dbPage ? getImagesForSlug(dbPage.slug) : [];
+  // Get images directly from pages data - find page matching selected project
+  const page = selectedProject ? pages.find(p => p.slug === selectedProject.id) : null;
+  const images = page?.imageUrls ?? [];
 
   // Mobile Layout
   if (isMobile) {
@@ -45,11 +45,9 @@ const Art = () => {
               onBack={() => setSelectedProject(null)}
             >
               {/* Gallery */}
-              {imagesLoading ? (
-                <div className="text-muted-foreground text-sm">Loading images...</div>
-              ) : projectImages.length > 0 ? (
+              {images.length > 0 && (
                 <div className="space-y-6">
-                  {projectImages.map((imageUrl, i) => (
+                  {images.map((imageUrl, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 20 }}
@@ -66,7 +64,7 @@ const Art = () => {
                     </motion.div>
                   ))}
                 </div>
-              ) : null}
+              )}
             </MobileProjectView>
           )}
         </AnimatePresence>
@@ -159,11 +157,9 @@ const Art = () => {
                 </div>
 
                 {/* Gallery - Masonry-style layout */}
-                {imagesLoading ? (
-                  <div className="text-muted-foreground text-sm">Loading images...</div>
-                ) : projectImages.length > 0 ? (
+                {images.length > 0 && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {projectImages.map((imageUrl, i) => (
+                    {images.map((imageUrl, i) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 20 }}
@@ -181,7 +177,7 @@ const Art = () => {
                       </motion.div>
                     ))}
                   </div>
-                ) : null}
+                )}
               </motion.div>
             )}
           </AnimatePresence>

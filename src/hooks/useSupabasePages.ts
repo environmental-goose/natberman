@@ -68,31 +68,13 @@ export function useProjectImages(projectId: string) {
 }
 
 /**
- * Create a map of slug -> imageUrls for efficient lookups
- * Uses the database slug directly as the key (no normalization on lookup)
+ * Hook that returns all pages with their image URLs
+ * Pages can be looked up by slug directly from the returned array
  */
 export function usePageImageMap() {
-  const { data: pages, isLoading } = useSupabasePages();
-  
-  const imageMap = new Map<string, string[]>();
-  const videoMap = new Map<string, string[]>();
-  
-  pages?.forEach(page => {
-    imageMap.set(page.slug, page.imageUrls);
-    videoMap.set(page.slug, page.videoUrls);
-  });
+  const { data: pages } = useSupabasePages();
   
   return {
-    imageMap,
-    videoMap,
     pages: pages || [],
-    isLoading,
-    // Returns images for a given database slug (use exact slug from pages table)
-    getImagesForSlug: (slug: string) => imageMap.get(slug) || [],
-    getVideosForSlug: (slug: string) => videoMap.get(slug) || [],
-    // Find a page by matching its slug to a local project ID (exact match only)
-    findPageByLocalId: (localId: string) => {
-      return pages?.find(p => p.slug === localId);
-    },
   };
 }
