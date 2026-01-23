@@ -1,0 +1,657 @@
+{
+  "nat-berman": {
+    "title": "nat berman",
+    "url": "https://natberman.me/",
+    "images": [
+      "img_001.jpg"
+    ],
+    "videos": []
+  },
+  "work---nat-berman": {
+    "title": "Work \u2014 nat berman",
+    "url": "https://natberman.me/work",
+    "images": [],
+    "videos": []
+  },
+  "photography---nat-berman": {
+    "title": "Photography \u2014 nat berman",
+    "url": "https://natberman.me/photography",
+    "images": [],
+    "videos": []
+  },
+  "art--design--and-photography---nat-berman": {
+    "title": "art, design, and photography \u2014 nat berman",
+    "url": "https://natberman.me/art",
+    "images": [],
+    "videos": []
+  },
+  "my-blog---nat-berman": {
+    "title": "my blog \u2014 nat berman",
+    "url": "https://natberman.me/blog?author=600e06a24397fd5dd3e84ae8",
+    "images": [],
+    "videos": []
+  },
+  "get-in-touch---nat-berman": {
+    "title": "get in touch \u2014 nat berman",
+    "url": "https://natberman.me/contact-york",
+    "images": [],
+    "videos": []
+  },
+  "hilbert-curve-desk-toy--part-2----nat-berman": {
+    "title": "Hilbert Curve Desk Toy (Part 2) \u2014 nat berman",
+    "url": "https://natberman.me/blog/hilbert-curve-desk-toy-1",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg"
+    ],
+    "videos": []
+  },
+  "hilbert-curve-desk-toy---nat-berman": {
+    "title": "Hilbert Curve Desk Toy \u2014 nat berman",
+    "url": "https://natberman.me/blog/hilbert-curve-desk-toy",
+    "images": [
+      "img_001.png"
+    ],
+    "videos": []
+  },
+  "automated-blinds-part-5--homebridge-integration---firmware-updates---nat-berman": {
+    "title": "Automated Blinds Part 5: HomeBridge Integration & Firmware Updates \u2014 nat berman",
+    "url": "https://natberman.me/blog/automated-blinds-part-5-homebridge-integration-amp-firmware-updates",
+    "images": [
+      "img_001.png",
+      "img_002.jpeg",
+      "img_003.jpg",
+      "img_004.jpg"
+    ],
+    "videos": []
+  },
+  "automated-blinds-part-4--wireless-control-and-silent-stepper-drivers---nat-berman": {
+    "title": "Automated Blinds Part 4: Wireless Control and Silent Stepper Drivers \u2014 nat berman",
+    "url": "https://natberman.me/blog/automated-blinds-part-4-wireless-control-and-silent-steppers",
+    "images": [
+      "img_001.jpg"
+    ],
+    "videos": []
+  },
+  "arduino---my-blog---nat-berman": {
+    "title": "Arduino \u2014 my blog \u2014 nat berman",
+    "url": "https://natberman.me/blog/tag/Arduino",
+    "images": [],
+    "videos": []
+  },
+  "automated-blinds---my-blog---nat-berman": {
+    "title": "Automated Blinds \u2014 my blog \u2014 nat berman",
+    "url": "https://natberman.me/blog/tag/Automated+Blinds",
+    "images": [],
+    "videos": []
+  },
+  "automated-blinds-part-3--firmware-building-blocks---nat-berman": {
+    "title": "Automated Blinds Part 3: Firmware Building Blocks \u2014 nat berman",
+    "url": "https://natberman.me/blog/firmware-building-blocks",
+    "images": [],
+    "videos": []
+  },
+  "automated-blinds-part-2--mechanical-integration-work---nat-berman": {
+    "title": "Automated Blinds Part 2: Mechanical Integration Work \u2014 nat berman",
+    "url": "https://natberman.me/blog/integration-work",
+    "images": [
+      "img_001.jpeg"
+    ],
+    "videos": []
+  },
+  "automated-blinds-part-1--driver-bringup---nat-berman": {
+    "title": "Automated Blinds Part 1: Driver Bringup \u2014 nat berman",
+    "url": "https://natberman.me/blog/spinnin",
+    "images": [
+      "img_001.png"
+    ],
+    "videos": []
+  },
+  "letter-croppings---nat-berman": {
+    "title": "Letter Croppings \u2014 nat berman",
+    "url": "https://natberman.me/typography",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.jpeg",
+      "img_005.jpeg",
+      "img_006.jpeg",
+      "img_007.jpeg",
+      "img_008.jpeg"
+    ],
+    "videos": []
+  },
+  "magazine-collages---nat-berman": {
+    "title": "Magazine Collages \u2014 nat berman",
+    "url": "https://natberman.me/magazine-collage",
+    "images": [
+      "img_001.png",
+      "img_002.png",
+      "img_003.png",
+      "img_004.png",
+      "img_005.png",
+      "img_006.png",
+      "img_007.png",
+      "img_008.png",
+      "img_009.png",
+      "img_010.png",
+      "img_011.png"
+    ],
+    "videos": []
+  },
+  "sample-posters---nat-berman": {
+    "title": "Sample Posters \u2014 nat berman",
+    "url": "https://natberman.me/sample-posters",
+    "images": [
+      "img_001.jpg",
+      "img_002.jpg"
+    ],
+    "videos": []
+  },
+  "untitled-trio---nat-berman": {
+    "title": "Untitled Trio \u2014 nat berman",
+    "url": "https://natberman.me/untitled",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg"
+    ],
+    "videos": []
+  },
+  "joan-mir\u00f3-layout---nat-berman": {
+    "title": "Joan Mir\u00f3 Layout \u2014 nat berman",
+    "url": "https://natberman.me/joan-miro-layout",
+    "images": [
+      "img_001.png",
+      "img_002.jpg",
+      "img_003.jpg",
+      "img_004.png",
+      "img_005.png",
+      "img_006.png",
+      "img_007.png",
+      "img_008.png",
+      "img_009.png",
+      "img_010.png",
+      "img_011.png",
+      "img_012.png",
+      "img_013.png"
+    ],
+    "videos": []
+  },
+  "other-paintings---nat-berman": {
+    "title": "Other Paintings \u2014 nat berman",
+    "url": "https://natberman.me/other-paintings",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg"
+    ],
+    "videos": []
+  },
+  "thailand---vietnam---nat-berman": {
+    "title": "Thailand & Vietnam \u2014 nat berman",
+    "url": "https://natberman.me/alaska-1",
+    "images": [
+      "img_001.JPG",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.JPG",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG",
+      "img_010.JPG",
+      "img_011.JPG",
+      "img_012.JPG",
+      "img_013.JPG",
+      "img_014.JPG",
+      "img_015.JPG",
+      "img_016.JPG",
+      "img_017.JPG",
+      "img_018.JPG"
+    ],
+    "videos": []
+  },
+  "alaska--p----nat-berman": {
+    "title": "Alaska</p> \u2014 nat berman",
+    "url": "https://natberman.me/alaska",
+    "images": [
+      "img_001.JPG",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.JPG",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG",
+      "img_010.JPG",
+      "img_011.JPG",
+      "img_012.JPG",
+      "img_013.JPG",
+      "img_014.JPG",
+      "img_015.JPG",
+      "img_016.JPG",
+      "img_017.JPG",
+      "img_018.JPG",
+      "img_019.JPG",
+      "img_020.JPG",
+      "img_021.JPG",
+      "img_022.JPG",
+      "img_023.jpeg"
+    ],
+    "videos": []
+  },
+  "malaysia--p----nat-berman": {
+    "title": "Malaysia</p> \u2014 nat berman",
+    "url": "https://natberman.me/malaysia",
+    "images": [
+      "img_001.JPG",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.JPG",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG",
+      "img_010.JPG",
+      "img_011.JPG",
+      "img_012.JPG",
+      "img_013.JPG",
+      "img_014.JPG",
+      "img_015.JPG",
+      "img_016.JPG",
+      "img_017.JPG",
+      "img_018.JPG",
+      "img_019.JPG",
+      "img_020.JPG",
+      "img_021.JPG",
+      "img_022.JPG",
+      "img_023.JPG",
+      "img_024.JPG",
+      "img_025.JPG",
+      "img_026.JPG",
+      "img_027.JPG",
+      "img_028.JPG",
+      "img_029.JPG",
+      "img_030.JPG"
+    ],
+    "videos": []
+  },
+  "croatia--p----nat-berman": {
+    "title": "Croatia</p> \u2014 nat berman",
+    "url": "https://natberman.me/dalmatian-coast",
+    "images": [
+      "img_001.JPG",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.JPG",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG",
+      "img_010.JPG",
+      "img_011.JPG",
+      "img_012.JPG",
+      "img_013.JPG",
+      "img_014.JPG",
+      "img_015.JPG",
+      "img_016.JPG",
+      "img_017.JPG",
+      "img_018.JPG",
+      "img_019.JPG",
+      "img_020.JPG",
+      "img_021.JPG",
+      "img_022.JPG"
+    ],
+    "videos": []
+  },
+  "trans-catalina-trail--p----nat-berman": {
+    "title": "Trans Catalina Trail</p> \u2014 nat berman",
+    "url": "https://natberman.me/trans-catalina-trail",
+    "images": [
+      "img_001.JPG",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.JPG",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG",
+      "img_010.JPG",
+      "img_011.JPG",
+      "img_012.JPG",
+      "img_013.JPG",
+      "img_014.JPG",
+      "img_015.JPG",
+      "img_016.JPG"
+    ],
+    "videos": []
+  },
+  "denmark---norway---nat-berman": {
+    "title": "Denmark & Norway \u2014 nat berman",
+    "url": "https://natberman.me/denmark-norway-copy",
+    "images": [
+      "img_001.JPG",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.JPG",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG",
+      "img_010.JPG",
+      "img_011.JPG",
+      "img_012.JPG",
+      "img_013.JPG",
+      "img_014.JPG",
+      "img_015.JPG",
+      "img_016.JPG",
+      "img_017.JPG",
+      "img_018.JPG",
+      "img_019.JPG",
+      "img_020.JPG"
+    ],
+    "videos": []
+  },
+  "morocco---nat-berman": {
+    "title": "Morocco \u2014 nat berman",
+    "url": "https://natberman.me/catalina",
+    "images": [
+      "img_001.JPG",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.JPG",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG",
+      "img_010.JPG",
+      "img_011.JPG",
+      "img_012.JPG",
+      "img_013.JPG",
+      "img_014.JPG",
+      "img_015.JPG",
+      "img_016.JPG",
+      "img_017.JPG",
+      "img_018.JPG",
+      "img_019.JPG",
+      "img_020.JPG",
+      "img_021.JPG",
+      "img_022.JPG",
+      "img_023.JPG",
+      "img_024.JPG",
+      "img_025.JPG",
+      "img_026.JPG",
+      "img_027.JPG"
+    ],
+    "videos": []
+  },
+  "cuba--p----nat-berman": {
+    "title": "Cuba</p> \u2014 nat berman",
+    "url": "https://natberman.me/cuba",
+    "images": [
+      "img_001.jpg",
+      "img_002.jpg",
+      "img_003.jpg",
+      "img_004.jpg",
+      "img_005.jpg",
+      "img_006.jpg",
+      "img_007.jpg",
+      "img_008.jpg",
+      "img_009.jpg",
+      "img_010.jpg",
+      "img_011.jpg",
+      "img_012.jpg",
+      "img_013.jpg",
+      "img_014.jpg",
+      "img_015.jpg",
+      "img_016.jpg",
+      "img_017.jpg",
+      "img_018.jpg",
+      "img_019.jpg",
+      "img_020.jpg",
+      "img_021.jpg",
+      "img_022.jpg",
+      "img_023.jpg",
+      "img_024.jpg",
+      "img_025.JPG",
+      "img_026.jpg",
+      "img_027.jpg"
+    ],
+    "videos": []
+  },
+  "portraits---nat-berman": {
+    "title": "Portraits \u2014 nat berman",
+    "url": "https://natberman.me/portraits",
+    "images": [
+      "img_001.jpeg",
+      "img_002.JPG",
+      "img_003.JPG",
+      "img_004.JPG",
+      "img_005.JPG",
+      "img_006.jpg",
+      "img_007.JPG",
+      "img_008.JPG",
+      "img_009.JPG"
+    ],
+    "videos": []
+  },
+  "automated-blinds-v2---nat-berman": {
+    "title": "Automated Blinds V2 \u2014 nat berman",
+    "url": "https://natberman.me/automated-blinds-v2",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.jpeg",
+      "img_005.jpeg",
+      "img_006.jpeg",
+      "img_007.jpeg",
+      "img_008.jpeg",
+      "img_009.jpeg",
+      "img_010.jpeg",
+      "img_011.jpeg",
+      "img_012.jpeg",
+      "img_013.jpeg",
+      "img_014.jpeg"
+    ],
+    "videos": []
+  },
+  "automated-blind-conversion---nat-berman": {
+    "title": "Automated Blind Conversion \u2014 nat berman",
+    "url": "https://natberman.me/automated-blind-conversion",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.png",
+      "img_005.jpg"
+    ],
+    "videos": []
+  },
+  "aer1-system---nat-berman": {
+    "title": "Aer1 System \u2014 nat berman",
+    "url": "https://natberman.me/aer1",
+    "images": [
+      "img_001.png",
+      "img_002.jpg",
+      "img_003.png",
+      "img_004.png",
+      "img_005.png",
+      "img_006.png",
+      "img_007.png"
+    ],
+    "videos": [
+      "//www.youtube.com/embed/qEbs4oX95wQ?wmode=opaque"
+    ]
+  },
+  "fx10---nat-berman": {
+    "title": "FX10 \u2014 nat berman",
+    "url": "https://natberman.me/fx10",
+    "images": [
+      "img_001.png",
+      "img_002.gif",
+      "img_003.jpg",
+      "img_004.jpg",
+      "img_005.jpg",
+      "img_006.jpg",
+      "img_007.jpg"
+    ],
+    "videos": [
+      "//www.youtube.com/embed/hjr0DHIjvnE?wmode=opaque"
+    ]
+  },
+  "metal-x--gen-2----nat-berman": {
+    "title": "Metal X (Gen 2) \u2014 nat berman",
+    "url": "https://natberman.me/metal-x-gen-2",
+    "images": [
+      "img_001.jpg",
+      "img_002.png",
+      "img_003.jpg",
+      "img_004.jpg",
+      "img_005.jpg",
+      "img_006.jpg",
+      "img_007.jpg",
+      "img_008.jpg",
+      "img_009.jpg"
+    ],
+    "videos": []
+  },
+  "split-flap-clock---nat-berman": {
+    "title": "Split Flap Clock \u2014 nat berman",
+    "url": "https://natberman.me/split-flap-clock",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.jpeg",
+      "img_005.jpeg",
+      "img_006.jpeg",
+      "img_007.jpeg",
+      "img_008.jpeg",
+      "img_009.jpeg",
+      "img_010.jpeg"
+    ],
+    "videos": []
+  },
+  "hilbert-curve-desk-art---nat-berman": {
+    "title": "Hilbert Curve Desk Art \u2014 nat berman",
+    "url": "https://natberman.me/hilbert-curve-desk-art",
+    "images": [
+      "img_001.JPEG",
+      "img_002.gif",
+      "img_003.jpg",
+      "img_004.jpg"
+    ],
+    "videos": []
+  },
+  "lamp-restoration--p----nat-berman": {
+    "title": "Lamp Restoration</p> \u2014 nat berman",
+    "url": "https://natberman.me/lamp-restoration",
+    "images": [
+      "img_001.jpg",
+      "img_002.jpg",
+      "img_003.jpg",
+      "img_004.jpg",
+      "img_005.jpg",
+      "img_006.jpg",
+      "img_007.jpg",
+      "img_008.jpg"
+    ],
+    "videos": []
+  },
+  "candle-molding---nat-berman": {
+    "title": "Candle Molding \u2014 nat berman",
+    "url": "https://natberman.me/lamp-restoration-copy",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.jpeg",
+      "img_005.jpeg",
+      "img_006.jpeg"
+    ],
+    "videos": []
+  },
+  "tile-shelf---nat-berman": {
+    "title": "Tile Shelf \u2014 nat berman",
+    "url": "https://natberman.me/tile-shelf",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.jpeg",
+      "img_005.jpeg",
+      "img_006.jpeg",
+      "img_007.jpeg"
+    ],
+    "videos": []
+  },
+  "metar-map---nat-berman": {
+    "title": "METAR Map \u2014 nat berman",
+    "url": "https://natberman.me/metar-map",
+    "images": [
+      "img_001.png",
+      "img_002.png"
+    ],
+    "videos": []
+  },
+  "vegetable-garden-build---nat-berman": {
+    "title": "Vegetable Garden Build \u2014 nat berman",
+    "url": "https://natberman.me/vegetable-garden",
+    "images": [
+      "img_001.jpeg",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.png",
+      "img_005.png",
+      "img_006.jpeg",
+      "img_007.jpeg",
+      "img_008.jpeg",
+      "img_009.jpeg",
+      "img_010.jpeg",
+      "img_011.jpeg",
+      "img_012.jpeg",
+      "img_013.jpeg",
+      "img_014.jpeg",
+      "img_015.jpeg",
+      "img_016.jpeg",
+      "img_017.jpeg",
+      "img_018.jpeg",
+      "img_019.jpeg",
+      "img_020.jpeg"
+    ],
+    "videos": []
+  },
+  "light-switch-cover---nat-berman": {
+    "title": "Light Switch Cover \u2014 nat berman",
+    "url": "https://natberman.me/light-switch-cover",
+    "images": [
+      "img_001.jpg",
+      "img_002.jpg",
+      "img_003.jpeg",
+      "img_004.jpeg",
+      "img_005.jpeg"
+    ],
+    "videos": []
+  },
+  "5dof-robotic-arm---nat-berman": {
+    "title": "5DOF Robotic Arm \u2014 nat berman",
+    "url": "https://natberman.me/robotic-arm",
+    "images": [
+      "img_001.png",
+      "img_002.jpeg",
+      "img_003.jpeg",
+      "img_004.png",
+      "img_005.jpg"
+    ],
+    "videos": []
+  }
+}
