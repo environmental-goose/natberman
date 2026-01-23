@@ -8,21 +8,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
-import { usePageImageMap } from "@/hooks/useSupabasePages";
 
 const Photo = () => {
   const [selectedLocation, setSelectedLocation] = useState<PhotoLocation | null>(null);
   const isMobile = useIsMobile();
-  const { pages } = usePageImageMap();
 
   const handleSelectLocation = (id: string) => {
     const location = photoLocations.find(l => l.id === id);
     if (location) setSelectedLocation(location);
   };
-
-  // Get images directly from pages data - find page matching selected location
-  const page = selectedLocation ? pages.find(p => p.slug === selectedLocation.id) : null;
-  const images = page?.imageUrls ?? [];
 
   // Mobile Layout
   if (isMobile) {
@@ -45,26 +39,35 @@ const Photo = () => {
               onBack={() => setSelectedLocation(null)}
             >
               {/* Vertical Photo Feed */}
-              {images.length > 0 && (
-                <div className="space-y-8">
-                  {images.map((imageUrl, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1, duration: 0.5 }}
+              <div className="space-y-8">
+                {selectedLocation.photos.map((photo, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                  >
+                    <div 
+                      className={`overflow-hidden bg-muted ${
+                        photo.orientation === "portrait" 
+                          ? "aspect-[2/3]" 
+                          : "aspect-[3/2]"
+                      }`}
                     >
-                      <div className="overflow-hidden bg-muted aspect-[3/2]">
-                        <img
-                          src={imageUrl}
-                          alt={`${selectedLocation.title} - Photo ${i + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
+                      <img
+                        src={photo.url}
+                        alt={photo.caption || selectedLocation.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {photo.caption && (
+                      <p className="mt-3 text-center text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                        {photo.caption}
+                      </p>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
             </MobileProjectView>
           )}
         </AnimatePresence>
@@ -157,27 +160,36 @@ const Photo = () => {
                 </div>
 
                 {/* Vertical Photo Feed */}
-                {images.length > 0 && (
-                  <div className="max-w-4xl mx-auto space-y-12">
-                    {images.map((imageUrl, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1, duration: 0.5 }}
-                        className="group"
+                <div className="max-w-4xl mx-auto space-y-12">
+                  {selectedLocation.photos.map((photo, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1, duration: 0.5 }}
+                      className="group"
+                    >
+                      <div 
+                        className={`overflow-hidden bg-muted ${
+                          photo.orientation === "portrait" 
+                            ? "max-w-2xl mx-auto aspect-[2/3]" 
+                            : "w-full aspect-[3/2]"
+                        }`}
                       >
-                        <div className="overflow-hidden bg-muted w-full aspect-[3/2]">
-                          <img
-                            src={imageUrl}
-                            alt={`${selectedLocation.title} - Photo ${i + 1}`}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                          />
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                )}
+                        <img
+                          src={photo.url}
+                          alt={photo.caption || selectedLocation.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                      {photo.caption && (
+                        <p className="mt-4 text-center text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                          {photo.caption}
+                        </p>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

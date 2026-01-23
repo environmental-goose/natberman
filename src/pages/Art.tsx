@@ -8,21 +8,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
-import { usePageImageMap } from "@/hooks/useSupabasePages";
 
 const Art = () => {
   const [selectedProject, setSelectedProject] = useState<ArtProject | null>(null);
   const isMobile = useIsMobile();
-  const { pages } = usePageImageMap();
 
   const handleSelectProject = (id: string) => {
     const project = artProjects.find(p => p.id === id);
     if (project) setSelectedProject(project);
   };
-
-  // Get images directly from pages data - find page matching selected project
-  const page = selectedProject ? pages.find(p => p.slug === selectedProject.id) : null;
-  const images = page?.imageUrls ?? [];
 
   // Mobile Layout
   if (isMobile) {
@@ -45,26 +39,37 @@ const Art = () => {
               onBack={() => setSelectedProject(null)}
             >
               {/* Gallery */}
-              {images.length > 0 && (
-                <div className="space-y-6">
-                  {images.map((imageUrl, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1, duration: 0.4 }}
+              <div className="space-y-6">
+                {selectedProject.images.map((image, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.4 }}
+                  >
+                    <div 
+                      className={`overflow-hidden bg-muted ${
+                        image.orientation === "portrait" 
+                          ? "aspect-[2/3]" 
+                          : image.orientation === "square"
+                          ? "aspect-square"
+                          : "aspect-[3/2]"
+                      }`}
                     >
-                      <div className="overflow-hidden bg-muted aspect-[3/2]">
-                        <img
-                          src={imageUrl}
-                          alt={`${selectedProject.title} - Image ${i + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
+                      <img
+                        src={image.url}
+                        alt={image.caption || selectedProject.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {image.caption && (
+                      <p className="mt-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                        {image.caption}
+                      </p>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
             </MobileProjectView>
           )}
         </AnimatePresence>
@@ -157,27 +162,38 @@ const Art = () => {
                 </div>
 
                 {/* Gallery - Masonry-style layout */}
-                {images.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {images.map((imageUrl, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1, duration: 0.4 }}
-                        className="group"
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {selectedProject.images.map((image, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1, duration: 0.4 }}
+                      className="group"
+                    >
+                      <div 
+                        className={`overflow-hidden bg-muted ${
+                          image.orientation === "portrait" 
+                            ? "aspect-[2/3]" 
+                            : image.orientation === "square"
+                            ? "aspect-square"
+                            : "aspect-[3/2]"
+                        }`}
                       >
-                        <div className="overflow-hidden bg-muted aspect-[3/2]">
-                          <img
-                            src={imageUrl}
-                            alt={`${selectedProject.title} - Image ${i + 1}`}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                )}
+                        <img
+                          src={image.url}
+                          alt={image.caption || selectedProject.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      {image.caption && (
+                        <p className="mt-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                          {image.caption}
+                        </p>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
