@@ -13,16 +13,16 @@ import { usePageImageMap } from "@/hooks/useSupabasePages";
 const Photo = () => {
   const [selectedLocation, setSelectedLocation] = useState<PhotoLocation | null>(null);
   const isMobile = useIsMobile();
-  const { getImagesForSlug, findPageByLocalId, isLoading: imagesLoading } = usePageImageMap();
+  const { pages } = usePageImageMap();
 
   const handleSelectLocation = (id: string) => {
     const location = photoLocations.find(l => l.id === id);
     if (location) setSelectedLocation(location);
   };
 
-  // Get images for selected location from Supabase using the database slug
-  const dbPage = selectedLocation ? findPageByLocalId(selectedLocation.id) : null;
-  const locationImages = dbPage ? getImagesForSlug(dbPage.slug) : [];
+  // Get images directly from pages data - find page matching selected location
+  const page = selectedLocation ? pages.find(p => p.slug === selectedLocation.id) : null;
+  const images = page?.imageUrls ?? [];
 
   // Mobile Layout
   if (isMobile) {
@@ -45,11 +45,9 @@ const Photo = () => {
               onBack={() => setSelectedLocation(null)}
             >
               {/* Vertical Photo Feed */}
-              {imagesLoading ? (
-                <div className="text-muted-foreground text-sm">Loading photos...</div>
-              ) : locationImages.length > 0 ? (
+              {images.length > 0 && (
                 <div className="space-y-8">
-                  {locationImages.map((imageUrl, i) => (
+                  {images.map((imageUrl, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 30 }}
@@ -66,7 +64,7 @@ const Photo = () => {
                     </motion.div>
                   ))}
                 </div>
-              ) : null}
+              )}
             </MobileProjectView>
           )}
         </AnimatePresence>
@@ -159,11 +157,9 @@ const Photo = () => {
                 </div>
 
                 {/* Vertical Photo Feed */}
-                {imagesLoading ? (
-                  <div className="text-muted-foreground text-sm">Loading photos...</div>
-                ) : locationImages.length > 0 ? (
+                {images.length > 0 && (
                   <div className="max-w-4xl mx-auto space-y-12">
-                    {locationImages.map((imageUrl, i) => (
+                    {images.map((imageUrl, i) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 40 }}
@@ -181,7 +177,7 @@ const Photo = () => {
                       </motion.div>
                     ))}
                   </div>
-                ) : null}
+                )}
               </motion.div>
             )}
           </AnimatePresence>
