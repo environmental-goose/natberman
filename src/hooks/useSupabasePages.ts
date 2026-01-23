@@ -72,19 +72,32 @@ export function useProjectImages(projectId: string) {
 
 /**
  * Create a map of slug -> imageUrls for efficient lookups
+ * Uses the database slug directly as the key (no normalization on lookup)
  */
 export function usePageImageMap() {
   const { data: pages, isLoading } = useSupabasePages();
   
   const imageMap = new Map<string, string[]>();
+  const videoMap = new Map<string, string[]>();
   
   pages?.forEach(page => {
     imageMap.set(page.slug, page.imageUrls);
+    videoMap.set(page.slug, page.videoUrls);
   });
   
   return {
     imageMap,
+    videoMap,
+    pages: pages || [],
     isLoading,
-    getImagesForSlug: (slug: string) => imageMap.get(normalizeSlug(slug)) || [],
+    // Returns images for a given database slug (use exact slug from pages table)
+    getImagesForSlug: (slug: string) => imageMap.get(slug) || [],
+    getVideosForSlug: (slug: string) => videoMap.get(slug) || [],
+    // Find a page by matching its slug to a local project ID
+    // This allows matching "thailand-vietnam" (local) to the actual DB slug
+    findPageByLocalId: (localId: string) => {
+      const normalized = normalizeSlug(localId);
+      return pages?.find(p => p.slug === normalized || p.slug === localId);
+    },
   };
 }
