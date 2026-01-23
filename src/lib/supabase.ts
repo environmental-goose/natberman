@@ -5,7 +5,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-export const STORAGE_BASE_URL = `${SUPABASE_URL}/storage/v1/object/public/pages-images/pages`;
+export const STORAGE_BASE_URL = `${SUPABASE_URL}/storage/v1/object/public/pages-images`;
 
 export interface PageData {
   slug: string;
@@ -15,10 +15,11 @@ export interface PageData {
 }
 
 /**
- * Constructs an image URL for a given page slug and filename
+ * Constructs an image URL from a full image path stored in pages.images[]
+ * The path is the complete relative path within the bucket (e.g., "pages/slug/img_001.JPG")
  */
-export function getImageUrl(slug: string, filename: string): string {
-  return `${STORAGE_BASE_URL}/${slug}/${filename}`;
+export function getImageUrl(imagePath: string): string {
+  return `${STORAGE_BASE_URL}/${imagePath}`;
 }
 
 /**
@@ -31,13 +32,14 @@ export function normalizeSlug(title: string): string {
 }
 
 /**
- * Given an array of image filenames, construct full URLs sorted lexicographically
+ * Given an array of image paths from pages.images[], construct full URLs sorted lexicographically
+ * Each path is the complete relative path within the bucket (e.g., "pages/slug/img_001.JPG")
  */
-export function getImageUrls(slug: string, images: string[] | null): string[] {
+export function getImageUrls(images: string[] | null): string[] {
   if (!images || images.length === 0) return [];
   
-  // Sort filenames lexicographically
+  // Sort paths lexicographically to ensure consistent ordering
   const sortedImages = [...images].sort((a, b) => a.localeCompare(b));
   
-  return sortedImages.map(filename => getImageUrl(slug, filename));
+  return sortedImages.map(imagePath => getImageUrl(imagePath));
 }

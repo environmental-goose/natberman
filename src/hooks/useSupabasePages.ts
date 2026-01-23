@@ -31,9 +31,9 @@ async function fetchAllPages(): Promise<PageWithImages[]> {
   return (data || []).map((page: SupabasePage) => ({
     slug: page.slug,
     title: page.title,
-    imageUrls: getImageUrls(page.slug, page.images),
+    imageUrls: getImageUrls(page.images),
     videoUrls: page.videos ? page.videos.map(v => 
-      `https://dcvbbtdhyymhwqyuvosp.supabase.co/storage/v1/object/public/pages-images/pages/${page.slug}/${v}`
+      `https://dcvbbtdhyymhwqyuvosp.supabase.co/storage/v1/object/public/pages-images/${v}`
     ) : [],
   }));
 }
