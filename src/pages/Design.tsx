@@ -14,15 +14,16 @@ import { usePageImageMap } from "@/hooks/useSupabasePages";
 const Design = () => {
   const [selectedProject, setSelectedProject] = useState<DesignProject | null>(null);
   const isMobile = useIsMobile();
-  const { getImagesForSlug, isLoading: imagesLoading } = usePageImageMap();
+  const { getImagesForSlug, findPageByLocalId, isLoading: imagesLoading } = usePageImageMap();
 
   const handleSelectProject = (id: string) => {
     const project = designProjects.find(p => p.id === id);
     if (project) setSelectedProject(project);
   };
 
-  // Get images for selected project from Supabase
-  const projectImages = selectedProject ? getImagesForSlug(selectedProject.slug) : [];
+  // Get images for selected project from Supabase using the database slug
+  const dbPage = selectedProject ? findPageByLocalId(selectedProject.id) : null;
+  const projectImages = dbPage ? getImagesForSlug(dbPage.slug) : [];
 
   // Mobile Layout
   if (isMobile) {

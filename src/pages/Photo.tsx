@@ -13,15 +13,16 @@ import { usePageImageMap } from "@/hooks/useSupabasePages";
 const Photo = () => {
   const [selectedLocation, setSelectedLocation] = useState<PhotoLocation | null>(null);
   const isMobile = useIsMobile();
-  const { getImagesForSlug, isLoading: imagesLoading } = usePageImageMap();
+  const { getImagesForSlug, findPageByLocalId, isLoading: imagesLoading } = usePageImageMap();
 
   const handleSelectLocation = (id: string) => {
     const location = photoLocations.find(l => l.id === id);
     if (location) setSelectedLocation(location);
   };
 
-  // Get images for selected location from Supabase
-  const locationImages = selectedLocation ? getImagesForSlug(selectedLocation.slug) : [];
+  // Get images for selected location from Supabase using the database slug
+  const dbPage = selectedLocation ? findPageByLocalId(selectedLocation.id) : null;
+  const locationImages = dbPage ? getImagesForSlug(dbPage.slug) : [];
 
   // Mobile Layout
   if (isMobile) {
