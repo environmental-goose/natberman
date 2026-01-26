@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
+import { getProjectImageUrls, getProjectVideoUrls } from "@/utils/contentLoader";
 
 const Design = () => {
   const [selectedProject, setSelectedProject] = useState<DesignProject | null>(null);
@@ -18,6 +19,10 @@ const Design = () => {
     const project = designProjects.find(p => p.id === id);
     if (project) setSelectedProject(project);
   };
+
+  // Get images and videos for selected project from page-data
+  const projectImages = selectedProject ? getProjectImageUrls(selectedProject.id) : [];
+  const projectVideos = selectedProject ? getProjectVideoUrls(selectedProject.id) : [];
 
   // Mobile Layout
   if (isMobile) {
@@ -39,22 +44,6 @@ const Design = () => {
               description={selectedProject.description}
               onBack={() => setSelectedProject(null)}
             >
-              {/* Specs */}
-              {selectedProject.specs && (
-                <div className="mb-6">
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3">
-                    Specifications
-                  </h3>
-                  <ul className="grid grid-cols-1 gap-2">
-                    {selectedProject.specs.map((spec, i) => (
-                      <li key={i} className="text-sm text-foreground/80">
-                        • {spec}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
               {/* Tutorial content */}
               {selectedProject.content && (
                 <div className="mb-6">
@@ -82,27 +71,38 @@ const Design = () => {
                 </div>
               )}
 
-              {/* Gallery */}
+              {/* Video Embeds */}
+              {projectVideos.length > 0 && (
+                <div className="mb-6 space-y-4">
+                  {projectVideos.map((videoUrl, i) => (
+                    <div key={i} className="aspect-video w-full">
+                      <iframe
+                        src={videoUrl.startsWith("//") ? `https:${videoUrl}` : videoUrl}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Gallery - Single column vertical feed */}
               <div className="space-y-6">
-                {selectedProject.images.map((image, i) => (
+                {projectImages.map((imageUrl, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.4 }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
                   >
-                    <div className="aspect-[4/3] overflow-hidden bg-muted">
+                    <div className="w-full overflow-hidden bg-muted">
                       <img
-                        src={image.url}
-                        alt={image.caption || selectedProject.title}
-                        className="w-full h-full object-cover"
+                        src={imageUrl}
+                        alt={`${selectedProject.title} image ${i + 1}`}
+                        className="w-full h-auto object-contain"
                       />
                     </div>
-                    {image.caption && (
-                      <p className="mt-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                        {image.caption}
-                      </p>
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -197,22 +197,6 @@ const Design = () => {
                   </p>
                 </div>
 
-                {/* Specs if available */}
-                {selectedProject.specs && (
-                  <div className="mb-8">
-                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
-                      Specifications
-                    </h3>
-                    <ul className="grid grid-cols-2 gap-2">
-                      {selectedProject.specs.map((spec, i) => (
-                        <li key={i} className="text-sm text-foreground/80">
-                          • {spec}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 {/* Tutorial content if available */}
                 {selectedProject.content && (
                   <div className="mb-8">
@@ -242,31 +226,49 @@ const Design = () => {
                   </div>
                 )}
 
-                {/* Gallery */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {selectedProject.images.map((image, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1, duration: 0.4 }}
-                      className="group"
-                    >
-                      <div className="aspect-[4/3] overflow-hidden bg-muted">
-                        <img
-                          src={image.url}
-                          alt={image.caption || selectedProject.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                      {image.caption && (
-                        <p className="mt-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                          {image.caption}
-                        </p>
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
+                {/* Video Embeds */}
+                {projectVideos.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                      Video
+                    </h3>
+                    <div className="space-y-4">
+                      {projectVideos.map((videoUrl, i) => (
+                        <div key={i} className="aspect-video max-w-3xl">
+                          <iframe
+                            src={videoUrl.startsWith("//") ? `https:${videoUrl}` : videoUrl}
+                            className="w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Gallery - Single column vertical feed for consistency */}
+                {projectImages.length > 0 && (
+                  <div className="space-y-6 max-w-3xl">
+                    {projectImages.map((imageUrl, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.05, duration: 0.4 }}
+                        className="group"
+                      >
+                        <div className="w-full overflow-hidden bg-muted">
+                          <img
+                            src={imageUrl}
+                            alt={`${selectedProject.title} image ${i + 1}`}
+                            className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                          />
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

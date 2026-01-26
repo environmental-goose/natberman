@@ -7,89 +7,158 @@ export interface DesignProject {
   content?: string;
   codeSnippet?: string;
   images: { url: string; caption?: string }[];
+  videos?: string[];
 }
 
 export const designProjects: DesignProject[] = [
-  {
-    id: "automated-blinds-v2",
-    label: "Automated Blinds V2",
-    title: "Automated Blinds V2",
-    description: "A second-generation automated window blind system with improved motor control and integration capabilities.",
-    specs: [
-      "Custom PCB design",
-      "Stepper motor control",
-      "Home Assistant integration",
-      "3D printed components"
-    ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop", caption: "Motor assembly" },
-      { url: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop", caption: "Control board" },
-    ]
-  },
+  // 1. Aer1 System
   {
     id: "aer1-system",
     label: "Aer1 System",
     title: "Aer1 System",
-    description: "High-volume consumer air purification device designed for mass production with optimized assembly and cost efficiency.",
-    specs: [
-      "Design for manufacturing",
-      "Injection molded housing",
-      "HEPA filtration system",
-      "IoT connectivity"
-    ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=600&fit=crop", caption: "Product render" },
-      { url: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop", caption: "Internal components" },
-    ]
+    description: "2L of water per charge. As the most senior member of the mechanical engineering team, I helped bring a successfully prototyped design into serial production at a tier 1 asian CM and implemented many crucial document control and quality systems along the way.",
+    content: `The system delivers high pressure CO2 (800+ psi) using a complex miniaturized manifold system. Given the pressures involved, we designed a quadruple redundant safety system to prevent over pressurization events.
+
+The custom designed capsules include a novel refillable valve allowing each capsule to be re-filled and reused dozens of times over its lifetime.
+
+My work at Aerflo has touched nearly every component in the product, across complex multi-action injection molded components, elastomers and softgoods, stamped & extruded metal, and blow molded plastic parts. This includes parts in the cap, bottle, CO2 cartridges, and other accessories.`,
+    images: [],
+    videos: ["//www.youtube.com/embed/qEbs4oX95wQ?wmode=opaque"],
   },
+  // 2. Markforged FX10
   {
     id: "markforged-fx10",
     label: "Markforged FX10",
     title: "Markforged FX10",
-    description: "Industrial-grade continuous fiber reinforcement 3D printer designed for factory floor deployment.",
-    specs: [
-      "Continuous fiber reinforcement",
-      "Industrial enclosure",
-      "Automated material handling",
-      "Fleet management integration"
-    ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop", caption: "Printer system" },
-      { url: "https://images.unsplash.com/photo-1563770660941-20978e870e26?w=800&h=600&fit=crop", caption: "Print head detail" },
-    ]
+    description: "In 2021 I began early R&D work with a small team on Markforged's next generation printer. The concept was a faster, larger, and more versatile industrial 3D printer - notably, with the ability to print both metal and composite filaments.",
+    content: `Over the next 3 years, I led a team of 15+ mechanical, electrical, software, and systems engineers in the development of this printer. I personally architected the mechanical systems from concept industrial design drawings and led the team through multiple design / prototype rounds, eventually transitioning the design into production with a Tier 1 CM overseas.
+
+The result was the FX10, a groundbreaking manufacturing tool.
+
+The printer was a combination of several beautifully engineered systems, including a 60ºC actively heated chamber, dual nozzle composite print head, and high performance gantry capable of reaching 1m/s movement speeds.
+
+We introduced many new systems in this printer, but the most ambitious was the vision system. A camera mounted on the back of the print head was used to take images during printing, allowing the existing AI fault detection engine, Blacksmith, to detect and correct print defects live.
+
+Today, the FX10 is a best selling mid-range industrial 3D printer and is used in daily around the globe.`,
+    images: [],
+    videos: ["//www.youtube.com/embed/hjr0DHIjvnE?wmode=opaque"],
   },
+  // 3. Markforged Metal X Gen 2
   {
     id: "markforged-metal-x-gen2",
     label: "Markforged Metal X Gen 2",
-    title: "Markforged Metal X Gen 2",
-    description: "Second generation metal 3D printing system with improved sintering capabilities and part quality.",
-    specs: [
-      "Metal bound powder extrusion",
-      "Automated wash station",
-      "High-temperature sintering furnace",
-      "Multi-material support"
-    ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&h=600&fit=crop", caption: "Metal X system" },
-      { url: "https://images.unsplash.com/photo-1581091877018-dac6a371d50f?w=800&h=600&fit=crop", caption: "Sintered parts" },
-    ]
+    title: "Markforged Metal X Gen 2 - Technical Lead",
+    description: "After 3 years at Markforged (a 3D printing startup in Boston) I was made technical lead of the Metal X 3D printer. As a part of this role, I was tasked with leading the second generation refresh of the machine.",
+    content: `This refresh included several functional and aesthetic changes as well as a recertification to a new safety standard in the EU (IEC 62368-3).
+
+At a high level, the 3D printer works by printing a conventional filament with a high metal powder loading. This enables the printer to operate in an office environment without high temperature components or more dangerous powdered metal. After printing, the part goes through a 2 part de-binding process in an industrial de-greaser and high temperature sintering furnace.
+
+Leading the project, I guided the team through the complete NPI process from design ideation, prototyping, testing & certification, production ramping, and launch in under a year while achieving an overall cost down on the BOM.
+
+The second generation machine required the integration of a single fault tolerant safety system that electrically disconnected dangerous parts of the system once they became accessible through an open door. It also included an upgrade from a 4.3" internal display to 7" touch display on an arm - a design owned solely by me.
+
+My responsibility as project leader also included:
+• Safety system architecture and layout
+• Design of complex and highly cosmetic sheet metal modules with integrated electronics
+• Creation and maintenance a detailed program schedule and phase gate process documents
+• Delivery of detailed designs and drawings to sourcing team for prototype builds
+• Coordination and completion of safety and EMC compliance testing
+• Writing and presentation of detailed status updates to engineering and executive leaders
+• Release of final design packages to operations and sourcing teams for production ramp
+• Oversight of pilot builds at factory in conjunction with operations and manufacturing teams
+
+This project was an incredible learning experience for me. I had exposure to every level and detail of new product creation that is invaluable to my practical knowledge and skill of bringing a product to market.`,
+    images: [],
   },
+  // 4. Split Flap Clock
   {
     id: "split-flap-clock",
     label: "Split Flap Clock",
-    title: "Split Flap Clock",
-    description: "A modern interpretation of the classic split-flap display, featuring custom mechanics and electronics.",
-    specs: [
-      "Custom split-flap modules",
-      "Hall effect positioning",
-      "ESP32 control",
-      "NTP time sync"
-    ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1533749047139-189de3cf06d3?w=800&h=600&fit=crop", caption: "Clock display" },
-      { url: "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800&h=600&fit=crop", caption: "Mechanism detail" },
-    ]
+    title: "Split Flap Clock - Sony 8FC-69WA Restoration",
+    description: "I found a non-functioning Sony 8FC-69WA in a Connecticut thrift store. I've always loved the aesthetic and mechanisms in split flap clock displays so I removed the clock module and rebuilt it into one of my own.",
+    content: `The teardown of the old clock was fascinating. It is unbelievable to me that a design like this was made at scale and made available so cheap. The density of components and complexity of design was well beyond what I could imagine was inside.
+
+The clock uses a synchronous motor to keep time, using the 60Hz frequency of the incoming AC to spin at a constant rate. Despite my best efforts to repair it, the motor was dead, and no replacements were available online.
+
+Without the original motor available, I designed a new interface for a spare stepper motor I had. I 3D printed the components and wired together a protoboard. The clock logic is run on an Arduino Nano and uses a quartz breakout module to keep accurate timing.
+
+The timekeeping module was new to me in concept and practice. After hours of debugging why the clock couldn't keep time over 24 hours, I learned the hard way about how poor computers are at absolute timing. Just as fascinating was going a little deeper into the meaning of 'quartz' in time keeping. An extremely repeatable and precise frequency can be measured from the vibration of quartz crystal when a known electric current passes through it, keeping accurate time.
+
+I also needed to implement a finicky error correction procedure because the 28BYJ-48 stepper motor I used has 2048 steps/revolution. Annoyingly, this didn't divide evenly into the 10 minutes per revolution of the clock driven gear (ending up with 204.8 steps/min). 205 steps/min ends up gaining a few minutes per week, and so every 5 minutes, a small step correction is made to make up for the accumulated 1 step (0.2*5) of error.
+
+Once the code electronics were finalized, I enjoyed the raw design in the bare assembly and opted to not cover it with an outer case. The clock is a reliable timekeeper in my apartment to this day.`,
+    images: [],
   },
+  // 5. Automated Blinds V2
+  {
+    id: "automated-blinds-v2",
+    label: "Automated Blinds V2",
+    title: "Automated Blinds V2",
+    description: "This project is a continuation of my Automated Blinds V1 project where I repackaged the functionality into a more universal interface. My previous design only worked with a specific IKEA blind and mounted directly to the winding core.",
+    content: `This new design works with any type of chain roller blind but retains all the same features any functionality: quiet actuation, discrete position control, voice activation through HomeKit integration.
+
+The units are still hardwired into a central computer that manages the server connection and motor control.
+
+I use these everyday to help me sleep. They automatically close when it's time for bed to block out light pollution from the street. At 6am they silently rise, allowing me to wake up naturally with the sun. A no comprimise solution.
+
+All the board designs are unchanged. Only minor modifications to the original code in the V1 project were made to adjust to the new gear ratios. In the future, I'd like to design a bespoke PCBA to allow each unit to connect and manage its own movement without needing to be wired into a central computer. I may also look to cost optimize the assembly by removing the shafts and bearings, and integrating features into the printed components that would act as plastic bearing surfaces.
+
+The design consists of a pancake stepper motor driving the blinds through a set of gears that increase the overall torque output of the device. A magnetic cover hides the motor and allows for sufficient airspace for cooling. The chain is driven by a custom drive interface that captures and pulls the individual chain balls.`,
+    images: [],
+  },
+  // 6. 5DOF Robotic Arm
+  {
+    id: "5dof-robotic-arm",
+    label: "5DOF Robotic Arm",
+    title: "5DOF Robotic Arm - Senior Year Capstone",
+    description: "My senior year capstone was an incredible deep dive into electromechanical design and precision systems. My group decided to complete a project from the human safe soft robotics lab at Northeastern University with mentorship from John Whitney, PhD.",
+    content: `The project was the development of a 5DOF robotic arm with an exoskeleton interface designed to make driving the arm as intuitive as possible. As a part of the input interface, the exoskeleton would be able to deliver haptic feedback to the user based on the environmental conditions of the remote arm.
+
+The task was split up among the group members through ownership of arm design, exoskeleton design, electrical hardware design, and software interface. I was personally responsible for the entirety of the robotic arm design shown.
+
+This arm design achieved all 5 degrees of freedom required through a modular differential joint at the elbow and shoulder as well as a single rocker providing the 3rd degree of freedom in the shoulder joint. Each differential module was driven by two high torque brushless DC motors controlled with a custom driver board with magnetic axial encoding and real-time positional control.
+
+The differential joint was an ultra dense design with nearly all structural components designed for 3D printing in order to drive shorter lead times and lighter actuated weights. The design went through several iterations, each making the assembly lighter and more compact.
+
+The final design of the arm had a mere 12kg of actuated weight and could travel at up to 0.5m/s. The full system was designed in only 6 months and was proven operational on the bench. Motor controller bugs prevented us from doing live demonstrations on presentation day, but the exoskeleton was setup to transmit its input to a live simulation of the arm output on a computer.`,
+    images: [],
+  },
+  // 7. Hilbert Curve Desk Art
+  {
+    id: "hilbert-curve-desk-art",
+    label: "Hilbert Curve Desk Art",
+    title: "Hilbert Curve Desk Art",
+    description: "A Hilbert Curve is a continuous fractal space-filling curve first described by the German mathematician David Hilbert in 1891. It belongs to a family of space filling curves that create very distinct and interesting fractal patterns.",
+    content: `This particular project came to me by way of my coworker Angus who had printed a large copy of the curve. He inserted a small ball bearing which you could guide through the whole maze by tiling the part.
+
+I designed a 2 DOF actuator using a single motor which rotated a ramped surface. A combination of pins and magnets keep the maze rotationally constrained - only allowing it to inherit the angle of the ramp.`,
+    images: [],
+  },
+  // 8. Lamp Restoration
+  {
+    id: "lamp-restoration",
+    label: "Lamp Restoration",
+    title: "Lamp Restoration",
+    description: "I was digging through some old boxes in my mom's attic recently and came across this clip on lamp that I really enjoyed the style of. The clip had snapped off so I decided to redesign a new stand for it, one more suited to sitting on a table.",
+    content: `I played around with a few different styles and ended up with this round ribbed design that turned out really well in a matte red. The new base is a 2 part 3D printed assembly (2 parts so I didn't need to disconnect the plug). I also cut an O-ring and ran it through a channel I included on the bottom face to keep it from sliding around on surfaces.
+
+You can see the original lamp on the left, and some nice shots of the finished lamp on the right and below.`,
+    images: [],
+  },
+  // 9. Tile Shelf
+  {
+    id: "tile-shelf",
+    label: "Tile Shelf",
+    title: "Tile Shelf",
+    description: "The tile shelf is a design inspired by some designs I saw online, but built custom for my own space.",
+    content: `I designed a simple L-shape profile with dovetail joints to extend the length beyond my printers build volume. I applied glue to the joints to make them permanent.
+
+Once assembled, I used grout to secure the tiles to the part and fill the gaps.
+
+I use the tile shelf in my kitchen as a space for teas and hanging objects. I have made a few other smaller sizes for friends and family as gifts.`,
+    images: [],
+  },
+  // 10. Automated Blind Conversion
   {
     id: "automated-blind-conversion",
     label: "Automated Blind Conversion",
@@ -141,27 +210,69 @@ cover:
       - stepper.set_target:
           id: blind_stepper
           target: !lambda 'return (2000 * pos);'`,
-    images: [
-      { url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop", caption: "Motor mount design" },
-      { url: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop", caption: "Wiring diagram" },
-      { url: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop", caption: "Completed installation" },
-    ]
+    images: [],
   },
+  // 11. Candle Molding
   {
-    id: "5dof-robotic-arm",
-    label: "5DOF Robotic Arm",
-    title: "5DOF Robotic Arm",
-    description: "A desktop-scale robotic arm with five degrees of freedom, designed for precision manipulation and educational purposes.",
-    specs: [
-      "5 degrees of freedom",
-      "Servo-driven joints",
-      "Inverse kinematics control",
-      "Gripper end effector"
-    ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop", caption: "Full arm assembly" },
-      { url: "https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=800&h=600&fit=crop", caption: "Joint mechanism" },
-    ]
+    id: "candle-molding",
+    label: "Candle Molding",
+    title: "Candle Molding",
+    description: "A short curiosity project where I attempted to mold taper candles with interesting forms that I designed.",
+    content: `Starting with the candle design, I engineered molds over several iterations, and successfully molded candle from beeswax which I gave as holiday gifts in 2023.
+
+For some of the more delicate designs, I also designed custom silicone molds, which I poured and cured in my apartment.`,
+    images: [],
+  },
+  // 12. Vegetable Garden Build
+  {
+    id: "vegetable-garden-build",
+    label: "Vegetable Garden Build",
+    title: "Vegetable Garden Build",
+    description: "Last summer, with limited porch space I did my best to grow two Tomato plants but the incessant summer heat meant keeping them well cared for was difficult.",
+    content: `Well this year I moved into a new apartment and found myself with a neglected front garden. The plot was overgrown with weeds, tall grass, and a gem of a hydrangea tucked into the corner. My girlfriend and I started out by clearing out every square inch of the existing top layer and get a feel for the depth and richness of the soil.
+
+Along the way we ended up finding what felt like endless numbers of rocks and boulders just below the surface that also needed to be excavated. We eventually ended up using these for demarcation lines around our growing areas. After the area was weeded and rid of rocks, we did our best to turn over the dirt and get a feel for the depth and richness of the soil. Unfortunately, it was poor in both accounts. At the end of the day we left the plot weeded and lined up with what we thought would be good growing rows.
+
+As I mentioned, the soil turned out to be mostly clay and wasn't particularly deep so we pivoted to using raised garden beds for the vegetables as opposed to planting directly in the soil. I had some left over 16ft 1"x8" lumber from a fence rebuild I helped my parents with that we turned into our new beds. The construction on these was fairly straight forward. We used two stacked planks cut down to 4ft on each side then secured them together in the corners with a 4x4 post cut to length.
+
+We ended up making two 4'x4' raised beds and installed them on the back wall to keep them away from the sidewalk. After that we turned over the original dirt in the areas we were planning on planting in and cut it with Pro-Mix to bring some fluffiness back and help with the fertility.
+
+We arranged a variety of Magnolias, moss ross, and Ageratums in the front row and put snapdragons and Nasturtiums in the back and front right corners. You can also see the original hydrangea in the back right of the photo which we decided to keep for the overhaul.
+
+Once the flowers were in we installed the garden boxes and planted our vegetables. This year we went for five cherry tomato plants, eggplant, snap peas, and banana peppers. Before I get any shade for having 5 cherry tomato plants I'll say there are few things that bring me as much joy as going to the garden in the morning and eating cherry tomatoes off the plant until I'm full.
+
+For the final touch we threw some cedar mulch down.`,
+    images: [],
+  },
+  // 13. METAR Map
+  {
+    id: "metar-map",
+    label: "METAR Map",
+    title: "Live METAR Map",
+    description: "The live METAR map was originally created by prueker on github. I built my code based on his and designed my own electronics and mounting system that is a bit more robust than the original design and is able to accommodate 50 LEDs rather than 20.",
+    content: `The map uses a Raspberry Pi to pull weather data (in the form of METAR's - Meteorological Terminal Aviation Routine Weather Reports) posted by the FAA on aviationweather.gov. The Pi then displays this weather on 50 individually addressable LEDs using the neopixel library.
+
+The colors correspond to different weather reported by airports included in the map where:
+• Green = VFR (visual flight rules - good weather)
+• Blue = MVFR (marginal visual flight rules - okay weather, getting worse)
+• Red = IFR (instrument flight rules - bad weather)
+• Magenta = LIFR (low instrument flight rules - even worse weather)
+
+The wiring is fairly simple. A barrel jack input brings 12v in from the wall and is wired directly into the LED power. An adjustable buck converter steps the voltage down to 5v for the Raspberry Pi. The Pi sends commands to the LEDs through one of its GPIO headers.
+
+I also designed some mounts for the corners of the shadow box that stood the frame away from the wall to make more space for the LED wiring and to provide mounting positions for hanging it on the wall.`,
+    images: [],
+  },
+  // 14. Light Switch Cover
+  {
+    id: "light-switch-cover",
+    label: "Light Switch Cover",
+    title: "Light Switch Cover",
+    description: "My affinity for home automation has lead me to buy my share of internet connected light bulbs. One thing that has frustrated me is that the switches to control these lights usually come with an adhesive mount to stick them directly on the wall.",
+    content: `The problem with this is that the conventional light switch that controls the socket is still there and can cut power to the device if it's flipped.
+
+Lucky for me, I work for a company that specializes in making arbitrary plastic parts! To kill 2 birds with 1 stone, I designed a mount for my Philips Hue switch that fits over an existing standard light switch to securely mount the Hue switch to the wall (no adhesives) and cover the existing light switch in order to prevent it from being accidentally turned off.`,
+    images: [],
   },
 ];
 

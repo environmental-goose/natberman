@@ -109,6 +109,11 @@
     @apply bg-background text-foreground antialiased;
   }
 
+  /* Custom Orange Dot Cursor */
+  html, body {
+    cursor: none;
+  }
+
   /* Graph Paper Background */
   .graph-paper {
     background-image: 
