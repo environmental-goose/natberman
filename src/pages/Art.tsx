@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import Logo from "@/components/navigation/Logo";
-import { artProjects, ArtProject } from "@/data/artProjects";
+import { artProjects, ArtProject, getArtProjectImages, getArtProjectVideos } from "@/data/artProjects";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
@@ -17,6 +17,10 @@ const Art = () => {
     const project = artProjects.find(p => p.id === id);
     if (project) setSelectedProject(project);
   };
+
+  // Get images and videos for selected project from page-data
+  const projectImages = selectedProject ? getArtProjectImages(selectedProject.id) : [];
+  const projectVideos = selectedProject ? getArtProjectVideos(selectedProject.id) : [];
 
   // Mobile Layout
   if (isMobile) {
@@ -38,35 +42,38 @@ const Art = () => {
               description={selectedProject.description}
               onBack={() => setSelectedProject(null)}
             >
-              {/* Gallery */}
+              {/* Videos */}
+              {projectVideos.length > 0 && (
+                <div className="space-y-6 mb-8">
+                  {projectVideos.map((videoUrl, i) => (
+                    <div key={i} className="aspect-video">
+                      <iframe
+                        src={videoUrl}
+                        title={`${selectedProject.title} Video ${i + 1}`}
+                        className="w-full h-full"
+                        allowFullScreen
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Gallery from page-data */}
               <div className="space-y-6">
-                {selectedProject.images.map((image, i) => (
+                {projectImages.map((imageUrl, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.4 }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
                   >
-                    <div 
-                      className={`overflow-hidden bg-muted ${
-                        image.orientation === "portrait" 
-                          ? "aspect-[2/3]" 
-                          : image.orientation === "square"
-                          ? "aspect-square"
-                          : "aspect-[3/2]"
-                      }`}
-                    >
+                    <div className="overflow-hidden bg-muted">
                       <img
-                        src={image.url}
-                        alt={image.caption || selectedProject.title}
-                        className="w-full h-full object-cover"
+                        src={imageUrl}
+                        alt={`${selectedProject.title} - Image ${i + 1}`}
+                        className="w-full h-auto object-cover"
                       />
                     </div>
-                    {image.caption && (
-                      <p className="mt-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                        {image.caption}
-                      </p>
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -161,36 +168,39 @@ const Art = () => {
                   </p>
                 </div>
 
-                {/* Gallery - Masonry-style layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {selectedProject.images.map((image, i) => (
+                {/* Videos */}
+                {projectVideos.length > 0 && (
+                  <div className="max-w-4xl mx-auto space-y-8 mb-12">
+                    {projectVideos.map((videoUrl, i) => (
+                      <div key={i} className="aspect-video">
+                        <iframe
+                          src={videoUrl}
+                          title={`${selectedProject.title} Video ${i + 1}`}
+                          className="w-full h-full"
+                          allowFullScreen
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Gallery - Single column vertical feed from page-data */}
+                <div className="max-w-4xl mx-auto space-y-8">
+                  {projectImages.map((imageUrl, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1, duration: 0.4 }}
+                      transition={{ delay: i * 0.05, duration: 0.4 }}
                       className="group"
                     >
-                      <div 
-                        className={`overflow-hidden bg-muted ${
-                          image.orientation === "portrait" 
-                            ? "aspect-[2/3]" 
-                            : image.orientation === "square"
-                            ? "aspect-square"
-                            : "aspect-[3/2]"
-                        }`}
-                      >
+                      <div className="overflow-hidden bg-muted">
                         <img
-                          src={image.url}
-                          alt={image.caption || selectedProject.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          src={imageUrl}
+                          alt={`${selectedProject.title} - Image ${i + 1}`}
+                          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      {image.caption && (
-                        <p className="mt-2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                          {image.caption}
-                        </p>
-                      )}
                     </motion.div>
                   ))}
                 </div>

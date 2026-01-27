@@ -109,9 +109,9 @@
     @apply bg-background text-foreground antialiased;
   }
 
-  /* Custom Orange Dot Cursor */
-  html, body {
-    cursor: none;
+  /* Global Custom Cursor Override - Hide system cursor everywhere */
+  *, *::before, *::after {
+    cursor: none !important;
   }
 
   /* Graph Paper Background */
@@ -139,7 +139,7 @@
 @layer components {
   /* Navigation Item Styles */
   .nav-item {
-    @apply text-5xl md:text-6xl lg:text-7xl font-light tracking-tight cursor-pointer transition-all duration-300;
+    @apply text-5xl md:text-6xl lg:text-7xl font-light tracking-tight transition-all duration-300;
   }
 
   .nav-item-dimmed {

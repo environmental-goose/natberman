@@ -2,8 +2,13 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import Logo from "@/components/navigation/Logo";
+import { getProjectImageUrls } from "@/utils/contentLoader";
 
 const About = () => {
+  // Get portrait from page-data/about folder
+  const portraitImages = getProjectImageUrls("about", "about");
+  const portraitUrl = portraitImages.length > 0 ? portraitImages[0] : null;
+
   return (
     <GraphPaperLayout>
       <div className="min-h-screen flex items-center justify-center p-8 md:p-16">
@@ -54,7 +59,7 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Right - Portrait */}
+            {/* Right - Portrait from page-data */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -62,11 +67,19 @@ const About = () => {
               className="flex justify-center md:justify-end"
             >
               <div className="portrait-frame">
-                <div className="w-64 h-80 md:w-72 md:h-96 bg-muted flex items-center justify-center">
-                  <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
-                    Portrait
-                  </span>
-                </div>
+                {portraitUrl ? (
+                  <img
+                    src={portraitUrl}
+                    alt="Nathaniel Berman"
+                    className="w-64 h-80 md:w-72 md:h-96 object-cover"
+                  />
+                ) : (
+                  <div className="w-64 h-80 md:w-72 md:h-96 bg-muted flex items-center justify-center">
+                    <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
+                      Portrait
+                    </span>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>

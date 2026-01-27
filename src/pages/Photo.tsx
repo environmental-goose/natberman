@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import Logo from "@/components/navigation/Logo";
-import { photoLocations, PhotoLocation } from "@/data/photoLocations";
+import { photoLocations, PhotoLocation, getLocationPhotos } from "@/data/photoLocations";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
@@ -17,6 +17,9 @@ const Photo = () => {
     const location = photoLocations.find(l => l.id === id);
     if (location) setSelectedLocation(location);
   };
+
+  // Get photos for selected location from page-data
+  const locationPhotos = selectedLocation ? getLocationPhotos(selectedLocation.id) : [];
 
   // Mobile Layout
   if (isMobile) {
@@ -38,33 +41,22 @@ const Photo = () => {
               description={selectedLocation.description}
               onBack={() => setSelectedLocation(null)}
             >
-              {/* Vertical Photo Feed */}
+              {/* Vertical Photo Feed from page-data */}
               <div className="space-y-8">
-                {selectedLocation.photos.map((photo, i) => (
+                {locationPhotos.map((photoUrl, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    transition={{ delay: i * 0.05, duration: 0.5 }}
                   >
-                    <div 
-                      className={`overflow-hidden bg-muted ${
-                        photo.orientation === "portrait" 
-                          ? "aspect-[2/3]" 
-                          : "aspect-[3/2]"
-                      }`}
-                    >
+                    <div className="overflow-hidden bg-muted">
                       <img
-                        src={photo.url}
-                        alt={photo.caption || selectedLocation.title}
-                        className="w-full h-full object-cover"
+                        src={photoUrl}
+                        alt={`${selectedLocation.title} - Photo ${i + 1}`}
+                        className="w-full h-auto object-cover"
                       />
                     </div>
-                    {photo.caption && (
-                      <p className="mt-3 text-center text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                        {photo.caption}
-                      </p>
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -159,34 +151,23 @@ const Photo = () => {
                   </p>
                 </div>
 
-                {/* Vertical Photo Feed */}
+                {/* Vertical Photo Feed from page-data */}
                 <div className="max-w-4xl mx-auto space-y-12">
-                  {selectedLocation.photos.map((photo, i) => (
+                  {locationPhotos.map((photoUrl, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1, duration: 0.5 }}
+                      transition={{ delay: i * 0.05, duration: 0.5 }}
                       className="group"
                     >
-                      <div 
-                        className={`overflow-hidden bg-muted ${
-                          photo.orientation === "portrait" 
-                            ? "max-w-2xl mx-auto aspect-[2/3]" 
-                            : "w-full aspect-[3/2]"
-                        }`}
-                      >
+                      <div className="overflow-hidden bg-muted">
                         <img
-                          src={photo.url}
-                          alt={photo.caption || selectedLocation.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                          src={photoUrl}
+                          alt={`${selectedLocation.title} - Photo ${i + 1}`}
+                          className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                       </div>
-                      {photo.caption && (
-                        <p className="mt-4 text-center text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                          {photo.caption}
-                        </p>
-                      )}
                     </motion.div>
                   ))}
                 </div>
