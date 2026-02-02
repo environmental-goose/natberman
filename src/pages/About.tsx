@@ -27,58 +27,52 @@ const About = () => {
             </Link>
           </div>
 
-          {/* Heading */}
-          <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            Hi, I'm Nat...
-          </motion.h1>
-
-          {/* Two Column Layout - Body text and portrait */}
-          <div className="grid md:grid-cols-[1fr,auto] gap-6 md:gap-8 items-start">
-            {/* Left - Body Text */}
+          {/* Two Column Layout */}
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            {/* Left - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="space-y-4 text-muted-foreground leading-relaxed"
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <p>
-                I made this site to have a place document projects, art, and photography, and share it with whoever finds them interesting. If you see something cool - feel free to use it, or ask me about it.
-              </p>
-              <p>
-                I don't know everything, but I like learning, so if you find a mistake in my code, or know how to design something more effectively drop a comment or reach out - I like getting better.
-              </p>
-              <p>
-                I graduated from Northeastern University in 2020 with BS in Mechanical Engineering. Since graduating I've worked as a mechanical designer, working on things like high performance 3D printers at Markforged and high volume consumer devices at aerflo.
-              </p>
-              <p>
-                I enjoy mechanical design, photography, soccer, sewing, and hold my private pilots license.
-              </p>
-              <p className="text-sm italic">
-                Currently working from my Brooklyn closet.
-              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
+                Hi, I'm Nat...
+              </h1>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  I made this site to have a place document projects, art, and photography, and share it with whoever finds them interesting. If you see something cool - feel free to use it, or ask me about it.
+                </p>
+                <p>
+                  I don't know everything, but I like learning, so if you find a mistake in my code, or know how to design something more effectively drop a comment or reach out - I like getting better.
+                </p>
+                <p>
+                  I graduated from Northeastern University in 2020 with BS in Mechanical Engineering. Since graduating I've worked as a mechanical designer, working on things like high performance 3D printers at Markforged and high volume consumer devices at aerflo.
+                </p>
+                <p>
+                  I enjoy mechanical design, photography, soccer, sewing, and hold my private pilots license.
+                </p>
+                <p className="text-sm italic">
+                  Currently working from my Brooklyn closet.
+                </p>
+              </div>
             </motion.div>
 
-            {/* Right - Portrait */}
+            {/* Right - Portrait from page-data */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="flex justify-center md:justify-start"
+              className="flex justify-center md:justify-end"
             >
               <div className="portrait-frame">
                 {portraitUrl ? (
                   <img
                     src={portraitUrl}
                     alt="Nathaniel Berman"
-                    className="w-56 md:w-64 object-cover"
+                    className="w-64 h-80 md:w-72 md:h-96 object-cover"
                   />
                 ) : (
-                  <div className="w-56 md:w-64 h-72 md:h-80 bg-muted flex items-center justify-center">
+                  <div className="w-64 h-80 md:w-72 md:h-96 bg-muted flex items-center justify-center">
                     <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
                       Portrait
                     </span>
