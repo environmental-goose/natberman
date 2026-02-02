@@ -177,3 +177,5 @@
     @apply break-inside-avoid mb-4;
   }
 }
+
+#lovable-badge { display: none !important; }
