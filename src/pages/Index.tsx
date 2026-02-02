@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import ShatterNav from "@/components/navigation/ShatterNav";
-import Logo from "@/components/navigation/Logo";
 
 const Index = () => {
   return (
@@ -15,7 +14,6 @@ const Index = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="max-w-md">
-            <Logo />
             <ShatterNav />
           </div>
         </motion.div>

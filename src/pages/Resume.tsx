@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Download, FileText } from "lucide-react";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
-import Logo from "@/components/navigation/Logo";
 
 const Resume = () => {
   return (
@@ -16,7 +15,6 @@ const Resume = () => {
         >
           {/* Back Link */}
           <div className="mb-12">
-            <Logo />
             <Link
               to="/"
               className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"

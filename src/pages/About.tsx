@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
-import Logo from "@/components/navigation/Logo";
 import { getProjectImageUrls } from "@/utils/contentLoader";
 
 const About = () => {
@@ -20,7 +19,6 @@ const About = () => {
         >
           {/* Back Link */}
           <div className="mb-12">
-            <Logo />
             <Link
               to="/"
               className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"

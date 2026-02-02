@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
-import Logo from "@/components/navigation/Logo";
 import { artProjects, ArtProject, getArtProjectImages, getArtProjectVideos } from "@/data/artProjects";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
@@ -90,8 +89,6 @@ const Art = () => {
       <div className="min-h-screen flex">
         {/* Sticky Sidebar */}
         <aside className="sticky top-0 h-screen w-72 flex-shrink-0 p-8 border-r border-border/30">
-          <Logo />
-          
           <div className="mb-8">
             <Link
               to="/"
