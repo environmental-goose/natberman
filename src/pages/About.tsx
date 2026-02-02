@@ -28,12 +28,13 @@ const About = () => {
           </div>
 
           {/* Two Column Layout */}
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-stretch">
             {/* Left - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex flex-col justify-center"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
                 Hi, I'm Nat...
@@ -62,17 +63,17 @@ const About = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="flex justify-center md:justify-end"
+              className="flex justify-center md:justify-start"
             >
-              <div className="portrait-frame">
+              <div className="portrait-frame h-full">
                 {portraitUrl ? (
                   <img
                     src={portraitUrl}
                     alt="Nathaniel Berman"
-                    className="w-64 h-80 md:w-72 md:h-96 object-cover"
+                    className="w-full h-full min-h-[400px] md:min-h-[500px] object-cover"
                   />
                 ) : (
-                  <div className="w-64 h-80 md:w-72 md:h-96 bg-muted flex items-center justify-center">
+                  <div className="w-full h-full min-h-[400px] md:min-h-[500px] bg-muted flex items-center justify-center">
                     <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
                       Portrait
                     </span>
