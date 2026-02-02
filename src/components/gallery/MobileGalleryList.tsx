@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import Logo from "@/components/navigation/Logo";
 
 interface MobileGalleryListProps {
   title: string;
@@ -20,7 +19,6 @@ const MobileGalleryList = ({ title, subheader, items, onSelect }: MobileGalleryL
     >
       {/* Header */}
       <div className="mb-6">
-        <Logo />
         <Link
           to="/"
           className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"

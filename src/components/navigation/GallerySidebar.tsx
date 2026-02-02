@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "./Logo";
 
 interface SidebarItem {
   label: string;
@@ -17,8 +16,6 @@ const GallerySidebar = ({ items, title }: GallerySidebarProps) => {
 
   return (
     <aside className="sticky top-0 h-screen w-64 flex-shrink-0 p-8 border-r border-border/30">
-      <Logo />
-      
       <div className="mb-8">
         <Link
           to="/"

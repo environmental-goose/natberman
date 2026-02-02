@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Mail, Linkedin } from "lucide-react";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
-import Logo from "@/components/navigation/Logo";
 
 const Contact = () => {
   return (
@@ -16,9 +15,6 @@ const Contact = () => {
         >
           {/* Back Link */}
           <div className="mb-16">
-            <div className="flex justify-center">
-              <Logo />
-            </div>
             <Link
               to="/"
               className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
