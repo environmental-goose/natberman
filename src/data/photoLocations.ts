@@ -7,61 +7,61 @@ export interface PhotoLocation {
   description: string;
 }
 
-// Photo locations with automated content loading
+// Photo locations with content matching text.rtf files
 export const photoLocations: PhotoLocation[] = [
   {
     id: "thailand-vietnam",
     label: "Thailand & Vietnam",
     title: "Thailand & Vietnam",
-    description: "Street scenes, temples, and coastal landscapes from Southeast Asia. Shot with a 35mm equivalent focal length.",
+    description: "February 2025\nBangkok & Koh Lanta, Thailand - Hanoi, Vietnam\n\n2 week trip to SE Asia with a balance of urban and rural exploration with my partner Daniela.",
   },
   {
     id: "alaska",
     label: "Alaska",
     title: "Alaska",
-    description: "Glaciers, wildlife, and vast wilderness landscapes from America's last frontier.",
+    description: "September 2024\nDenali National Park, Kenai Fjords National Park\n\n2 week backcountry journey through Alaska's national parks. Most of the photos shown are from our 6 days in the Denali wilderness. The most physically challenging thing I've ever done.",
   },
   {
     id: "malaysia",
     label: "Malaysia",
     title: "Malaysia",
-    description: "Urban architecture and natural wonders from Kuala Lumpur to the rainforests of Borneo.",
+    description: "2023/2024\nPenang and Kuala Lumpur, Malaysia\n\nSeveral trips to Malaysia over the course of 2024 to support manufacturing at aerflo. One trip coincided with Thaipusam, a Hindu festival that celebrates the victory of the god Murugan over the demon Surapadman. Many of the photos are from this celebration.",
   },
   {
     id: "croatia",
     label: "Croatia",
     title: "Croatia",
-    description: "Coastal towns, ancient walls, and the crystal waters of the Adriatic.",
+    description: "July 2023\nHvar, Split, and Dubrovnik, Croatia\n\n2 weeks traveling north along the Dalmatian Coast",
   },
   {
     id: "trans-catalina",
     label: "Trans-Catalina Trail",
     title: "Trans-Catalina Trail",
-    description: "A multi-day backpacking journey across Catalina Island, from coastal vistas to rugged interior.",
+    description: "April 2023\nCatalina Island, California\n\n1 week thru-hike across Catalina Island on the Trans-Catalina Trail.",
   },
   {
     id: "denmark-norway",
     label: "Denmark & Norway",
     title: "Denmark & Norway",
-    description: "Scandinavian design, fjords, and the endless summer light of the north.",
+    description: "August 2022\nCopenhagen, Denmark and Lofoten Islands, Norway.\n\n2 week roadtrip in the Arctic circle and the northern fjords of Norway.",
   },
   {
     id: "morocco",
     label: "Morocco",
     title: "Morocco",
-    description: "Markets, medinas, and the colors of North Africa from Marrakech to the Sahara.",
+    description: "June 2022\nFez and Marrakesh, Morocco\n\n1 week in the Medinas",
   },
   {
     id: "cuba",
     label: "Cuba",
     title: "Cuba",
-    description: "Classic cars, colorful facades, and the timeless atmosphere of Havana.",
+    description: "May 2019\nHavana and Vinales, Cuba\n\n1 week solo trip in the Cuban capital and countryside",
   },
   {
     id: "portraits",
     label: "Portraits",
     title: "Portraits",
-    description: getProjectText("portraits") || "Candid and posed portraits from travels and daily life.",
+    description: "collection of portraits",
   },
 ];
 
