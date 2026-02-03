@@ -7,9 +7,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
+import ShatterText from "@/components/gallery/ShatterText";
+import Lightbox from "@/components/gallery/Lightbox";
 
 const Photo = () => {
   const [selectedLocation, setSelectedLocation] = useState<PhotoLocation | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<{ url: string; alt: string } | null>(null);
   const isMobile = useIsMobile();
 
   const handleSelectLocation = (id: string) => {
@@ -40,28 +43,37 @@ const Photo = () => {
               description={selectedLocation.description}
               onBack={() => setSelectedLocation(null)}
             >
-              {/* Vertical Photo Feed from page-data */}
-              <div className="space-y-8">
+              {/* Masonry Grid with 2px gutters */}
+              <div className="columns-2 gap-[2px]">
                 {locationPhotos.map((photoUrl, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.5 }}
+                    transition={{ delay: i * 0.03, duration: 0.4 }}
+                    className="mb-[2px] break-inside-avoid"
                   >
-                    <div className="overflow-hidden bg-muted">
-                      <img
-                        src={photoUrl}
-                        alt={`${selectedLocation.title} - Photo ${i + 1}`}
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
+                    <img
+                      src={photoUrl}
+                      alt={`${selectedLocation.title} - Photo ${i + 1}`}
+                      className="w-full h-auto object-cover cursor-pointer"
+                      style={{ borderRadius: 0 }}
+                      onClick={() => setLightboxImage({ url: photoUrl, alt: `${selectedLocation.title} - Photo ${i + 1}` })}
+                    />
                   </motion.div>
                 ))}
               </div>
             </MobileProjectView>
           )}
         </AnimatePresence>
+
+        {/* Lightbox */}
+        <Lightbox
+          isOpen={!!lightboxImage}
+          imageUrl={lightboxImage?.url || ""}
+          alt={lightboxImage?.alt || ""}
+          onClose={() => setLightboxImage(null)}
+        />
       </GraphPaperLayout>
     );
   }
@@ -81,7 +93,8 @@ const Photo = () => {
             </Link>
           </div>
 
-          <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
+          {/* Distinct Section Header */}
+          <h2 className="text-2xl font-bold uppercase tracking-wider text-foreground mb-8">
             Photography
           </h2>
 
@@ -96,16 +109,12 @@ const Photo = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <button
+                  <ShatterText
+                    text={location.label}
+                    isActive={isActive}
                     onClick={() => setSelectedLocation(location)}
-                    className={`text-left text-lg transition-colors ${
-                      isActive
-                        ? "text-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground font-light"
-                    }`}
-                  >
-                    {location.label}
-                  </button>
+                    className="text-lg"
+                  />
                 </motion.div>
               );
             })}
@@ -148,23 +157,23 @@ const Photo = () => {
                   </p>
                 </div>
 
-                {/* Vertical Photo Feed from page-data */}
-                <div className="max-w-4xl mx-auto space-y-12">
+                {/* Masonry Grid with 2px gutters */}
+                <div className="columns-2 md:columns-3 lg:columns-4 gap-[2px]">
                   {locationPhotos.map((photoUrl, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.05, duration: 0.5 }}
-                      className="group"
+                      transition={{ delay: i * 0.03, duration: 0.4 }}
+                      className="mb-[2px] break-inside-avoid group cursor-pointer"
+                      onClick={() => setLightboxImage({ url: photoUrl, alt: `${selectedLocation.title} - Photo ${i + 1}` })}
                     >
-                      <div className="overflow-hidden bg-muted">
-                        <img
-                          src={photoUrl}
-                          alt={`${selectedLocation.title} - Photo ${i + 1}`}
-                          className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                        />
-                      </div>
+                      <img
+                        src={photoUrl}
+                        alt={`${selectedLocation.title} - Photo ${i + 1}`}
+                        className="w-full h-auto object-cover transition-opacity duration-300 group-hover:opacity-90"
+                        style={{ borderRadius: 0 }}
+                      />
                     </motion.div>
                   ))}
                 </div>
@@ -173,6 +182,14 @@ const Photo = () => {
           </AnimatePresence>
         </main>
       </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        isOpen={!!lightboxImage}
+        imageUrl={lightboxImage?.url || ""}
+        alt={lightboxImage?.alt || ""}
+        onClose={() => setLightboxImage(null)}
+      />
     </GraphPaperLayout>
   );
 };
