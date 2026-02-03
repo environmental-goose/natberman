@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Download } from "lucide-react";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import { getProjectImageUrls } from "@/utils/contentLoader";
 
@@ -55,6 +56,21 @@ const About = () => {
                   Currently working from my Brooklyn closet.
                 </p>
               </div>
+
+              {/* Download Resume Button */}
+              <motion.a
+                href="/Resume-Nathaniel Berman.pdf"
+                download
+                className="inline-flex items-center gap-2 mt-8 px-6 py-3 border border-foreground/30 text-foreground hover:bg-foreground hover:text-background transition-colors text-sm font-mono uppercase tracking-widest"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.4 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Download className="w-4 h-4" />
+                Download Resume
+              </motion.a>
             </motion.div>
 
             {/* Right - Portrait from page-data */}

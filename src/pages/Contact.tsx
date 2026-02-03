@@ -42,7 +42,7 @@ const Contact = () => {
           >
             {/* Email Icon */}
             <motion.a
-              href="mailto:hello@example.com"
+              href="mailto:natberman01@gmail.com"
               className="icon-button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -53,7 +53,7 @@ const Contact = () => {
 
             {/* LinkedIn Icon */}
             <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/nathaniel-berman/"
               target="_blank"
               rel="noopener noreferrer"
               className="icon-button"

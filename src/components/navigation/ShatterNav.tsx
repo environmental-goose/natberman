@@ -12,7 +12,6 @@ const navItems: NavItem[] = [
   { label: "Design", path: "/design" },
   { label: "Photo", path: "/photo" },
   { label: "Art", path: "/art" },
-  { label: "Resume", path: "/resume" },
   { label: "Contact", path: "/contact" },
 ];
 

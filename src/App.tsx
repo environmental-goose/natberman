@@ -8,7 +8,6 @@ import About from "./pages/About";
 import Design from "./pages/Design";
 import Photo from "./pages/Photo";
 import Art from "./pages/Art";
-import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/cursor/CustomCursor";
@@ -28,7 +27,6 @@ const App = () => (
           <Route path="/design" element={<Design />} />
           <Route path="/photo" element={<Photo />} />
           <Route path="/art" element={<Art />} />
-          <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

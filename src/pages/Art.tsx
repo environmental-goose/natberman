@@ -7,6 +7,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
+import ShatterText from "@/components/gallery/ShatterText";
 
 const Art = () => {
   const [selectedProject, setSelectedProject] = useState<ArtProject | null>(null);
@@ -98,7 +99,8 @@ const Art = () => {
             </Link>
           </div>
 
-          <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
+          {/* Distinct Section Header */}
+          <h2 className="text-2xl font-bold uppercase tracking-wider text-foreground mb-8">
             Art
           </h2>
 
@@ -113,16 +115,12 @@ const Art = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <button
+                  <ShatterText
+                    text={project.label}
+                    isActive={isActive}
                     onClick={() => setSelectedProject(project)}
-                    className={`text-left text-lg transition-colors ${
-                      isActive
-                        ? "text-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground font-light"
-                    }`}
-                  >
-                    {project.label}
-                  </button>
+                    className="text-lg"
+                  />
                 </motion.div>
               );
             })}

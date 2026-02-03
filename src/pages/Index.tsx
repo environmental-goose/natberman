@@ -14,6 +14,21 @@ const Index = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="max-w-md">
+            {/* Main Title Branding */}
+            <motion.div
+              className="mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-2">
+                NATHANIEL BERMAN
+              </h1>
+              <p className="text-sm md:text-base font-light tracking-widest text-muted-foreground uppercase">
+                Multidisciplinary Portfolio
+              </p>
+            </motion.div>
+
             <ShatterNav />
           </div>
         </motion.div>
