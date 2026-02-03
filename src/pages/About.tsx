@@ -49,7 +49,7 @@ const About = () => {
                   I graduated from Northeastern University in 2020 with BS in Mechanical Engineering. Since graduating I've worked as a mechanical designer, working on things like high performance 3D printers at Markforged and high volume consumer devices at aerflo.
                 </p>
                 <p>
-                  I enjoy mechanical design, photography, soccer, sewing, and hold my private pilots license.
+                  I enjoy mechanical design, photography, soccer, biking, and also hold my private pilots license.
                 </p>
                 <p className="text-sm italic">
                   Currently working from my Brooklyn closet.
