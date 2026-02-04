@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Calendar, MapPin } from "lucide-react";
 
 interface MobileProjectViewProps {
   title: string;
   description: string;
+  date?: string;
+  location?: string;
   onBack: () => void;
   children: React.ReactNode;
 }
 
-const MobileProjectView = ({ title, description, onBack, children }: MobileProjectViewProps) => {
+const MobileProjectView = ({ title, description, date, location, onBack, children }: MobileProjectViewProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -16,10 +18,10 @@ const MobileProjectView = ({ title, description, onBack, children }: MobileProje
       exit={{ opacity: 0, x: -20 }}
       className="min-h-screen p-6 flex flex-col"
     >
-      {/* Back Button */}
+      {/* Back Button - White oval style */}
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors mb-6"
+        className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition-colors mb-6 w-fit"
       >
         <ArrowLeft className="w-4 h-4" />
         Back
@@ -28,6 +30,25 @@ const MobileProjectView = ({ title, description, onBack, children }: MobileProje
       {/* Project Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-light mb-3">{title}</h1>
+        
+        {/* Metadata with icons */}
+        {(date || location) && (
+          <div className="flex flex-col gap-2 mb-3 text-sm">
+            {date && (
+              <div className="flex items-center gap-2 text-accent">
+                <Calendar className="w-4 h-4" />
+                <span className="font-mono">{date}</span>
+              </div>
+            )}
+            {location && (
+              <div className="flex items-center gap-2 text-accent">
+                <MapPin className="w-4 h-4" />
+                <span className="font-mono">{location}</span>
+              </div>
+            )}
+          </div>
+        )}
+        
         <p className="text-muted-foreground text-sm leading-relaxed">
           {description}
         </p>

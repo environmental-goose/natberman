@@ -21,10 +21,10 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-2" whitespace-nowrap>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-accent mb-2 whitespace-nowrap">
                 NATHANIEL BERMAN
               </h1>
-              <p className="text-sm md:text-base font-light tracking-widest text-muted-foreground uppercase" whitespace-nowrap>
+              <p className="text-sm md:text-base font-light tracking-widest text-muted-foreground uppercase whitespace-nowrap">
                 Multidisciplinary Portfolio
               </p>
             </motion.div>

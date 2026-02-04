@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Calendar, MapPin } from "lucide-react";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import { photoLocations, PhotoLocation, getLocationPhotos } from "@/data/photoLocations";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
-import ShatterText from "@/components/gallery/ShatterText";
 import Lightbox from "@/components/gallery/Lightbox";
 
 const Photo = () => {
   const [selectedLocation, setSelectedLocation] = useState<PhotoLocation | null>(null);
-  const [lightboxImage, setLightboxImage] = useState<{ url: string; alt: string } | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const isMobile = useIsMobile();
 
   const handleSelectLocation = (id: string) => {
@@ -22,6 +22,14 @@ const Photo = () => {
 
   // Get photos for selected location from page-data
   const locationPhotos = selectedLocation ? getLocationPhotos(selectedLocation.id) : [];
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIndex(null);
+  };
 
   // Mobile Layout
   if (isMobile) {
@@ -41,24 +49,26 @@ const Photo = () => {
               key={selectedLocation.id}
               title={selectedLocation.title}
               description={selectedLocation.description}
+              date={selectedLocation.date}
+              location={selectedLocation.location}
               onBack={() => setSelectedLocation(null)}
             >
-              {/* Masonry Grid with 2px gutters */}
-              <div className="columns-2 gap-[2px]">
+              {/* Single column masonry on mobile */}
+              <div className="flex flex-col gap-3">
                 {locationPhotos.map((photoUrl, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.03, duration: 0.4 }}
-                    className="mb-[2px] break-inside-avoid"
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                   >
                     <img
                       src={photoUrl}
                       alt={`${selectedLocation.title} - Photo ${i + 1}`}
-                      className="w-full h-auto object-cover cursor-pointer"
+                      className="w-full h-auto object-cover"
                       style={{ borderRadius: 0 }}
-                      onClick={() => setLightboxImage({ url: photoUrl, alt: `${selectedLocation.title} - Photo ${i + 1}` })}
+                      onClick={() => openLightbox(i)}
                     />
                   </motion.div>
                 ))}
@@ -69,10 +79,13 @@ const Photo = () => {
 
         {/* Lightbox */}
         <Lightbox
-          isOpen={!!lightboxImage}
-          imageUrl={lightboxImage?.url || ""}
-          alt={lightboxImage?.alt || ""}
-          onClose={() => setLightboxImage(null)}
+          isOpen={lightboxIndex !== null}
+          imageUrl={lightboxIndex !== null ? locationPhotos[lightboxIndex] : ""}
+          alt={selectedLocation?.title || ""}
+          onClose={closeLightbox}
+          images={locationPhotos}
+          currentIndex={lightboxIndex ?? 0}
+          onNavigate={setLightboxIndex}
         />
       </GraphPaperLayout>
     );
@@ -87,7 +100,7 @@ const Photo = () => {
           <div className="mb-8">
             <Link
               to="/"
-              className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition-colors"
             >
               ← Back
             </Link>
@@ -103,19 +116,20 @@ const Photo = () => {
               const isActive = selectedLocation?.id === location.id;
               
               return (
-                <motion.div
+                <motion.button
                   key={location.id}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
+                  onClick={() => setSelectedLocation(location)}
+                  className={`text-left text-lg transition-colors duration-200 ${
+                    isActive 
+                      ? "text-foreground font-medium" 
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  <ShatterText
-                    text={location.label}
-                    isActive={isActive}
-                    onClick={() => setSelectedLocation(location)}
-                    className="text-lg"
-                  />
-                </motion.div>
+                  {location.label}
+                </motion.button>
               );
             })}
           </nav>
@@ -152,21 +166,41 @@ const Photo = () => {
                 {/* Location Header */}
                 <div className="mb-12">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedLocation.title}</h1>
+                  
+                  {/* Metadata with icons */}
+                  {(selectedLocation.date || selectedLocation.location) && (
+                    <div className="flex flex-wrap gap-6 mb-4 text-sm">
+                      {selectedLocation.date && (
+                        <div className="flex items-center gap-2 text-accent">
+                          <Calendar className="w-4 h-4" />
+                          <span className="font-mono">{selectedLocation.date}</span>
+                        </div>
+                      )}
+                      {selectedLocation.location && (
+                        <div className="flex items-center gap-2 text-accent">
+                          <MapPin className="w-4 h-4" />
+                          <span className="font-mono">{selectedLocation.location}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  
                   <p className="text-muted-foreground max-w-2xl leading-relaxed">
                     {selectedLocation.description}
                   </p>
                 </div>
 
-                {/* Masonry Grid with 2px gutters */}
-                <div className="columns-2 md:columns-3 lg:columns-4 gap-[2px]">
+                {/* Masonry Grid - 3 columns desktop with increased gutters */}
+                <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
                   {locationPhotos.map((photoUrl, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 40 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.03, duration: 0.4 }}
-                      className="mb-[2px] break-inside-avoid group cursor-pointer"
-                      onClick={() => setLightboxImage({ url: photoUrl, alt: `${selectedLocation.title} - Photo ${i + 1}` })}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="mb-4 break-inside-avoid group cursor-pointer"
+                      onClick={() => openLightbox(i)}
                     >
                       <img
                         src={photoUrl}
@@ -185,10 +219,13 @@ const Photo = () => {
 
       {/* Lightbox */}
       <Lightbox
-        isOpen={!!lightboxImage}
-        imageUrl={lightboxImage?.url || ""}
-        alt={lightboxImage?.alt || ""}
-        onClose={() => setLightboxImage(null)}
+        isOpen={lightboxIndex !== null}
+        imageUrl={lightboxIndex !== null ? locationPhotos[lightboxIndex] : ""}
+        alt={selectedLocation?.title || ""}
+        onClose={closeLightbox}
+        images={locationPhotos}
+        currentIndex={lightboxIndex ?? 0}
+        onNavigate={setLightboxIndex}
       />
     </GraphPaperLayout>
   );
