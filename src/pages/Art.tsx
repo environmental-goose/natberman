@@ -7,7 +7,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
-import ShatterText from "@/components/gallery/ShatterText";
 
 const Art = () => {
   const [selectedProject, setSelectedProject] = useState<ArtProject | null>(null);
@@ -93,7 +92,7 @@ const Art = () => {
           <div className="mb-8">
             <Link
               to="/"
-              className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition-colors"
             >
               ← Back
             </Link>
@@ -109,19 +108,20 @@ const Art = () => {
               const isActive = selectedProject?.id === project.id;
               
               return (
-                <motion.div
+                <motion.button
                   key={project.id}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
+                  onClick={() => setSelectedProject(project)}
+                  className={`text-left text-lg transition-colors duration-200 ${
+                    isActive 
+                      ? "text-foreground font-medium" 
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  <ShatterText
-                    text={project.label}
-                    isActive={isActive}
-                    onClick={() => setSelectedProject(project)}
-                    className="text-lg"
-                  />
-                </motion.div>
+                  {project.label}
+                </motion.button>
               );
             })}
           </nav>

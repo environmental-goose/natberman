@@ -223,28 +223,7 @@ cover:
 For some of the more delicate designs, I also designed custom silicone molds, which I poured and cured in my apartment.`,
     images: [],
   },
-  // 12. Vegetable Garden Build
-  {
-    id: "vegetable-garden-build",
-    label: "Vegetable Garden Build",
-    title: "Vegetable Garden Build",
-    description: "Last summer, with limited porch space I did my best to grow two Tomato plants but the incessant summer heat meant keeping them well cared for was difficult.",
-    content: `Well this year I moved into a new apartment and found myself with a neglected front garden. The plot was overgrown with weeds, tall grass, and a gem of a hydrangea tucked into the corner. My girlfriend and I started out by clearing out every square inch of the existing top layer and get a feel for the depth and richness of the soil.
-
-Along the way we ended up finding what felt like endless numbers of rocks and boulders just below the surface that also needed to be excavated. We eventually ended up using these for demarcation lines around our growing areas. After the area was weeded and rid of rocks, we did our best to turn over the dirt and get a feel for the depth and richness of the soil. Unfortunately, it was poor in both accounts. At the end of the day we left the plot weeded and lined up with what we thought would be good growing rows.
-
-As I mentioned, the soil turned out to be mostly clay and wasn't particularly deep so we pivoted to using raised garden beds for the vegetables as opposed to planting directly in the soil. I had some left over 16ft 1"x8" lumber from a fence rebuild I helped my parents with that we turned into our new beds. The construction on these was fairly straight forward. We used two stacked planks cut down to 4ft on each side then secured them together in the corners with a 4x4 post cut to length.
-
-We ended up making two 4'x4' raised beds and installed them on the back wall to keep them away from the sidewalk. After that we turned over the original dirt in the areas we were planning on planting in and cut it with Pro-Mix to bring some fluffiness back and help with the fertility.
-
-We arranged a variety of Magnolias, moss ross, and Ageratums in the front row and put snapdragons and Nasturtiums in the back and front right corners. You can also see the original hydrangea in the back right of the photo which we decided to keep for the overhaul.
-
-Once the flowers were in we installed the garden boxes and planted our vegetables. This year we went for five cherry tomato plants, eggplant, snap peas, and banana peppers. Before I get any shade for having 5 cherry tomato plants I'll say there are few things that bring me as much joy as going to the garden in the morning and eating cherry tomatoes off the plant until I'm full.
-
-For the final touch we threw some cedar mulch down.`,
-    images: [],
-  },
-  // 13. METAR Map
+  // 12. METAR Map
   {
     id: "metar-map",
     label: "METAR Map",
@@ -261,17 +240,6 @@ The colors correspond to different weather reported by airports included in the 
 The wiring is fairly simple. A barrel jack input brings 12v in from the wall and is wired directly into the LED power. An adjustable buck converter steps the voltage down to 5v for the Raspberry Pi. The Pi sends commands to the LEDs through one of its GPIO headers.
 
 I also designed some mounts for the corners of the shadow box that stood the frame away from the wall to make more space for the LED wiring and to provide mounting positions for hanging it on the wall.`,
-    images: [],
-  },
-  // 14. Light Switch Cover
-  {
-    id: "light-switch-cover",
-    label: "Light Switch Cover",
-    title: "Light Switch Cover",
-    description: "My affinity for home automation has lead me to buy my share of internet connected light bulbs. One thing that has frustrated me is that the switches to control these lights usually come with an adhesive mount to stick them directly on the wall.",
-    content: `The problem with this is that the conventional light switch that controls the socket is still there and can cut power to the device if it's flipped.
-
-Lucky for me, I work for a company that specializes in making arbitrary plastic parts! To kill 2 birds with 1 stone, I designed a mount for my Philips Hue switch that fits over an existing standard light switch to securely mount the Hue switch to the wall (no adhesives) and cover the existing light switch in order to prevent it from being accidentally turned off.`,
     images: [],
   },
 ];

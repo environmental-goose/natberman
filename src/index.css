@@ -30,8 +30,8 @@
     --muted: 215 20% 12%;
     --muted-foreground: 215 16% 47%;
 
-    /* Accent - International Orange */
-    --accent: 14 100% 50%;
+    /* Accent - RAL 2004 Pure Orange */
+    --accent: 24 100% 48%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive */
@@ -78,7 +78,7 @@
     --secondary-foreground: 0 0% 100%;
     --muted: 215 20% 12%;
     --muted-foreground: 215 16% 47%;
-    --accent: 14 100% 50%;
+    --accent: 24 100% 48%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
