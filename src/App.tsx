@@ -11,6 +11,7 @@ import Art from "./pages/Art";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/cursor/CustomCursor";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Sonner />
       <CustomCursor />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
