@@ -3,6 +3,10 @@ export interface DesignProject {
   label: string;
   title: string;
   description: string;
+  // Metadata fields (matching photo style)
+  year?: string;
+  location?: string;
+  client?: string; // Company name or "Personal Project"
   specs?: string[];
   content?: string;
   codeSnippet?: string;
@@ -16,6 +20,9 @@ export const designProjects: DesignProject[] = [
     id: "aer1-system",
     label: "Aer1 System",
     title: "Aer1 System",
+    year: "2023–Present",
+    location: "Boston, MA",
+    client: "Aerflo",
     description: "2L of water per charge. As the most senior member of the mechanical engineering team, I helped bring a successfully prototyped design into serial production at a tier 1 asian CM and implemented many crucial document control and quality systems along the way.",
     content: `The system delivers high pressure CO2 (800+ psi) using a complex miniaturized manifold system. Given the pressures involved, we designed a quadruple redundant safety system to prevent over pressurization events.
 
@@ -30,6 +37,9 @@ My work at Aerflo has touched nearly every component in the product, across comp
     id: "markforged-fx10",
     label: "Markforged FX10",
     title: "Markforged FX10",
+    year: "2021–2024",
+    location: "Watertown, MA",
+    client: "Markforged",
     description: "In 2021 I began early R&D work with a small team on Markforged's next generation printer. The concept was a faster, larger, and more versatile industrial 3D printer - notably, with the ability to print both metal and composite filaments.",
     content: `Over the next 3 years, I led a team of 15+ mechanical, electrical, software, and systems engineers in the development of this printer. I personally architected the mechanical systems from concept industrial design drawings and led the team through multiple design / prototype rounds, eventually transitioning the design into production with a Tier 1 CM overseas.
 
@@ -48,6 +58,9 @@ Today, the FX10 is a best selling mid-range industrial 3D printer and is used in
     id: "markforged-metal-x-gen2",
     label: "Markforged Metal X Gen 2",
     title: "Markforged Metal X Gen 2 - Technical Lead",
+    year: "2020–2021",
+    location: "Watertown, MA",
+    client: "Markforged",
     description: "After 3 years at Markforged (a 3D printing startup in Boston) I was made technical lead of the Metal X 3D printer. As a part of this role, I was tasked with leading the second generation refresh of the machine.",
     content: `This refresh included several functional and aesthetic changes as well as a recertification to a new safety standard in the EU (IEC 62368-3).
 
@@ -75,6 +88,9 @@ This project was an incredible learning experience for me. I had exposure to eve
     id: "split-flap-clock",
     label: "Split Flap Clock",
     title: "Split Flap Clock - Sony 8FC-69WA Restoration",
+    year: "2022",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "I found a non-functioning Sony 8FC-69WA in a Connecticut thrift store. I've always loved the aesthetic and mechanisms in split flap clock displays so I removed the clock module and rebuilt it into one of my own.",
     content: `The teardown of the old clock was fascinating. It is unbelievable to me that a design like this was made at scale and made available so cheap. The density of components and complexity of design was well beyond what I could imagine was inside.
 
@@ -94,6 +110,9 @@ Once the code electronics were finalized, I enjoyed the raw design in the bare a
     id: "automated-blinds-v2",
     label: "Automated Blinds V2",
     title: "Automated Blinds V2",
+    year: "2023",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "This project is a continuation of my Automated Blinds V1 project where I repackaged the functionality into a more universal interface. My previous design only worked with a specific IKEA blind and mounted directly to the winding core.",
     content: `This new design works with any type of chain roller blind but retains all the same features any functionality: quiet actuation, discrete position control, voice activation through HomeKit integration.
 
@@ -111,6 +130,9 @@ The design consists of a pancake stepper motor driving the blinds through a set 
     id: "5dof-robotic-arm",
     label: "5DOF Robotic Arm",
     title: "5DOF Robotic Arm - Senior Year Capstone",
+    year: "2018",
+    location: "Boston, MA",
+    client: "Northeastern University",
     description: "My senior year capstone was an incredible deep dive into electromechanical design and precision systems. My group decided to complete a project from the human safe soft robotics lab at Northeastern University with mentorship from John Whitney, PhD.",
     content: `The project was the development of a 5DOF robotic arm with an exoskeleton interface designed to make driving the arm as intuitive as possible. As a part of the input interface, the exoskeleton would be able to deliver haptic feedback to the user based on the environmental conditions of the remote arm.
 
@@ -128,6 +150,9 @@ The final design of the arm had a mere 12kg of actuated weight and could travel 
     id: "hilbert-curve-desk-art",
     label: "Hilbert Curve Desk Art",
     title: "Hilbert Curve Desk Art",
+    year: "2021",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "A Hilbert Curve is a continuous fractal space-filling curve first described by the German mathematician David Hilbert in 1891. It belongs to a family of space filling curves that create very distinct and interesting fractal patterns.",
     content: `This particular project came to me by way of my coworker Angus who had printed a large copy of the curve. He inserted a small ball bearing which you could guide through the whole maze by tiling the part.
 
@@ -139,6 +164,9 @@ I designed a 2 DOF actuator using a single motor which rotated a ramped surface.
     id: "lamp-restoration",
     label: "Lamp Restoration",
     title: "Lamp Restoration",
+    year: "2023",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "I was digging through some old boxes in my mom's attic recently and came across this clip on lamp that I really enjoyed the style of. The clip had snapped off so I decided to redesign a new stand for it, one more suited to sitting on a table.",
     content: `I played around with a few different styles and ended up with this round ribbed design that turned out really well in a matte red. The new base is a 2 part 3D printed assembly (2 parts so I didn't need to disconnect the plug). I also cut an O-ring and ran it through a channel I included on the bottom face to keep it from sliding around on surfaces.
 
@@ -150,6 +178,9 @@ You can see the original lamp on the left, and some nice shots of the finished l
     id: "tile-shelf",
     label: "Tile Shelf",
     title: "Tile Shelf",
+    year: "2022",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "The tile shelf is a design inspired by some designs I saw online, but built custom for my own space.",
     content: `I designed a simple L-shape profile with dovetail joints to extend the length beyond my printers build volume. I applied glue to the joints to make them permanent.
 
@@ -163,6 +194,9 @@ I use the tile shelf in my kitchen as a space for teas and hanging objects. I ha
     id: "automated-blind-conversion",
     label: "Automated Blind Conversion",
     title: "Automated Blind Conversion Tutorial",
+    year: "2020",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "A step-by-step guide to converting manual blinds into smart, automated window coverings using off-the-shelf components.",
     content: `This tutorial walks through the process of converting standard manual blinds into automated smart blinds. The project uses readily available components and can be completed in a weekend.
 
@@ -217,6 +251,9 @@ cover:
     id: "candle-molding",
     label: "Candle Molding",
     title: "Candle Molding",
+    year: "2023",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "A short curiosity project where I attempted to mold taper candles with interesting forms that I designed.",
     content: `Starting with the candle design, I engineered molds over several iterations, and successfully molded candle from beeswax which I gave as holiday gifts in 2023.
 
@@ -228,6 +265,9 @@ For some of the more delicate designs, I also designed custom silicone molds, wh
     id: "metar-map",
     label: "METAR Map",
     title: "Live METAR Map",
+    year: "2019",
+    location: "Boston, MA",
+    client: "Personal Project",
     description: "The live METAR map was originally created by prueker on github. I built my code based on his and designed my own electronics and mounting system that is a bit more robust than the original design and is able to accommodate 50 LEDs rather than 20.",
     content: `The map uses a Raspberry Pi to pull weather data (in the form of METAR's - Meteorological Terminal Aviation Routine Weather Reports) posted by the FAA on aviationweather.gov. The Pi then displays this weather on 50 individually addressable LEDs using the neopixel library.
 

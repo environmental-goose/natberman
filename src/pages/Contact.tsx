@@ -13,11 +13,11 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Back Link */}
+          {/* Back Link - white oval style */}
           <div className="mb-16">
             <Link
               to="/"
-              className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition-colors"
             >
               ← Back
             </Link>

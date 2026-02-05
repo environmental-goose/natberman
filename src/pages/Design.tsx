@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Calendar, MapPin, Building2 } from "lucide-react";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import { designProjects, DesignProject } from "@/data/designProjects";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -9,6 +10,10 @@ import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
 import { getProjectImageUrls, getProjectVideoUrls } from "@/utils/contentLoader";
+import ImageWithSkeleton from "@/components/gallery/ImageWithSkeleton";
+
+// Maximum width for text content - maintains consistent "gut" across all paragraphs
+const TEXT_MAX_WIDTH = "max-w-xl";
 
 const Design = () => {
   const [selectedProject, setSelectedProject] = useState<DesignProject | null>(null);
@@ -22,6 +27,11 @@ const Design = () => {
   // Get images and videos for selected project from page-data
   const projectImages = selectedProject ? getProjectImageUrls(selectedProject.id) : [];
   const projectVideos = selectedProject ? getProjectVideoUrls(selectedProject.id) : [];
+
+  // Split images: first few for inline, rest for secondary gallery
+  // inline-image-1, inline-image-2, etc. classes for easy swapping
+  const inlineImages = projectImages.slice(0, 3);
+  const galleryImages = projectImages.slice(3);
 
   // Mobile Layout
   if (isMobile) {
@@ -41,8 +51,18 @@ const Design = () => {
               key={selectedProject.id}
               title={selectedProject.title}
               description={selectedProject.description}
+              date={selectedProject.year}
+              location={selectedProject.location}
               onBack={() => setSelectedProject(null)}
             >
+              {/* Metadata block - orange accent style */}
+              {selectedProject.client && (
+                <div className="flex items-center gap-2 text-accent text-sm mb-4">
+                  <Building2 className="w-4 h-4" />
+                  <span className="font-mono">{selectedProject.client}</span>
+                </div>
+              )}
+
               {/* Tutorial content */}
               {selectedProject.content && (
                 <div className="mb-6">
@@ -170,7 +190,7 @@ const Design = () => {
                 {/* Page Header */}
                 <div className="mb-8">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">Design Work</h1>
-                  <p className="text-muted-foreground max-w-2xl leading-relaxed">
+                  <p className={`text-muted-foreground ${TEXT_MAX_WIDTH} leading-relaxed`}>
                     A collection of my engineering projects, both professional and personal. These projects reflect a rigorous commitment to clarity and function, balancing refined industrial design with the technical precision required for high-volume global production and industrial precision.
                   </p>
                   <ExploreIndicator />
@@ -187,27 +207,108 @@ const Design = () => {
                 {/* Project Header */}
                 <div className="mb-8">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedProject.title}</h1>
-                  <p className="text-muted-foreground max-w-2xl leading-relaxed">
+                  
+                  {/* Metadata with icons - orange accent style (matches Photo pages) */}
+                  <div className="flex flex-wrap gap-6 mb-4 text-sm">
+                    {selectedProject.year && (
+                      <div className="metadata-year flex items-center gap-2 text-accent">
+                        <Calendar className="w-4 h-4" />
+                        <span className="font-mono">{selectedProject.year}</span>
+                      </div>
+                    )}
+                    {selectedProject.location && (
+                      <div className="metadata-location flex items-center gap-2 text-accent">
+                        <MapPin className="w-4 h-4" />
+                        <span className="font-mono">{selectedProject.location}</span>
+                      </div>
+                    )}
+                    {selectedProject.client && (
+                      <div className="metadata-client flex items-center gap-2 text-accent">
+                        <Building2 className="w-4 h-4" />
+                        <span className="font-mono">{selectedProject.client}</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className={`text-muted-foreground ${TEXT_MAX_WIDTH} leading-relaxed`}>
                     {selectedProject.description}
                   </p>
                 </div>
 
-                {/* Tutorial content if available */}
+                {/* Inline Media Flow: Text with floated images for storytelling */}
                 {selectedProject.content && (
-                  <div className="mb-8">
-                    <div className="prose prose-invert prose-sm max-w-none">
+                  <div className="mb-12">
+                    {/* First inline image floats right with first paragraph */}
+                    {inlineImages.length > 0 && (
+                      <motion.div 
+                        className="inline-image-1 float-right ml-8 mb-6 w-64 lg:w-80"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2, duration: 0.4 }}
+                      >
+                        <ImageWithSkeleton
+                          src={inlineImages[0]}
+                          alt={`${selectedProject.title} - inline image 1`}
+                          index={0}
+                          className="w-full"
+                        />
+                      </motion.div>
+                    )}
+
+                    {/* Content paragraphs with consistent max-width */}
+                    <div className={`prose-content ${TEXT_MAX_WIDTH}`}>
                       {selectedProject.content.split('\n\n').map((paragraph, i) => (
-                        <p key={i} className="text-muted-foreground leading-relaxed mb-4">
+                        <p key={i} className="text-muted-foreground leading-relaxed mb-4 clear-none">
                           {paragraph}
                         </p>
                       ))}
                     </div>
+
+                    {/* Clear floats */}
+                    <div className="clear-both" />
+
+                    {/* Second inline image floats left with additional context */}
+                    {inlineImages.length > 1 && (
+                      <motion.div 
+                        className="inline-image-2 float-left mr-8 mt-6 mb-6 w-64 lg:w-80"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4, duration: 0.4 }}
+                      >
+                        <ImageWithSkeleton
+                          src={inlineImages[1]}
+                          alt={`${selectedProject.title} - inline image 2`}
+                          index={1}
+                          className="w-full"
+                        />
+                      </motion.div>
+                    )}
+
+                    {/* Third inline image floats right */}
+                    {inlineImages.length > 2 && (
+                      <motion.div 
+                        className="inline-image-3 float-right ml-8 mt-6 mb-6 w-64 lg:w-80"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6, duration: 0.4 }}
+                      >
+                        <ImageWithSkeleton
+                          src={inlineImages[2]}
+                          alt={`${selectedProject.title} - inline image 3`}
+                          index={2}
+                          className="w-full"
+                        />
+                      </motion.div>
+                    )}
+
+                    {/* Clear floats after inline images */}
+                    <div className="clear-both" />
                   </div>
                 )}
 
                 {/* Code snippet if available */}
                 {selectedProject.codeSnippet && (
-                  <div className="mb-8">
+                  <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
                     <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
                       Code
                     </h3>
@@ -223,13 +324,13 @@ const Design = () => {
 
                 {/* Video Embeds */}
                 {projectVideos.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                  <div className="mb-12">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-4">
                       Video
                     </h3>
                     <div className="space-y-4">
                       {projectVideos.map((videoUrl, i) => (
-                        <div key={i} className="aspect-video max-w-3xl">
+                        <div key={i} className={`aspect-video ${TEXT_MAX_WIDTH}`}>
                           <iframe
                             src={videoUrl.startsWith("//") ? `https:${videoUrl}` : videoUrl}
                             className="w-full h-full"
@@ -242,26 +343,31 @@ const Design = () => {
                   </div>
                 )}
 
-                {/* Gallery - Single column vertical feed for consistency */}
-                {projectImages.length > 0 && (
-                  <div className="space-y-6 max-w-3xl">
-                    {projectImages.map((imageUrl, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.05, duration: 0.4 }}
-                        className="group"
-                      >
-                        <div className="w-full overflow-hidden bg-muted">
-                          <img
+                {/* Secondary Gallery - 2 column grid for remaining images */}
+                {galleryImages.length > 0 && (
+                  <div className="secondary-gallery mt-12 pt-8 border-t border-border/20">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
+                      Gallery
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                      {galleryImages.map((imageUrl, i) => (
+                        <motion.div
+                          key={i}
+                          className={`gallery-image-${i + 4}`} // Continues numbering from inline images
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ delay: i * 0.08, duration: 0.4 }}
+                        >
+                          <ImageWithSkeleton
                             src={imageUrl}
-                            alt={`${selectedProject.title} image ${i + 1}`}
-                            className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                            alt={`${selectedProject.title} - gallery image ${i + 4}`}
+                            index={i + 3}
+                            className="w-full"
                           />
-                        </div>
-                      </motion.div>
-                    ))}
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </motion.div>

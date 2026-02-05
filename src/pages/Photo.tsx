@@ -9,6 +9,7 @@ import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
 import Lightbox from "@/components/gallery/Lightbox";
+import ImageWithSkeleton from "@/components/gallery/ImageWithSkeleton";
 
 const Photo = () => {
   const [selectedLocation, setSelectedLocation] = useState<PhotoLocation | null>(null);
@@ -53,24 +54,16 @@ const Photo = () => {
               location={selectedLocation.location}
               onBack={() => setSelectedLocation(null)}
             >
-              {/* Single column masonry on mobile */}
+              {/* Single column with skeleton loading */}
               <div className="flex flex-col gap-3">
                 {locationPhotos.map((photoUrl, i) => (
-                  <motion.div
+                  <ImageWithSkeleton
                     key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                  >
-                    <img
-                      src={photoUrl}
-                      alt={`${selectedLocation.title} - Photo ${i + 1}`}
-                      className="w-full h-auto object-cover"
-                      style={{ borderRadius: 0 }}
-                      onClick={() => openLightbox(i)}
-                    />
-                  </motion.div>
+                    src={photoUrl}
+                    alt={`${selectedLocation.title} - Photo ${i + 1}`}
+                    index={i}
+                    onClick={() => openLightbox(i)}
+                  />
                 ))}
               </div>
             </MobileProjectView>
@@ -167,7 +160,7 @@ const Photo = () => {
                 <div className="mb-12">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedLocation.title}</h1>
                   
-                  {/* Metadata with icons */}
+                  {/* Metadata with icons - orange accent style */}
                   {(selectedLocation.date || selectedLocation.location) && (
                     <div className="flex flex-wrap gap-6 mb-4 text-sm">
                       {selectedLocation.date && (
@@ -190,25 +183,17 @@ const Photo = () => {
                   </p>
                 </div>
 
-                {/* Masonry Grid - 3 columns desktop with increased gutters */}
+                {/* Masonry Grid - 3 columns desktop with skeleton loading */}
                 <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
                   {locationPhotos.map((photoUrl, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="mb-4 break-inside-avoid group cursor-pointer"
-                      onClick={() => openLightbox(i)}
-                    >
-                      <img
+                    <div key={i} className="mb-4 break-inside-avoid">
+                      <ImageWithSkeleton
                         src={photoUrl}
                         alt={`${selectedLocation.title} - Photo ${i + 1}`}
-                        className="w-full h-auto object-cover transition-opacity duration-300 group-hover:opacity-90"
-                        style={{ borderRadius: 0 }}
+                        index={i}
+                        onClick={() => openLightbox(i)}
                       />
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </motion.div>
