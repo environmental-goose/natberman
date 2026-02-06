@@ -31,19 +31,20 @@ const About = () => {
             </Link>
           </div>
 
-          {/* Mobile Layout: Text first, then image */}
+          {/* Mobile Layout: Text first, then image - left-aligned */}
           {isMobile ? (
-            <div className="flex flex-col gap-8">
-              {/* Text Content */}
+            <div className="flex flex-col gap-8 text-left">
+              {/* Text Content - left-aligned */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
+                className="text-left"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
+                <h1 className="text-4xl font-light mb-8 leading-tight text-left">
                   Hi, I'm Nat...
                 </h1>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="space-y-4 text-muted-foreground leading-relaxed text-left">
                   <p>
                     I made this site to have a place document projects, art, and photography, and share it with whoever finds them interesting. If you see something cool - feel free to use it, or ask me about it.
                   </p>
@@ -61,7 +62,7 @@ const About = () => {
                   </p>
                 </div>
 
-                {/* Download Resume Button */}
+                {/* Download Resume Button - left-aligned */}
                 <motion.a
                   href="/Resume-Nathaniel-Berman.pdf"
                   target="_blank"
@@ -78,7 +79,7 @@ const About = () => {
                 </motion.a>
               </motion.div>
 
-              {/* Portrait - Full width on mobile */}
+              {/* Portrait - Full width on mobile, left-aligned */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

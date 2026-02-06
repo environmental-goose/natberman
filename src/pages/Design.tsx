@@ -11,12 +11,14 @@ import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
 import { getProjectImageUrls, getProjectVideoUrls } from "@/utils/contentLoader";
 import ImageWithSkeleton from "@/components/gallery/ImageWithSkeleton";
+import Lightbox from "@/components/gallery/Lightbox";
 
 // Maximum width for text content - maintains consistent "gut" across all paragraphs
 const TEXT_MAX_WIDTH = "max-w-xl";
 
 const Design = () => {
   const [selectedProject, setSelectedProject] = useState<DesignProject | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const isMobile = useIsMobile();
 
   const handleSelectProject = (id: string) => {
@@ -28,10 +30,13 @@ const Design = () => {
   const projectImages = selectedProject ? getProjectImageUrls(selectedProject.id) : [];
   const projectVideos = selectedProject ? getProjectVideoUrls(selectedProject.id) : [];
 
-  // Split images: first few for inline, rest for secondary gallery
-  // inline-image-1, inline-image-2, etc. classes for easy swapping
-  const inlineImages = projectImages.slice(0, 3);
-  const galleryImages = projectImages.slice(3);
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIndex(null);
+  };
 
   // Mobile Layout
   if (isMobile) {
@@ -55,9 +60,9 @@ const Design = () => {
               location={selectedProject.location}
               onBack={() => setSelectedProject(null)}
             >
-              {/* Metadata block - orange accent style */}
+              {/* Metadata block - orange accent style - positioned at top */}
               {selectedProject.client && (
-                <div className="flex items-center gap-2 text-accent text-sm mb-4">
+                <div className="flex items-center gap-2 text-accent text-sm mb-6">
                   <Building2 className="w-4 h-4" />
                   <span className="font-mono">{selectedProject.client}</span>
                 </div>
@@ -92,42 +97,58 @@ const Design = () => {
 
               {/* Video Embeds */}
               {projectVideos.length > 0 && (
-                <div className="mb-6 space-y-4">
-                  {projectVideos.map((videoUrl, i) => (
-                    <div key={i} className="aspect-video w-full">
-                      <iframe
-                        src={videoUrl.startsWith("//") ? `https:${videoUrl}` : videoUrl}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
-                  ))}
+                <div className="mb-6">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                    Videos
+                  </h3>
+                  <div className="space-y-4">
+                    {projectVideos.map((videoUrl, i) => (
+                      <div key={i} className="aspect-video w-full">
+                        <iframe
+                          src={videoUrl.startsWith("//") ? `https:${videoUrl}` : videoUrl}
+                          className="w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
-              {/* Gallery - Single column vertical feed */}
-              <div className="space-y-6">
-                {projectImages.map((imageUrl, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.4 }}
-                  >
-                    <div className="w-full overflow-hidden bg-muted">
-                      <img
+              {/* Photos Gallery - Single column on mobile */}
+              {projectImages.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                    Photos
+                  </h3>
+                  <div className="space-y-4">
+                    {projectImages.map((imageUrl, i) => (
+                      <ImageWithSkeleton
+                        key={i}
                         src={imageUrl}
-                        alt={`${selectedProject.title} image ${i + 1}`}
-                        className="w-full h-auto object-contain"
+                        alt={`${selectedProject.title} - Photo ${i + 1}`}
+                        index={i}
+                        onClick={() => openLightbox(i)}
                       />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </MobileProjectView>
           )}
         </AnimatePresence>
+
+        {/* Lightbox */}
+        <Lightbox
+          isOpen={lightboxIndex !== null}
+          imageUrl={lightboxIndex !== null && projectImages[lightboxIndex] ? projectImages[lightboxIndex] : ""}
+          alt={selectedProject?.title || ""}
+          onClose={closeLightbox}
+          images={projectImages}
+          currentIndex={lightboxIndex ?? 0}
+          onNavigate={setLightboxIndex}
+        />
       </GraphPaperLayout>
     );
   }
@@ -235,74 +256,14 @@ const Design = () => {
                   </p>
                 </div>
 
-                {/* Inline Media Flow: Text with floated images for storytelling */}
+                {/* Content paragraphs with consistent max-width */}
                 {selectedProject.content && (
-                  <div className="mb-12">
-                    {/* First inline image floats right with first paragraph */}
-                    {inlineImages.length > 0 && (
-                      <motion.div 
-                        className="inline-image-1 float-right ml-8 mb-6 w-64 lg:w-80"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2, duration: 0.4 }}
-                      >
-                        <ImageWithSkeleton
-                          src={inlineImages[0]}
-                          alt={`${selectedProject.title} - inline image 1`}
-                          index={0}
-                          className="w-full"
-                        />
-                      </motion.div>
-                    )}
-
-                    {/* Content paragraphs with consistent max-width */}
-                    <div className={`prose-content ${TEXT_MAX_WIDTH}`}>
-                      {selectedProject.content.split('\n\n').map((paragraph, i) => (
-                        <p key={i} className="text-muted-foreground leading-relaxed mb-4 clear-none">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-
-                    {/* Clear floats */}
-                    <div className="clear-both" />
-
-                    {/* Second inline image floats left with additional context */}
-                    {inlineImages.length > 1 && (
-                      <motion.div 
-                        className="inline-image-2 float-left mr-8 mt-6 mb-6 w-64 lg:w-80"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4, duration: 0.4 }}
-                      >
-                        <ImageWithSkeleton
-                          src={inlineImages[1]}
-                          alt={`${selectedProject.title} - inline image 2`}
-                          index={1}
-                          className="w-full"
-                        />
-                      </motion.div>
-                    )}
-
-                    {/* Third inline image floats right */}
-                    {inlineImages.length > 2 && (
-                      <motion.div 
-                        className="inline-image-3 float-right ml-8 mt-6 mb-6 w-64 lg:w-80"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6, duration: 0.4 }}
-                      >
-                        <ImageWithSkeleton
-                          src={inlineImages[2]}
-                          alt={`${selectedProject.title} - inline image 3`}
-                          index={2}
-                          className="w-full"
-                        />
-                      </motion.div>
-                    )}
-
-                    {/* Clear floats after inline images */}
-                    <div className="clear-both" />
+                  <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
+                    {selectedProject.content.split('\n\n').map((paragraph, i) => (
+                      <p key={i} className="text-muted-foreground leading-relaxed mb-4">
+                        {paragraph}
+                      </p>
+                    ))}
                   </div>
                 )}
 
@@ -322,11 +283,11 @@ const Design = () => {
                   </div>
                 )}
 
-                {/* Video Embeds */}
+                {/* VIDEOS Section */}
                 {projectVideos.length > 0 && (
                   <div className="mb-12">
                     <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-4">
-                      Video
+                      Videos
                     </h3>
                     <div className="space-y-4">
                       {projectVideos.map((videoUrl, i) => (
@@ -343,17 +304,17 @@ const Design = () => {
                   </div>
                 )}
 
-                {/* Secondary Gallery - 2 column grid for remaining images */}
-                {galleryImages.length > 0 && (
-                  <div className="secondary-gallery mt-12 pt-8 border-t border-border/20">
+                {/* PHOTOS Section - 2 column grid gallery */}
+                {projectImages.length > 0 && (
+                  <div className="photos-gallery mt-12 pt-8 border-t border-border/20">
                     <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
-                      Gallery
+                      Photos
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-                      {galleryImages.map((imageUrl, i) => (
+                      {projectImages.map((imageUrl, i) => (
                         <motion.div
                           key={i}
-                          className={`gallery-image-${i + 4}`} // Continues numbering from inline images
+                          className={`gallery-image-${i + 1}`}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-50px" }}
@@ -361,9 +322,10 @@ const Design = () => {
                         >
                           <ImageWithSkeleton
                             src={imageUrl}
-                            alt={`${selectedProject.title} - gallery image ${i + 4}`}
-                            index={i + 3}
-                            className="w-full"
+                            alt={`${selectedProject.title} - Photo ${i + 1}`}
+                            index={i}
+                            onClick={() => openLightbox(i)}
+                            className="cursor-pointer"
                           />
                         </motion.div>
                       ))}
@@ -375,6 +337,17 @@ const Design = () => {
           </AnimatePresence>
         </main>
       </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        isOpen={lightboxIndex !== null}
+        imageUrl={lightboxIndex !== null && projectImages[lightboxIndex] ? projectImages[lightboxIndex] : ""}
+        alt={selectedProject?.title || ""}
+        onClose={closeLightbox}
+        images={projectImages}
+        currentIndex={lightboxIndex ?? 0}
+        onNavigate={setLightboxIndex}
+      />
     </GraphPaperLayout>
   );
 };

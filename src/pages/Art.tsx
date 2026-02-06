@@ -7,9 +7,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileGalleryList from "@/components/gallery/MobileGalleryList";
 import MobileProjectView from "@/components/gallery/MobileProjectView";
 import ExploreIndicator from "@/components/gallery/ExploreIndicator";
+import ImageWithSkeleton from "@/components/gallery/ImageWithSkeleton";
+import Lightbox from "@/components/gallery/Lightbox";
 
 const Art = () => {
   const [selectedProject, setSelectedProject] = useState<ArtProject | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const isMobile = useIsMobile();
 
   const handleSelectProject = (id: string) => {
@@ -20,6 +23,14 @@ const Art = () => {
   // Get images and videos for selected project from page-data
   const projectImages = selectedProject ? getArtProjectImages(selectedProject.id) : [];
   const projectVideos = selectedProject ? getArtProjectVideos(selectedProject.id) : [];
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIndex(null);
+  };
 
   // Mobile Layout
   if (isMobile) {
@@ -43,42 +54,58 @@ const Art = () => {
             >
               {/* Videos */}
               {projectVideos.length > 0 && (
-                <div className="space-y-6 mb-8">
-                  {projectVideos.map((videoUrl, i) => (
-                    <div key={i} className="aspect-video">
-                      <iframe
-                        src={videoUrl}
-                        title={`${selectedProject.title} Video ${i + 1}`}
-                        className="w-full h-full"
-                        allowFullScreen
-                      />
-                    </div>
-                  ))}
+                <div className="mb-6">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                    Videos
+                  </h3>
+                  <div className="space-y-4">
+                    {projectVideos.map((videoUrl, i) => (
+                      <div key={i} className="aspect-video">
+                        <iframe
+                          src={videoUrl}
+                          title={`${selectedProject.title} Video ${i + 1}`}
+                          className="w-full h-full"
+                          allowFullScreen
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
-              {/* Gallery from page-data */}
-              <div className="space-y-6">
-                {projectImages.map((imageUrl, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.4 }}
-                  >
-                    <div className="overflow-hidden bg-muted">
-                      <img
+              {/* Photos Gallery - Single column on mobile */}
+              {projectImages.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                    Photos
+                  </h3>
+                  <div className="space-y-4">
+                    {projectImages.map((imageUrl, i) => (
+                      <ImageWithSkeleton
+                        key={i}
                         src={imageUrl}
-                        alt={`${selectedProject.title} - Image ${i + 1}`}
-                        className="w-full h-auto object-cover"
+                        alt={`${selectedProject.title} - Photo ${i + 1}`}
+                        index={i}
+                        onClick={() => openLightbox(i)}
                       />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </MobileProjectView>
           )}
         </AnimatePresence>
+
+        {/* Lightbox */}
+        <Lightbox
+          isOpen={lightboxIndex !== null}
+          imageUrl={lightboxIndex !== null && projectImages[lightboxIndex] ? projectImages[lightboxIndex] : ""}
+          alt={selectedProject?.title || ""}
+          onClose={closeLightbox}
+          images={projectImages}
+          currentIndex={lightboxIndex ?? 0}
+          onNavigate={setLightboxIndex}
+        />
       </GraphPaperLayout>
     );
   }
@@ -163,47 +190,71 @@ const Art = () => {
                   </p>
                 </div>
 
-                {/* Videos */}
+                {/* VIDEOS Section */}
                 {projectVideos.length > 0 && (
-                  <div className="max-w-4xl mx-auto space-y-8 mb-12">
-                    {projectVideos.map((videoUrl, i) => (
-                      <div key={i} className="aspect-video">
-                        <iframe
-                          src={videoUrl}
-                          title={`${selectedProject.title} Video ${i + 1}`}
-                          className="w-full h-full"
-                          allowFullScreen
-                        />
-                      </div>
-                    ))}
+                  <div className="mb-12">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-4">
+                      Videos
+                    </h3>
+                    <div className="max-w-4xl space-y-8">
+                      {projectVideos.map((videoUrl, i) => (
+                        <div key={i} className="aspect-video">
+                          <iframe
+                            src={videoUrl}
+                            title={`${selectedProject.title} Video ${i + 1}`}
+                            className="w-full h-full"
+                            allowFullScreen
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 
-                {/* Gallery - Single column vertical feed from page-data */}
-                <div className="max-w-4xl mx-auto space-y-8">
-                  {projectImages.map((imageUrl, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.05, duration: 0.4 }}
-                      className="group"
-                    >
-                      <div className="overflow-hidden bg-muted">
-                        <img
-                          src={imageUrl}
-                          alt={`${selectedProject.title} - Image ${i + 1}`}
-                          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+                {/* PHOTOS Section - 2 column grid gallery */}
+                {projectImages.length > 0 && (
+                  <div className="photos-gallery mt-12 pt-8 border-t border-border/20">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
+                      Photos
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                      {projectImages.map((imageUrl, i) => (
+                        <motion.div
+                          key={i}
+                          className={`gallery-image-${i + 1}`}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ delay: i * 0.08, duration: 0.4 }}
+                        >
+                          <ImageWithSkeleton
+                            src={imageUrl}
+                            alt={`${selectedProject.title} - Photo ${i + 1}`}
+                            index={i}
+                            onClick={() => openLightbox(i)}
+                            className="cursor-pointer"
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
         </main>
       </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        isOpen={lightboxIndex !== null}
+        imageUrl={lightboxIndex !== null && projectImages[lightboxIndex] ? projectImages[lightboxIndex] : ""}
+        alt={selectedProject?.title || ""}
+        onClose={closeLightbox}
+        images={projectImages}
+        currentIndex={lightboxIndex ?? 0}
+        onNavigate={setLightboxIndex}
+      />
     </GraphPaperLayout>
   );
 };
