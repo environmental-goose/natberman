@@ -74,7 +74,7 @@ The most ambitious sub-system was the integrated vision engine—a head-mounted 
 Today, the FX10 is a best-selling industrial printer, serving as a critical tool in manufacturing facilities worldwide.
 
 
-KEY TECHNICAL ACHIEVEMENTS
+Key Techanical Achievements:
 
   → Directed a team of 15+ engineers through the full NPI lifecycle, from early R&D and conceptual architecture to global production and launch.
 
@@ -101,7 +101,7 @@ KEY TECHNICAL ACHIEVEMENTS
     
 The Metal X utilizes an FFF-style process printing metal-powder-loaded filament, allowing for metal additive manufacturing in an office environment.
 
-My role was to guide the team through the complete NPI process—from design ideation and prototyping to production ramping and launch—completing the entire cycle in under a year.
+My role was to guide the team through the complete NPI process, from design ideation and prototyping to production ramping and launch, completing the entire cycle in under a year.
 
 A primary driver for this refresh was the integration of a single-fault-tolerant safety system required for EU recertification (IEC 62368-3). This system electrically isolates hazardous components upon user access.
 
@@ -110,7 +110,7 @@ I also solely owned the design and integration of a new 7" touchscreen display o
 Beyond the mechanical architecture, I managed the project’s high-level execution, maintaining the program schedule and phase gate documentation while coordinating with executive leadership and global sourcing teams to ensure a successful production ramp.
 
 
-KEY TECHNICAL ACHIEVEMENTS
+Key Techanical Achievements:
 
   → Product Leadership: Directed the end-to-end NPI process for a global product launch, achieving all technical milestones and a full BOM cost-down within a 12-month schedule.
 
@@ -222,8 +222,8 @@ This project started when a coworker showed me a large 3D-printed version of the
 I wanted to automate that motion, so I designed a 2 DOF actuator that uses a single motor to spin a ramped surface. I used a combination of pins and diametric magnets to keep the maze from actually spinning with the motor and only inherit the tilt angle of the ramp.
 
 The end result is a piece of desk art that flows endlessly, with a metal ball "solving" its way through the maze purely via gravity.`,
-    videos: ["//www.youtube.com/embed/0Dr6-_3wua4?si=dWzOB5s2wdCLLXbV"],
     images: [],
+    videos: ["//www.youtube.com/embed/0Dr6-_3wua4?si=dWzOB5s2wdCLLXbV"],
   },
   // 8. Lamp Restoration
   {
