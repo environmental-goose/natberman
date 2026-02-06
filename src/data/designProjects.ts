@@ -29,18 +29,18 @@ export const designProjects: DesignProject[] = [
 The system delivers high-pressure CO2 (800+ psi) through a complex miniaturized manifold. To manage these pressures, I designed a quadruple-redundant safety system, including a precision-tuned membrane burst disc that ensures safety across all environments. My work also included the design of the custom capsules, featuring a novel refillable valve that allows each unit to be reused up to 60 times. 
 
 My work at Aerflo has touched nearly every component in the product ecosystem, including complex multi-action injection molded components, elastomers and softgoods, stamped & extruded metal, and blow-molded plastic parts. 
-<br /><br />
-<b>Key Technical Achievements</b>
-<br /><br />
-&nbsp;&nbsp;• <b>Department Leadership:</b> Led mechanical development for a 100k+ unit/yr device, coordinating product definition, design execution, and production ramp.
-<br /><br />
-&nbsp;&nbsp;• <b>Cost Reduction:</b> Achieved a 28% COGS reduction on a 1M-unit/yr assembly by leading a cost-down redesign and optimizing processes onsite with Tier-1 suppliers.
-<br /><br />
-&nbsp;&nbsp;• <b>DFM & Manufacturing:</b> Executed production builds onsite in Asia, troubleshooting assembly issues and optimizing line processes to ensure an on-schedule launch.
-<br /><br />
-&nbsp;&nbsp;• <b>Prototyping & De-risking:</b> Rapidly iterated on hard and soft goods using lathes, mills, and 3D printing to de-risk subsystems prior to tooling.
-<br /><br />
-&nbsp;&nbsp;• <b>Systems Engineering:</b> Developed and implemented internal documentation and product change tracking (PLM) processes from scratch, establishing company-wide standards for design traceability.`,
+
+KEY TECHNICAL ACHIEVEMENTS
+
+  → Department Leadership: Led mechanical development for a 100k+ unit/yr device, coordinating product definition, design execution, and production ramp.
+
+  → Cost Reduction: Achieved a 28% COGS reduction on a 1M-unit/yr assembly by leading a cost-down redesign and optimizing processes onsite with Tier-1 suppliers.
+
+  → DFM & Manufacturing: Executed production builds onsite in Asia, troubleshooting assembly issues and optimizing line processes to ensure an on-schedule launch.
+
+  → Prototyping & De-risking: Rapidly iterated on hard and soft goods using lathes, mills, and 3D printing to de-risk subsystems prior to tooling.
+
+  → Systems Engineering: Developed and implemented internal documentation and product change tracking (PLM) processes from scratch, establishing company-wide standards for design traceability.`,
     
     images: [],
     videos: ["//www.youtube.com/embed/qEbs4oX95wQ?wmode=opaque"],
