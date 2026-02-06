@@ -57,7 +57,7 @@ Today, the FX10 is a best selling mid-range industrial 3D printer and is used in
   {
     id: "markforged-metal-x-gen2",
     label: "Markforged Metal X Gen 2",
-    title: "Markforged Metal X Gen 2 - Technical Lead",
+    title: "Markforged Metal X Gen 2",
     year: "2020–2021",
     location: "Watertown, MA",
     client: "Markforged",
@@ -87,7 +87,7 @@ This project was an incredible learning experience for me. I had exposure to eve
   {
     id: "split-flap-clock",
     label: "Split Flap Clock",
-    title: "Split Flap Clock - Sony 8FC-69WA Restoration",
+    title: "Split Flap Clock Restoration",
     year: "2022",
     location: "Boston, MA",
     client: "Personal Project",
@@ -128,8 +128,8 @@ The design consists of a pancake stepper motor driving the blinds through a set 
   // 6. 5DOF Robotic Arm
   {
     id: "5dof-robotic-arm",
-    label: "5DOF Robotic Arm",
-    title: "5DOF Robotic Arm - Senior Year Capstone",
+    label: "5DOF Teleoperated Robotic Arm",
+    title: "5DOF Teleoperated Robotic Arm",
     year: "2018",
     location: "Boston, MA",
     client: "Northeastern University",
@@ -193,7 +193,7 @@ I use the tile shelf in my kitchen as a space for teas and hanging objects. I ha
   {
     id: "automated-blind-conversion",
     label: "Automated Blind Conversion",
-    title: "Automated Blind Conversion Tutorial",
+    title: "Automated Blind Conversion",
     year: "2020",
     location: "Boston, MA",
     client: "Personal Project",
