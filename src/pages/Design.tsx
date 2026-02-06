@@ -47,7 +47,7 @@ const Design = () => {
             <MobileGalleryList
               key="list"
               title="Design Work"
-              subheader="A collection of my engineering projects, both professional and personal. These projects reflect a rigorous commitment to clarity and function, balancing refined industrial design with the technical precision required for high-volume global production and industrial precision."
+              subheader="A collection of my engineering projects, both professional and personal. These projects reflect a rigorous commitment to clarity and function, balancing refined industrial design with the technical precision."
               items={designProjects.map(p => ({ id: p.id, label: p.label }))}
               onSelect={handleSelectProject}
             />
