@@ -65,7 +65,7 @@ const Design = () => {
               {selectedProject.content && (
                 <div className="mb-6">
                   {selectedProject.content.split('\n\n').map((paragraph, i) => (
-                    <p key={i} className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    <p key={i} className="text-slate-200 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
                       {paragraph}
                     </p>
                   ))}
