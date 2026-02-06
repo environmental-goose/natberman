@@ -14,7 +14,7 @@ import ImageWithSkeleton from "@/components/gallery/ImageWithSkeleton";
 import Lightbox from "@/components/gallery/Lightbox";
 
 // Maximum width for text content - maintains consistent "gut" across all paragraphs
-const TEXT_MAX_WIDTH = "max-w-xl";
+const TEXT_MAX_WIDTH = "max-w-2xl";
 
 const Design = () => {
   const [selectedProject, setSelectedProject] = useState<DesignProject | null>(null);
