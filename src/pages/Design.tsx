@@ -65,7 +65,7 @@ const Design = () => {
               {selectedProject.content && (
                 <div className="mb-6">
                   {selectedProject.content.split('\n\n').map((paragraph, i) => (
-                    <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
+                    <p key={i} className="text-slate-300/85 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
                       {paragraph}
                     </p>
                   ))}
@@ -253,7 +253,7 @@ const Design = () => {
                 {selectedProject.content && (
                   <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
                     {selectedProject.content.split('\n\n').map((paragraph, i) => (
-                      <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
+                      <p key={i} className="text-slate-300/85 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
                         {paragraph}
                       </p>
                     ))}
