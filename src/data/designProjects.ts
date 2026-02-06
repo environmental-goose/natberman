@@ -30,17 +30,17 @@ The system delivers high-pressure CO2 (800+ psi) through a complex miniaturized 
 
 My work at Aerflo has touched nearly every component in the product ecosystem, including complex multi-action injection molded components, elastomers and softgoods, stamped & extruded metal, and blow-molded plastic parts. 
 
-### Key Technical Achievements
+**Key Technical Achievements**
 
-• Department Leadership: Led mechanical development for a 100k+ unit/yr device, coordinating product definition, design execution, and production ramp.
-
-• Cost Reduction: Achieved a 28% COGS reduction on a 1M-unit/yr assembly by leading a cost-down redesign and optimizing processes onsite with Tier-1 suppliers.
-
-• DFM & Manufacturing: Executed production builds onsite in Asia, troubleshooting assembly issues and optimizing line processes to ensure an on-schedule launch.
-
-• Prototyping & De-risking: Rapidly iterated on hard and soft goods using lathes, mills, and 3D printing to de-risk subsystems prior to high-volume tooling.
-
-• Systems Engineering: Developed and implemented internal documentation and product change tracking (PLM) processes from scratch, establishing company-wide standards for design traceability.`,
+  • **Department Leadership:** Led mechanical development for a 100k+ unit/yr device, coordinating product definition, design execution, and production ramp.
+  
+  • **Cost Reduction:** Achieved a 28% COGS reduction on a 1M-unit/yr assembly by leading a cost-down redesign and optimizing processes onsite with Tier-1 suppliers.
+  
+  • **DFM & Manufacturing:** Executed production builds onsite in Asia, troubleshooting assembly issues and optimizing line processes to ensure an on-schedule launch.
+  
+  • **Prototyping & De-risking:** Rapidly iterated on hard and soft goods using lathes, mills, and 3D printing to de-risk subsystems prior to tooling.
+  
+  • **Systems Engineering:** Developed and implemented internal documentation and product change tracking (PLM) processes from scratch, establishing company-wide standards for design traceability.`,
     
     images: [],
     videos: ["//www.youtube.com/embed/qEbs4oX95wQ?wmode=opaque"],
