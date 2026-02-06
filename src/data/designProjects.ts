@@ -222,6 +222,7 @@ This project started when a coworker showed me a large 3D-printed version of the
 I wanted to automate that motion, so I designed a 2 DOF actuator that uses a single motor to spin a ramped surface. I used a combination of pins and diametric magnets to keep the maze from actually spinning with the motor and only inherit the tilt angle of the ramp.
 
 The end result is a piece of desk art that flows endlessly, with a metal ball "solving" its way through the maze purely via gravity.`,
+    videos: ["//www.youtube.com/embed/0Dr6-_3wua4?si=dWzOB5s2wdCLLXbV"],
     images: [],
   },
   // 8. Lamp Restoration
