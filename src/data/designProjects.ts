@@ -20,15 +20,28 @@ export const designProjects: DesignProject[] = [
     id: "aer1-system",
     label: "Aer1 System",
     title: "Aer1 System",
-    year: "2023–Present",
-    location: "Boston, MA",
+    year: "2023–2025",
+    location: "Brooklyn, NY",
     client: "Aerflo",
-    description: "2L of water per charge. As the most senior member of the mechanical engineering team, I helped bring a successfully prototyped design into serial production at a tier 1 asian CM and implemented many crucial document control and quality systems along the way.",
-    content: `The system delivers high pressure CO2 (800+ psi) using a complex miniaturized manifold system. Given the pressures involved, we designed a quadruple redundant safety system to prevent over pressurization events.
+    description:"",
+    content: `The Aer1 device is a novel portable water carbonating system that uses custom CO2 capsules to carbonate up to 2L of water per charge. As the Lead Mechanical Engineer, I was responsible for evolving a rudimentary prototype into a production-ready consumer device. This involved scaling production at a Tier-1 Asian CM and implementing the company’s internal document control and quality systems from the ground up.
 
-The custom designed capsules include a novel refillable valve allowing each capsule to be re-filled and reused dozens of times over its lifetime.
+The system delivers high-pressure CO2 (800+ psi) through a complex miniaturized manifold. To manage these pressures, I designed a quadruple-redundant safety system, including a precision-tuned membrane burst disc that ensures safety across all environments. My work also included the design of the custom capsules, featuring a novel refillable valve that allows each unit to be reused up to 60 times. 
 
-My work at Aerflo has touched nearly every component in the product, across complex multi-action injection molded components, elastomers and softgoods, stamped & extruded metal, and blow molded plastic parts. This includes parts in the cap, bottle, CO2 cartridges, and other accessories.`,
+My work at Aerflo has touched nearly every component in the product ecosystem, including complex multi-action injection molded components, elastomers and softgoods, stamped & extruded metal, and blow-molded plastic parts. 
+
+### Key Technical Achievements
+
+• Department Leadership: Led mechanical development for a 100k+ unit/yr device, coordinating product definition, design execution, and production ramp.
+
+• Cost Reduction: Achieved a 28% COGS reduction on a 1M-unit/yr assembly by leading a cost-down redesign and optimizing processes onsite with Tier-1 suppliers.
+
+• DFM & Manufacturing: Executed production builds onsite in Asia, troubleshooting assembly issues and optimizing line processes to ensure an on-schedule launch.
+
+• Prototyping & De-risking: Rapidly iterated on hard and soft goods using lathes, mills, and 3D printing to de-risk subsystems prior to high-volume tooling.
+
+• Systems Engineering: Developed and implemented internal documentation and product change tracking (PLM) processes from scratch, establishing company-wide standards for design traceability.`,
+    
     images: [],
     videos: ["//www.youtube.com/embed/qEbs4oX95wQ?wmode=opaque"],
   },
