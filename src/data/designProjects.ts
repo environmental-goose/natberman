@@ -26,21 +26,21 @@ export const designProjects: DesignProject[] = [
     description:"",
     content: `The Aer1 device is a novel portable water carbonating system that uses custom CO2 capsules to carbonate up to 2L of water per charge. As the Lead Mechanical Engineer, I was responsible for evolving a rudimentary prototype into a production-ready consumer device. This involved scaling production at a Tier-1 Asian CM and implementing the company’s internal document control and quality systems from the ground up.
 
-The system delivers high-pressure CO2 (800+ psi) through a complex miniaturized manifold. To manage these pressures, I designed a quadruple-redundant safety system, including a precision-tuned membrane burst disc that ensures safety across all environments. My work also included the design of the custom capsules, featuring a novel refillable valve that allows each unit to be reused up to 60 times. 
+The system delivers high-pressure CO2 (800+ psi) through a complex injection molded manifold. To manage these pressures, I designed a quadruple-redundant safety system to protect the user across all possible use cases and misuse. My work also included the design of the custom capsules, which feature a novel refillable valve and a precision-tuned membrane burst disc. This first of it's kind refillable architecture allows capsules to be reused and refilled up to 60 times, significantly reducing the carbon footprint of the system compared to single use cans.
 
-My work at Aerflo has touched nearly every component in the product ecosystem, including complex multi-action injection molded components, elastomers and softgoods, stamped & extruded metal, and blow-molded plastic parts. 
+My work at Aerflo has touched nearly every component in the product ecosystem, including complex multi-action injection molded components, elastomers and softgoods, stamped & machined metal, and blow-molded plastic parts. 
 
-KEY TECHNICAL ACHIEVEMENTS
+Key Techanical Achievements:
 
-  → Department Leadership: Led mechanical development for a 100k+ unit/yr device, coordinating product definition, design execution, and production ramp.
+  → Led mechanical development for a 100k+ unit/yr device, coordinating product definition, design execution, and production ramp.
 
-  → Cost Reduction: Achieved a 28% COGS reduction on a 1M-unit/yr assembly by leading a cost-down redesign and optimizing processes onsite with Tier-1 suppliers.
+  → Achieved a 28% COGS reduction on a 1M-unit/yr assembly by leading a cost-down redesign and optimizing processes onsite with Tier-1 suppliers.
 
-  → DFM & Manufacturing: Executed production builds onsite in Asia, troubleshooting assembly issues and optimizing line processes to ensure an on-schedule launch.
+  → Executed production builds onsite in Asia, troubleshooting assembly issues and optimizing line processes to ensure an on-schedule launch.
 
-  → Prototyping & De-risking: Rapidly iterated on hard and soft goods using lathes, mills, and 3D printing to de-risk subsystems prior to tooling.
+  → Rapidly iterated on hard and soft goods using an internal hand lathe, mill, and 3D printer a to de-risk subsystems prior to tooling.
 
-  → Systems Engineering: Developed and implemented internal documentation and product change tracking (PLM) processes from scratch, establishing company-wide standards for design traceability.`,
+  → Developed and implemented internal documentation and product change tracking processes from scratch, establishing company-wide standards for design quality and traceability.`,
     
     images: [],
     videos: ["//www.youtube.com/embed/qEbs4oX95wQ?wmode=opaque"],
@@ -50,19 +50,27 @@ KEY TECHNICAL ACHIEVEMENTS
     id: "markforged-fx10",
     label: "Markforged FX10",
     title: "Markforged FX10",
-    year: "2021–2024",
+    year: "2022–2024",
     location: "Watertown, MA",
     client: "Markforged",
-    description: "In 2021 I began early R&D work with a small team on Markforged's next generation printer. The concept was a faster, larger, and more versatile industrial 3D printer - notably, with the ability to print both metal and composite filaments.",
-    content: `Over the next 3 years, I led a team of 15+ mechanical, electrical, software, and systems engineers in the development of this printer. I personally architected the mechanical systems from concept industrial design drawings and led the team through multiple design / prototype rounds, eventually transitioning the design into production with a Tier 1 CM overseas.
+    description: "",
+    content: `Beginning in 2022, I led the early R&D and eventual full-scale development of Markforged's next-generation industrial platform. As the project Lead, I managed a cross-functional team of 15+ mechanical, electrical, software, and systems engineers to deliver a faster, larger, and more versatile printer capable of processing both metal and composite filaments. I personally architected the mechanical systems from initial industrial design concepts through multiple high-fidelity prototype rounds, eventually leading the transition to production with a Tier-1 CM.
 
-The result was the FX10, a groundbreaking manufacturing tool.
+The result was the FX10, a groundbreaking manufacturing tool featuring a 60ºC actively heated chamber, a dual-nozzle composite print head, and a high-performance gantry capable of 1m/s travel speeds. The most ambitious sub-system was the integrated vision engine—a head-mounted camera that enables Markforged's Blacksmith AI software to identify and correct print defects in real-time. 
 
-The printer was a combination of several beautifully engineered systems, including a 60ºC actively heated chamber, dual nozzle composite print head, and high performance gantry capable of reaching 1m/s movement speeds.
+Today, the FX10 is a best-selling industrial printer, serving as a critical tool in manufacturing facilities worldwide.
 
-We introduced many new systems in this printer, but the most ambitious was the vision system. A camera mounted on the back of the print head was used to take images during printing, allowing the existing AI fault detection engine, Blacksmith, to detect and correct print defects live.
+KEY TECHNICAL ACHIEVEMENTS
 
-Today, the FX10 is a best selling mid-range industrial 3D printer and is used in daily around the globe.`,
+  → Directed a team of 15+ engineers through the full NPI lifecycle, from early R&D and conceptual architecture to global production and launch.
+
+  → Translated industrial design intent into a high-performance mechanical platform, including a 60ºC heated build volume and a 1m/s motion system.
+
+  → Oversaw the development of a head-mounted optical system for live AI-driven fault detection and part-validation (Blacksmith).
+
+  → Led the design transfer and production scaling with an overseas Tier-1 CM, ensuring all quality and performance targets were met for a global release.
+
+  → Iterated on complex electromechanical assemblies to balance high-performance industrial specs with cost-effective, scalable manufacturing processes.`,
     images: [],
     videos: ["//www.youtube.com/embed/hjr0DHIjvnE?wmode=opaque"],
   },
@@ -74,26 +82,26 @@ Today, the FX10 is a best selling mid-range industrial 3D printer and is used in
     year: "2020–2021",
     location: "Watertown, MA",
     client: "Markforged",
-    description: "After 3 years at Markforged (a 3D printing startup in Boston) I was made technical lead of the Metal X 3D printer. As a part of this role, I was tasked with leading the second generation refresh of the machine.",
-    content: `This refresh included several functional and aesthetic changes as well as a recertification to a new safety standard in the EU (IEC 62368-3).
+    description: "",
+    content: `After three years at Markforged, I was appointed Technical Lead for the Metal X 3D printer, specifically tasked with heading the second-generation refresh of the platform. The Metal X utilizes an FFF-style process printing metal-powder-loaded filament, allowing for metal additive manufacturing in an office environment. My role was to guide the team through the complete NPI process—from design ideation and prototyping to production ramping and launch—completing the entire cycle in under a year.
 
-At a high level, the 3D printer works by printing a conventional filament with a high metal powder loading. This enables the printer to operate in an office environment without high temperature components or more dangerous powdered metal. After printing, the part goes through a 2 part de-binding process in an industrial de-greaser and high temperature sintering furnace.
+A primary driver for this refresh was the integration of a single-fault-tolerant safety system required for EU recertification (IEC 62368-3). This system electrically isolates hazardous components upon user access. Additionally, I solely owned the design and integration of a new 7" touchscreen display on a custom articulating arm, upgrading from the previous 4.3" internal display.
 
-Leading the project, I guided the team through the complete NPI process from design ideation, prototyping, testing & certification, production ramping, and launch in under a year while achieving an overall cost down on the BOM.
+Beyond the mechanical architecture, I managed the project’s high-level execution, maintaining the program schedule and phase gate documentation while coordinating with executive leadership and global sourcing teams to ensure a successful production ramp.
 
-The second generation machine required the integration of a single fault tolerant safety system that electrically disconnected dangerous parts of the system once they became accessible through an open door. It also included an upgrade from a 4.3" internal display to 7" touch display on an arm - a design owned solely by me.
+KEY TECHNICAL ACHIEVEMENTS
 
-My responsibility as project leader also included:
-• Safety system architecture and layout
-• Design of complex and highly cosmetic sheet metal modules with integrated electronics
-• Creation and maintenance a detailed program schedule and phase gate process documents
-• Delivery of detailed designs and drawings to sourcing team for prototype builds
-• Coordination and completion of safety and EMC compliance testing
-• Writing and presentation of detailed status updates to engineering and executive leaders
-• Release of final design packages to operations and sourcing teams for production ramp
-• Oversight of pilot builds at factory in conjunction with operations and manufacturing teams
+  → Product Leadership: Directed the end-to-end NPI process for a global product launch, achieving all technical milestones and a full BOM cost-down within a 12-month schedule.
 
-This project was an incredible learning experience for me. I had exposure to every level and detail of new product creation that is invaluable to my practical knowledge and skill of bringing a product to market.`,
+  → Safety Systems Architecture: Designed and implemented a single-fault-tolerant safety system, successfully achieving IEC 62368-3 and EMC compliance for the EU market.
+
+  → Complex Electromechanical Design: Developed highly cosmetic sheet metal modules with integrated electronics, balancing industrial design requirements with strict manufacturing tolerances.
+
+  → Prototyping & Testing: Delivered detailed design packages and drawings for rapid prototype builds, overseeing testing and validation to de-risk the platform prior to production.
+
+  → Manufacturing & Operations: Led pilot builds at the factory in conjunction with manufacturing teams, ensuring a seamless transition from engineering design to high-volume operations.
+
+  → Executive Communication: Authored and presented detailed technical status updates and risk assessments to engineering and executive leadership throughout the product lifecycle.`,
     images: [],
   },
   // 4. Split Flap Clock
@@ -101,41 +109,39 @@ This project was an incredible learning experience for me. I had exposure to eve
     id: "split-flap-clock",
     label: "Split Flap Clock",
     title: "Split Flap Clock Restoration",
-    year: "2022",
-    location: "Boston, MA",
+    year: "2025",
+    location: "Brooklyn, NY",
     client: "Personal Project",
-    description: "I found a non-functioning Sony 8FC-69WA in a Connecticut thrift store. I've always loved the aesthetic and mechanisms in split flap clock displays so I removed the clock module and rebuilt it into one of my own.",
-    content: `The teardown of the old clock was fascinating. It is unbelievable to me that a design like this was made at scale and made available so cheap. The density of components and complexity of design was well beyond what I could imagine was inside.
+    description: "",
+    content: `I found a non-functioning Sony 8FC-69WA in a Connecticut thrift store and couldn't pass it up—I’ve always loved the mechanical soul of split-flap displays. After a fascinating teardown that revealed an unbelievable density of components for a consumer-grade object, I decided to gut the dead internals and modernize the drive system while keeping the original aesthetic.
 
-The clock uses a synchronous motor to keep time, using the 60Hz frequency of the incoming AC to spin at a constant rate. Despite my best efforts to repair it, the motor was dead, and no replacements were available online.
+The original synchronous motor, which relied on the 60Hz AC frequency for timing, was beyond repair. To bring the clock back to life, I designed a custom interface to adapt a 28BYJ-48 stepper motor to the original clock modules. The logic is handled by an Arduino Nano paired with a quartz RTC breakout module for precision. 
 
-Without the original motor available, I designed a new interface for a spare stepper motor I had. I 3D printed the components and wired together a protoboard. The clock logic is run on an Arduino Nano and uses a quartz breakout module to keep accurate timing.
+The build was a deep dive into the nuances of absolute timing. I learned the hard way about the limitations of software-based timekeeping and the physics of quartz vibration. I also had to get creative with the code to account for the stepper motor’s 2048 steps/revolution; because this didn't divide evenly into the 10-minute rotation of the drive gear (204.8 steps/min), I implemented a periodic error-correction routine. Every five minutes, the code executes a small step correction to offset the accumulated error, keeping the clock accurate to the second.
 
-The timekeeping module was new to me in concept and practice. After hours of debugging why the clock couldn't keep time over 24 hours, I learned the hard way about how poor computers are at absolute timing. Just as fascinating was going a little deeper into the meaning of 'quartz' in time keeping. An extremely repeatable and precise frequency can be measured from the vibration of quartz crystal when a known electric current passes through it, keeping accurate time.
+I eventually decided to skip the outer case and leave the raw assembly exposed. It’s been a reliable (and noisy) fixture in my apartment ever since.
 
-I also needed to implement a finicky error correction procedure because the 28BYJ-48 stepper motor I used has 2048 steps/revolution. Annoyingly, this didn't divide evenly into the 10 minutes per revolution of the clock driven gear (ending up with 204.8 steps/min). 205 steps/min ends up gaining a few minutes per week, and so every 5 minutes, a small step correction is made to make up for the accumulated 1 step (0.2*5) of error.
+  → Adapted a modern stepper motor to 1970s mechanical clock mechanism via 3D-printed interfaces.
 
-Once the code electronics were finalized, I enjoyed the raw design in the bare assembly and opted to not cover it with an outer case. The clock is a reliable timekeeper in my apartment to this day.`,
+  → Developed a custom Arduino-based timing controller with periodic step-error correction.
+
+  → Integrated a quartz RTC module to overcome software-based timing drift.`,
     images: [],
   },
   // 5. Automated Blinds V2
   {
     id: "automated-blinds-v2",
-    label: "Automated Blinds V2",
-    title: "Automated Blinds V2",
-    year: "2023",
-    location: "Boston, MA",
+    label: "Automated Blinds Gen 2",
+    title: "Automated Blinds Gen 2",
+    year: "2024",
+    location: "Brooklyn, NY",
     client: "Personal Project",
-    description: "This project is a continuation of my Automated Blinds V1 project where I repackaged the functionality into a more universal interface. My previous design only worked with a specific IKEA blind and mounted directly to the winding core.",
-    content: `This new design works with any type of chain roller blind but retains all the same features any functionality: quiet actuation, discrete position control, voice activation through HomeKit integration.
+    description: "",
+    content: `This project is a universal evolution of my initial Automated Blinds system. While my previous design was locked to a specific IKEA model, this iteration utilizes a custom drive interface that captures and pulls standard chain-roller balls, making it compatible with almost any existing window treatment. The system retains its core feature set: near-silent actuation, discrete position control, and full HomeKit integration for voice commands.
 
-The units are still hardwired into a central computer that manages the server connection and motor control.
+The unit uses a pancake stepper motor paired with a custom gear train to increase torque output for heavier blinds. I designed the assembly with a magnetic cover that conceals the motor while maintaining an air gap for cooling. To help me wake up naturally, I’ve programmed them to follow my sleep cycle—closing at night to block street light and rising silently at 6 AM to let in the sun.
 
-I use these everyday to help me sleep. They automatically close when it's time for bed to block out light pollution from the street. At 6am they silently rise, allowing me to wake up naturally with the sun. A no comprimise solution.
-
-All the board designs are unchanged. Only minor modifications to the original code in the V1 project were made to adjust to the new gear ratios. In the future, I'd like to design a bespoke PCBA to allow each unit to connect and manage its own movement without needing to be wired into a central computer. I may also look to cost optimize the assembly by removing the shafts and bearings, and integrating features into the printed components that would act as plastic bearing surfaces.
-
-The design consists of a pancake stepper motor driving the blinds through a set of gears that increase the overall torque output of the device. A magnetic cover hides the motor and allows for sufficient airspace for cooling. The chain is driven by a custom drive interface that captures and pulls the individual chain balls.`,
+Currently, the units are hardwired to a central controller, but I’m looking toward a V3 that integrates a bespoke PCBA into each unit for independent wireless control. I’m also exploring cost-optimization by replacing the metal shafts and bearings with integrated plastic bearing surfaces in the 3D-printed chassis.`,
     images: [],
   },
   // 6. 5DOF Robotic Arm
@@ -146,16 +152,22 @@ The design consists of a pancake stepper motor driving the blinds through a set 
     year: "2018",
     location: "Boston, MA",
     client: "Northeastern University",
-    description: "My senior year capstone was an incredible deep dive into electromechanical design and precision systems. My group decided to complete a project from the human safe soft robotics lab at Northeastern University with mentorship from John Whitney, PhD.",
-    content: `The project was the development of a 5DOF robotic arm with an exoskeleton interface designed to make driving the arm as intuitive as possible. As a part of the input interface, the exoskeleton would be able to deliver haptic feedback to the user based on the environmental conditions of the remote arm.
+    description: "",
+    content: `For my senior capstone, I developed a 5DOF robotic arm under the mentorship of John Whitney, PhD, at Northeastern’s Human Safe Soft Robotics Lab. The project focused on creating a remote-operated arm driven by an exoskeleton interface with integrated haptic feedback. While the team was split across electrical and software disciplines, I held sole responsibility for the mechanical architecture and design of the robotic arm itself.
 
-The task was split up among the group members through ownership of arm design, exoskeleton design, electrical hardware design, and software interface. I was personally responsible for the entirety of the robotic arm design shown.
+The system achieves 5 degrees of freedom through a modular differential joint at the elbow and shoulder, supplemented by a single rocker for the third shoulder DOF. The design was almost entirely 3D-printed, and had a total actuated weight of just 12kg. Each differential module is driven by high-torque brushless DC motors, utilizing magnetic axial encoding for real-time positional control.
 
-This arm design achieved all 5 degrees of freedom required through a modular differential joint at the elbow and shoulder as well as a single rocker providing the 3rd degree of freedom in the shoulder joint. Each differential module was driven by two high torque brushless DC motors controlled with a custom driver board with magnetic axial encoding and real-time positional control.
+Despite a condensed six-month development cycle, the arm reached a top velocity of 0.5m/s and was fully operational on the bench. Although motor controller issues limited the live demo to an exoskeleton-to-simulation link, the project served as a deep dive into high-performance electromechanical systems and compact gear-train design.
 
-The differential joint was an ultra dense design with nearly all structural components designed for 3D printing in order to drive shorter lead times and lighter actuated weights. The design went through several iterations, each making the assembly lighter and more compact.
+Some technical highlights of my work:
 
-The final design of the arm had a mere 12kg of actuated weight and could travel at up to 0.5m/s. The full system was designed in only 6 months and was proven operational on the bench. Motor controller bugs prevented us from doing live demonstrations on presentation day, but the exoskeleton was setup to transmit its input to a live simulation of the arm output on a computer.`,
+  → Designed and iterated on a modular, high-density differential joint system to achieve 5DOF with minimal mass and high mechanical efficiency.
+
+  → Integrated high-torque brushless DC motors with magnetic axial encoders to facilitate low-latency, real-time positional feedback.
+
+  → Developed an almost entirely 3D-printed chassis, optimizing geometry to achieve a 12kg total actuated weight.
+
+  → Coordinated mechanical constraints with electrical hardware and exoskeleton software owners to ensure a seamless interface between human input and robotic output.`,
     images: [],
   },
   // 7. Hilbert Curve Desk Art
@@ -166,10 +178,12 @@ The final design of the arm had a mere 12kg of actuated weight and could travel 
     year: "2021",
     location: "Boston, MA",
     client: "Personal Project",
-    description: "A Hilbert Curve is a continuous fractal space-filling curve first described by the German mathematician David Hilbert in 1891. It belongs to a family of space filling curves that create very distinct and interesting fractal patterns.",
-    content: `This particular project came to me by way of my coworker Angus who had printed a large copy of the curve. He inserted a small ball bearing which you could guide through the whole maze by tiling the part.
+    description: "",
+    content: `A Hilbert Curve is a continuous fractal space-filling curve first described by David Hilbert in 1891. It’s part of a family of curves that create these really distinct, satisfying fractal patterns. This project started when a coworker showed me a large 3D-printed version of the curve; he’d spend time guiding a small ball bearing through the whole maze just by tilting it by hand.
 
-I designed a 2 DOF actuator using a single motor which rotated a ramped surface. A combination of pins and magnets keep the maze rotationally constrained - only allowing it to inherit the angle of the ramp.`,
+I wanted to automate that motion, so I designed a 2 DOF actuator that uses a single motor to spin a ramped surface. I used a combination of pins and diametric magnets to keep the maze from actually spinning with the motor and only inherit the tilt angle of the ramp.
+
+The end result is a piece of desk art that flows endlessly, with a metal ball "solving" its way through the maze purely via gravity.`,
     images: [],
   },
   // 8. Lamp Restoration
@@ -180,10 +194,12 @@ I designed a 2 DOF actuator using a single motor which rotated a ramped surface.
     year: "2023",
     location: "Boston, MA",
     client: "Personal Project",
-    description: "I was digging through some old boxes in my mom's attic recently and came across this clip on lamp that I really enjoyed the style of. The clip had snapped off so I decided to redesign a new stand for it, one more suited to sitting on a table.",
-    content: `I played around with a few different styles and ended up with this round ribbed design that turned out really well in a matte red. The new base is a 2 part 3D printed assembly (2 parts so I didn't need to disconnect the plug). I also cut an O-ring and ran it through a channel I included on the bottom face to keep it from sliding around on surfaces.
+    description: "",
+    content: `I was digging through some old boxes in my mom's attic recently and came across this clip on lamp that I really enjoyed the style of. The clip had snapped off so I decided to redesign a new stand for it, one more suited to sitting on a table.
+    
+I played around with a few different styles and ended up with this round ribbed design that turned out really well in a matte red. The new base is a 2 part 3D printed assembly (2 parts so I didn't need to disconnect the plug). I also cut an O-ring and ran it through a channel I included on the bottom face to keep it from sliding around on surfaces.
 
-You can see the original lamp on the left, and some nice shots of the finished lamp on the right and below.`,
+I use the lamp to this day in my apartment.`,
     images: [],
   },
   // 9. Tile Shelf
@@ -194,8 +210,10 @@ You can see the original lamp on the left, and some nice shots of the finished l
     year: "2022",
     location: "Boston, MA",
     client: "Personal Project",
-    description: "The tile shelf is a design inspired by some designs I saw online, but built custom for my own space.",
-    content: `I designed a simple L-shape profile with dovetail joints to extend the length beyond my printers build volume. I applied glue to the joints to make them permanent.
+    description: "",
+    content: `The tile shelf is a design inspired by some designs I saw online, but built custom for my own space.
+    
+I designed a simple L-shape profile with dovetail joints to extend the length beyond my printers build volume. I applied glue to the joints to make them permanent.
 
 Once assembled, I used grout to secure the tiles to the part and fill the gaps.
 
@@ -210,53 +228,24 @@ I use the tile shelf in my kitchen as a space for teas and hanging objects. I ha
     year: "2020",
     location: "Boston, MA",
     client: "Personal Project",
-    description: "A step-by-step guide to converting manual blinds into smart, automated window coverings using off-the-shelf components.",
-    content: `This tutorial walks through the process of converting standard manual blinds into automated smart blinds. The project uses readily available components and can be completed in a weekend.
+    description: "",
+    content: `The IKEA HomeKit Integration was a personal challenge to develop a high-performance, cost-effective alternative to commerically available motorized blinds. While retail HomeKit-enabled blinds often exceed $150 per unit, I engineered a system that delivers near-silent operation and full smart-home integration for a fraction of the cost by retrofitting standard IKEA hardware.
 
-## Materials Needed
-- Stepper motor (NEMA 17 recommended)
-- ESP32 or ESP8266 microcontroller
-- Motor driver (A4988 or TMC2209)
-- 3D printed mounting brackets
-- Power supply (12V 2A)
+The project involved a complete overhaul of the blind's internal drive system. I replaced the manual spring-tensioner with a NEMA 17 stepper motor driven by TMC2208 drivers to ensure the blinds could operate in a bedroom environment without audible noise. The mechanical architecture consists of 3D-printed gear reductions and flanged bearings that adapt the motor's output to the IKEA roller core.
 
-## Assembly Process
-The conversion process involves designing and printing custom brackets that interface between the motor and your existing blind mechanism. The key is creating a robust connection that can handle the torque required to lift the blinds.`,
-    codeSnippet: `// ESPHome configuration for blind control
-esphome:
-  name: smart-blinds
-  platform: ESP32
-  board: esp32dev
+On the software side, the system runs on an Arduino Nano 33 IoT using a custom firmware stack that handles precise step-counting for position control and an endstop-based homing routine for calibration. To bridge the gap between the Arduino and the Apple ecosystem, I implemented a HomeBridge server on a Raspberry Pi, allowing the blinds to be treated as native HomeKit accessories with support for voice commands and automation with my other smart devices.
 
-stepper:
-  - platform: a4988
-    id: blind_stepper
-    step_pin: GPIO18
-    dir_pin: GPIO19
-    max_speed: 250 steps/s
-    acceleration: 100 steps/s^2
-    deceleration: 100 steps/s^2
+Some key techanical hightlights:
 
-cover:
-  - platform: template
-    name: "Window Blinds"
-    device_class: blind
-    open_action:
-      - stepper.set_target:
-          id: blind_stepper
-          target: 2000
-    close_action:
-      - stepper.set_target:
-          id: blind_stepper
-          target: 0
-    stop_action:
-      - stepper.set_target:
-          id: blind_stepper
-          target: !lambda 'return id(blind_stepper).current_position;'
-    position_action:
-      - stepper.set_target:
-          id: blind_stepper
-          target: !lambda 'return (2000 * pos);'`,
+  → Designed and 3D-printed a custom drive bracket and gear-reduction system that retrofits standard manual blinds with NEMA 17 stepper motors.
+
+  → Implemented TMC2208 stepper drivers and optimized firmware acceleration curves to achieve near-silent actuation (less than 35dB) for bedroom use.
+
+  → Developed a full-stack IoT solution using Arduino (C++) and HomeBridge (JSON/Node.js) to enable native iOS/Siri integration (before ChatGPT existed!)
+
+  → Engineered an automated homing routine using micro-switch endstops and non-volatile memory to maintain precise position tracking across power cycles.
+
+  → Thermal & Power Management: Calculated and implemented power distribution for multi-unit setups.`,
     images: [],
   },
   // 11. Candle Molding
@@ -267,10 +256,12 @@ cover:
     year: "2023",
     location: "Boston, MA",
     client: "Personal Project",
-    description: "A short curiosity project where I attempted to mold taper candles with interesting forms that I designed.",
-    content: `Starting with the candle design, I engineered molds over several iterations, and successfully molded candle from beeswax which I gave as holiday gifts in 2023.
+    description: "",
+    content: `A short curiosity project where I attempted to mold taper candles with interesting forms that I designed.
 
-For some of the more delicate designs, I also designed custom silicone molds, which I poured and cured in my apartment.`,
+Starting with the candle design, I engineered molds over several iterations, and successfully molded multiple candle designs from beeswax which I gave as holiday gifts in 2023.
+
+For some of the more delicate designs, I also designed custom silicone molds, which I poured and cured in my apartment. These allowed the molds to be peeled away without fracturing the delicate candle inside`,
     images: [],
   },
   // 12. METAR Map
@@ -281,14 +272,17 @@ For some of the more delicate designs, I also designed custom silicone molds, wh
     year: "2019",
     location: "Boston, MA",
     client: "Personal Project",
-    description: "The live METAR map was originally created by prueker on github. I built my code based on his and designed my own electronics and mounting system that is a bit more robust than the original design and is able to accommodate 50 LEDs rather than 20.",
-    content: `The map uses a Raspberry Pi to pull weather data (in the form of METAR's - Meteorological Terminal Aviation Routine Weather Reports) posted by the FAA on aviationweather.gov. The Pi then displays this weather on 50 individually addressable LEDs using the neopixel library.
+    description: "",
+    content: `The live METAR map was originally created by prueker on github. I built my code based on his and designed my own electronics and mounting system that is a bit more robust than the original design and is able to accommodate 50 LEDs rather than 20.
+    
+    The map uses a Raspberry Pi to pull weather data (in the form of METAR's - Meteorological Terminal Aviation Routine Weather Reports) posted by the FAA on aviationweather.gov. The Pi then displays this weather on 50 individually addressable LEDs using the neopixel library.
 
 The colors correspond to different weather reported by airports included in the map where:
-• Green = VFR (visual flight rules - good weather)
-• Blue = MVFR (marginal visual flight rules - okay weather, getting worse)
-• Red = IFR (instrument flight rules - bad weather)
-• Magenta = LIFR (low instrument flight rules - even worse weather)
+
+  → Green = VFR (visual flight rules - good weather)
+  → Blue = MVFR (marginal visual flight rules - okay weather, getting worse)
+  → Red = IFR (instrument flight rules - bad weather)
+  → Magenta = LIFR (low instrument flight rules - even worse weather)
 
 The wiring is fairly simple. A barrel jack input brings 12v in from the wall and is wired directly into the LED power. An adjustable buck converter steps the voltage down to 5v for the Raspberry Pi. The Pi sends commands to the LEDs through one of its GPIO headers.
 
