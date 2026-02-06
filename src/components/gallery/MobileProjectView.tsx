@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, MapPin } from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, Building2 } from "lucide-react";
 
 interface MobileProjectViewProps {
   title: string;
   description: string;
   date?: string;
   location?: string;
+  client?: string;
   onBack: () => void;
   children: React.ReactNode;
 }
 
-const MobileProjectView = ({ title, description, date, location, onBack, children }: MobileProjectViewProps) => {
+const MobileProjectView = ({ title, description, date, location, client, onBack, children }: MobileProjectViewProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -31,8 +32,8 @@ const MobileProjectView = ({ title, description, date, location, onBack, childre
       <div className="mb-8">
         <h1 className="text-2xl font-light mb-3">{title}</h1>
         
-        {/* Metadata with icons */}
-        {(date || location) && (
+        {/* Metadata with icons - all at top */}
+        {(date || location || client) && (
           <div className="flex flex-col gap-2 mb-3 text-sm">
             {date && (
               <div className="flex items-center gap-2 text-accent">
@@ -44,6 +45,12 @@ const MobileProjectView = ({ title, description, date, location, onBack, childre
               <div className="flex items-center gap-2 text-accent">
                 <MapPin className="w-4 h-4" />
                 <span className="font-mono">{location}</span>
+              </div>
+            )}
+            {client && (
+              <div className="flex items-center gap-2 text-accent">
+                <Building2 className="w-4 h-4" />
+                <span className="font-mono">{client}</span>
               </div>
             )}
           </div>

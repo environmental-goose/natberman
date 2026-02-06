@@ -58,16 +58,9 @@ const Design = () => {
               description={selectedProject.description}
               date={selectedProject.year}
               location={selectedProject.location}
+              client={selectedProject.client}
               onBack={() => setSelectedProject(null)}
             >
-              {/* Metadata block - orange accent style - positioned at top */}
-              {selectedProject.client && (
-                <div className="flex items-center gap-2 text-accent text-sm mb-6">
-                  <Building2 className="w-4 h-4" />
-                  <span className="font-mono">{selectedProject.client}</span>
-                </div>
-              )}
-
               {/* Tutorial content */}
               {selectedProject.content && (
                 <div className="mb-6">
