@@ -223,7 +223,7 @@ I wanted to automate that motion, so I designed a 2 DOF actuator that uses a sin
 
 The end result is a piece of desk art that flows endlessly, with a metal ball "solving" its way through the maze purely via gravity.`,
     images: [],
-    videos: ["//www.youtube.com/embed/0Dr6-_3wua4?si=dWzOB5s2wdCLLXbV"],
+    videos: ["https://www.youtube.com/embed/0Dr6-_3wua4", "https://www.youtube.com/embed/dLkPUnOHnRA"],
   },
   // 8. Lamp Restoration
   {

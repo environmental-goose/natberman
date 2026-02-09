@@ -303,15 +303,11 @@ const Design = () => {
                     <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
                       Photos
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                    <div className="columns-1 md:columns-2 gap-6 max-w-4xl">
                       {projectImages.map((imageUrl, i) => (
-                        <motion.div
+                        <div
                           key={i}
-                          className={`gallery-image-${i + 1}`}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-50px" }}
-                          transition={{ delay: i * 0.08, duration: 0.4 }}
+                          className={`break-inside-avoid mb-6 gallery-image-${i + 1}`}
                         >
                           <ImageWithSkeleton
                             src={imageUrl}
@@ -320,7 +316,7 @@ const Design = () => {
                             onClick={() => openLightbox(i)}
                             className="cursor-pointer"
                           />
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
                   </div>
