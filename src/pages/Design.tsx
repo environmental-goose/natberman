@@ -249,89 +249,78 @@ const Design = () => {
                   </p>
                 </div>
 
-                {/* Two-column layout: text left, media right on wide screens */}
-                <div className="flex flex-col xl:flex-row gap-8">
-                  {/* Left column: text content */}
-                  <div className="flex-shrink-0">
-                    {/* Content paragraphs with consistent max-width */}
-                    {selectedProject.content && (
-                      <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
-                        {selectedProject.content.split('\n\n').map((paragraph, i) => (
-                          <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Code snippet if available */}
-                    {selectedProject.codeSnippet && (
-                      <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
-                        <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
-                          Code
-                        </h3>
-                        <div className="border border-border/50 bg-background/50">
-                          <ScrollArea className="h-80">
-                            <pre className="p-4 text-xs font-mono text-foreground/90 overflow-x-auto">
-                              <code>{selectedProject.codeSnippet}</code>
-                            </pre>
-                          </ScrollArea>
-                        </div>
-                      </div>
-                    )}
+                {/* Content paragraphs with consistent max-width */}
+                {selectedProject.content && (
+                  <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
+                    {selectedProject.content.split('\n\n').map((paragraph, i) => (
+                      <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
+                        {paragraph}
+                      </p>
+                    ))}
                   </div>
+                )}
 
-                  {/* Right column: media content */}
-                  {(projectVideos.length > 0 || projectImages.length > 0) && (
-                    <div className="flex-shrink-0">
-                      {/* VIDEOS Section */}
-                      {projectVideos.length > 0 && (
-                        <div className="mb-12">
-                          <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-4">
-                            Videos
-                          </h3>
-                          <div className="space-y-4">
-                            {projectVideos.map((videoUrl, i) => (
-                              <div key={i} className={`aspect-video ${TEXT_MAX_WIDTH}`}>
-                                <iframe
-                                  src={videoUrl.startsWith("//") ? `https:${videoUrl}` : videoUrl}
-                                  className="w-full h-full"
-                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                  allowFullScreen
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* PHOTOS Section */}
-                      {projectImages.length > 0 && (
-                        <div className="photos-gallery pt-8 border-t border-border/20">
-                          <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
-                            Photos
-                          </h3>
-                          <div className="columns-1 md:columns-2 gap-6 max-w-4xl">
-                            {projectImages.map((imageUrl, i) => (
-                              <div
-                                key={i}
-                                className={`break-inside-avoid mb-6 gallery-image-${i + 1}`}
-                              >
-                                <ImageWithSkeleton
-                                  src={imageUrl}
-                                  alt={`${selectedProject.title} - Photo ${i + 1}`}
-                                  index={i}
-                                  onClick={() => openLightbox(i)}
-                                  className="cursor-pointer"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                {/* Code snippet if available */}
+                {selectedProject.codeSnippet && (
+                  <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-3">
+                      Code
+                    </h3>
+                    <div className="border border-border/50 bg-background/50">
+                      <ScrollArea className="h-80">
+                        <pre className="p-4 text-xs font-mono text-foreground/90 overflow-x-auto">
+                          <code>{selectedProject.codeSnippet}</code>
+                        </pre>
+                      </ScrollArea>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
+
+                {/* VIDEOS Section */}
+                {projectVideos.length > 0 && (
+                  <div className="mb-12">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-4">
+                      Videos
+                    </h3>
+                    <div className="space-y-4">
+                      {projectVideos.map((videoUrl, i) => (
+                        <div key={i} className={`aspect-video ${TEXT_MAX_WIDTH}`}>
+                          <iframe
+                            src={videoUrl.startsWith("//") ? `https:${videoUrl}` : videoUrl}
+                            className="w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* PHOTOS Section - 2 column grid gallery */}
+                {projectImages.length > 0 && (
+                  <div className="photos-gallery mt-12 pt-8 border-t border-border/20">
+                    <h3 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">
+                      Photos
+                    </h3>
+                    <div className="columns-1 md:columns-2 gap-6 max-w-4xl">
+                      {projectImages.map((imageUrl, i) => (
+                        <div
+                          key={i}
+                          className={`break-inside-avoid mb-6 gallery-image-${i + 1}`}
+                        >
+                          <ImageWithSkeleton
+                            src={imageUrl}
+                            alt={`${selectedProject.title} - Photo ${i + 1}`}
+                            index={i}
+                            onClick={() => openLightbox(i)}
+                            className="cursor-pointer"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
