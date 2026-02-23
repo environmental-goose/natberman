@@ -107,6 +107,8 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    -webkit-text-stroke: 0.45px rgba(255, 255, 255, 0.1);
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Global Custom Cursor Override - Hide system cursor everywhere */
