@@ -11,7 +11,7 @@ export const blogPosts: BlogPost[] = [
     id: "ai-and-mechanical-engineering",
     label: "AI and Mechanical Engineering",
     title: "AI and Mechanical Engineering",
-    date: "03-01-2026",
+    date: "2026-03-01",
     content: `I recently read the [2028 Global Intelligence crisis](https://www.citriniresearch.com/p/2028gic) memo - a scenario play out of the AI flywheel's effect on the economy and high skill white collar jobs.  I would highly recommend reading (about a 30min read).  Broad strokes are massive impacts to the white collar workforce that reverberates into blue collar work as wages are forced down, subsequent mortgage market collapse, etc.
 
 It got me thinking a lot about how the Mechanical Engineering industry might be affected, and what sort of skill moats exist for us.  What parts of our jobs could be taken by AI?  Is there a uniqueness to mechanical engineering that would be hard to replace?
@@ -21,6 +21,7 @@ It is a broad field but for reference I am a consumer product designer in a desi
 Some thoughts on why I think certain parts of Mechanical Engineering could be uniquely robust to the economic reset described in the memo:
 
 **Training Data**
+
 For software, there is so much high quality open source code easily accessible to any model wanting to train on it.  I believe this, at least early on, was a major catalyst for AI’s rapid success in coding.  Same goes for written text.
 
 Interestingly, this does not exist for mechanical designs.  
@@ -32,6 +33,7 @@ High quality mechanical design data (3D CAD and 2D drawings) are not available t
 It is hard to imagine any AI company creating or getting access to enough high quality CAD to sufficiently train a model on good parametric design.
 
 **Time to AI Prompt >> Time to Design**
+
 Sometimes when I'm designing a part, I think about the way I might prompt an AI to model it for me.  To be frank, I can't think of a time that I felt it would be easier to describe the part I am looking for (using either text or voice), in the level of fidelity required to actually get the part I want compared to just modeling it myself.  I think this is unique to the parametric modeling style required from most MEs.  That said, I could see AI being very good at non-parametric modeling.  
 
 The root of this seems more to do with our ability to transfer information about what it is we want rather than a deficiency in the AI itself.  The mouse and keyboard are high-bandwidth conduits for spatial design; text is a low-bandwidth filter that loses nuance.  Perhaps future computer brain interfaces solve this problem.
@@ -39,6 +41,7 @@ The root of this seems more to do with our ability to transfer information about
 It is also possible that I am underestimating the ability of an AI to complete entire assemblies with defined functionality, but I will touch more in this in the “One Problem, Many Solutions (and Tradeoffs) section.
 
 **The Messiness of Manufacturing**
+
 *This section pulls very directly from my experience manufacturing consumer products overseas at mid-scale (10,000 - 1MM units per year).  I can’t say this is universally applicable.*
 
 In software, the only thing that separates you from the built code and a working product is the deploy button.  The entirety of the work required to ship a software product is designing the code to run it.  
