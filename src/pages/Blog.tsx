@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Calendar } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import { blogPosts, BlogPost } from "@/data/blogPosts";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -53,12 +54,8 @@ const Blog = () => {
                   <span className="font-mono">{selectedPost.date}</span>
                 </div>
               )}
-              <div>
-                {selectedPost.content.split('\n\n').map((paragraph, i) => (
-                  <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="prose-blog">
+                <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
               </div>
             </motion.div>
           )}
@@ -146,12 +143,8 @@ const Blog = () => {
                   )}
                 </div>
 
-                <div className={TEXT_MAX_WIDTH}>
-                  {selectedPost.content.split('\n\n').map((paragraph, i) => (
-                    <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
-                      {paragraph}
-                    </p>
-                  ))}
+                <div className={`prose-blog ${TEXT_MAX_WIDTH}`}>
+                  <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
                 </div>
               </motion.div>
             )}
