@@ -46,7 +46,7 @@ const Index = () => {
               to="/blog"
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-mono uppercase tracking-widest text-foreground border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition-colors mb-4"
             >
-              My Blog
+              MY BLOG →
             </Link>
             <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2">
               Nathaniel Berman's Portfolio
@@ -55,6 +55,21 @@ const Index = () => {
               2026
             </p>
           </div>
+        </motion.div>
+
+        {/* Mobile Blog Button */}
+        <motion.div
+          className="fixed bottom-6 right-6 md:hidden z-50"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
+        >
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono uppercase tracking-widest text-foreground border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition-colors bg-background/80 backdrop-blur-sm"
+          >
+            MY BLOG →
+          </Link>
         </motion.div>
       </div>
     </GraphPaperLayout>
