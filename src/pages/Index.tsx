@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import GraphPaperLayout from "@/components/layout/GraphPaperLayout";
 import ShatterNav from "@/components/navigation/ShatterNav";
 
@@ -41,6 +42,12 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <div className="text-right">
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-mono uppercase tracking-widest text-foreground border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition-colors mb-4"
+            >
+              My Blog
+            </Link>
             <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2">
               Nathaniel Berman's Portfolio
             </p>
