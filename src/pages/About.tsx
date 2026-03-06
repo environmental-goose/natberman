@@ -62,21 +62,37 @@ const About = () => {
                   </p>
                 </div>
 
-                {/* Download Resume Button - left-aligned */}
-                <motion.a
-                  href="/Resume-Nathaniel-Berman.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-foreground/30 text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors text-sm font-mono uppercase tracking-widest"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.4 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  View Resume
-                </motion.a>
+                {/* Buttons row */}
+                <div className="flex flex-wrap gap-3 mt-8">
+                  <motion.a
+                    href="/Resume-Nathaniel-Berman.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-foreground/30 text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors text-sm font-mono uppercase tracking-widest"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.4 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Resume
+                  </motion.a>
+                  <motion.a
+                    href="https://patents.google.com/?inventor=Nathaniel+Berman&oq=inventor:+(Nathaniel+Berman)"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-foreground/30 text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors text-sm font-mono uppercase tracking-widest"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.55, duration: 0.4 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Patents
+                  </motion.a>
+                </div>
               </motion.div>
 
               {/* Portrait - Full width on mobile, centered */}
@@ -133,21 +149,37 @@ const About = () => {
                   </p>
                 </div>
 
-                {/* Download Resume Button */}
-                <motion.a
-                  href="/Resume-Nathaniel-Berman.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-foreground/30 text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors text-sm font-mono uppercase tracking-widest"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.4 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  View Resume
-                </motion.a>
+                {/* Buttons row */}
+                <div className="flex flex-wrap gap-3 mt-8">
+                  <motion.a
+                    href="/Resume-Nathaniel-Berman.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-foreground/30 text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors text-sm font-mono uppercase tracking-widest"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.4 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Resume
+                  </motion.a>
+                  <motion.a
+                    href="https://patents.google.com/?inventor=Nathaniel+Berman&oq=inventor:+(Nathaniel+Berman)"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-foreground/30 text-foreground rounded-full hover:bg-foreground hover:text-background transition-colors text-sm font-mono uppercase tracking-widest"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.55, duration: 0.4 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Patents
+                  </motion.a>
+                </div>
               </motion.div>
 
               {/* Right - Portrait from page-data */}
