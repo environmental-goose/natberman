@@ -157,7 +157,7 @@ const Photo = () => {
                 transition={{ duration: 0.4 }}
               >
                 {/* Location Header */}
-                <div className="mb-12">
+                <div className="mb-12 text-backdrop">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedLocation.title}</h1>
                   
                   {/* Metadata with icons - orange accent style */}

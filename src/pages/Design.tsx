@@ -251,7 +251,7 @@ const Design = () => {
 
                 {/* Content paragraphs with consistent max-width */}
                 {selectedProject.content && (
-                  <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
+                  <div className={`mb-8 ${TEXT_MAX_WIDTH} text-backdrop`}>
                     {selectedProject.content.split('\n\n').map((paragraph, i) => (
                       <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
                         {paragraph}
