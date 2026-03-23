@@ -133,7 +133,7 @@ const Blog = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="mb-8">
+                <div className="mb-8 text-backdrop">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedPost.title}</h1>
                   {selectedPost.date && (
                     <div className="flex items-center gap-2 text-accent text-sm mb-4">
