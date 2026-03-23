@@ -219,7 +219,7 @@ const Design = () => {
                 transition={{ duration: 0.4 }}
               >
                 {/* Project Header */}
-                <div className="mb-8">
+                <div className="mb-8 text-backdrop">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedProject.title}</h1>
                   
                   {/* Metadata with icons - orange accent style (matches Photo pages) */}
