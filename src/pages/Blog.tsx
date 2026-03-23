@@ -48,14 +48,15 @@ const Blog = () => {
                 ← Back
               </button>
               <div className="text-backdrop mb-4">
-              <h1 className="text-2xl font-light mb-3">{selectedPost.title}</h1>
-              {selectedPost.date && (
-                <div className="flex items-center gap-2 text-accent text-sm mb-6">
-                  <Calendar className="w-4 h-4" />
-                  <span className="font-mono">{selectedPost.date}</span>
-                </div>
-              )}
-              <div className="prose-blog">
+                <h1 className="text-2xl font-light mb-3">{selectedPost.title}</h1>
+                {selectedPost.date && (
+                  <div className="flex items-center gap-2 text-accent text-sm mb-6">
+                    <Calendar className="w-4 h-4" />
+                    <span className="font-mono">{selectedPost.date}</span>
+                  </div>
+                )}
+              </div>
+              <div className="prose-blog text-backdrop">
                 <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
               </div>
             </motion.div>
