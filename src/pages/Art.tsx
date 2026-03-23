@@ -183,7 +183,7 @@ const Art = () => {
                 transition={{ duration: 0.4 }}
               >
                 {/* Project Header */}
-                <div className="mb-8">
+                <div className="mb-8 text-backdrop">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedProject.title}</h1>
                   <p className="text-muted-foreground max-w-2xl leading-relaxed">
                     {selectedProject.description}

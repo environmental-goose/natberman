@@ -44,7 +44,7 @@ const About = () => {
                 <h1 className="text-4xl font-light mb-8 leading-tight text-left">
                   Hi, I'm Nat...
                 </h1>
-                <div className="space-y-4 text-muted-foreground leading-relaxed text-left">
+                <div className="space-y-4 text-muted-foreground leading-relaxed text-left text-backdrop">
                   <p>
                     I made this site to have a place document projects, art, and photography, and share it with whoever finds them interesting. If you see something cool - feel free to use it, or ask me about it.
                   </p>
@@ -131,7 +131,7 @@ const About = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
                   Hi, I'm Nat...
                 </h1>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="space-y-4 text-muted-foreground leading-relaxed text-backdrop">
                   <p>
                     I made this site to have a place document projects, art, and photography, and share it with whoever finds them interesting. If you see something cool - feel free to use it, or ask me about it.
                   </p>

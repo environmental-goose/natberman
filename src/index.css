@@ -124,6 +124,18 @@
     background-size: var(--grid-size) var(--grid-size);
   }
 
+  /* Text Backdrop - subtle blur behind body text for readability */
+  .text-backdrop {
+    @apply relative;
+    background: hsla(var(--background), 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
   /* Typography Utilities */
   .font-mono {
     font-family: 'Geist Mono', monospace;

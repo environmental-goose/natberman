@@ -219,7 +219,7 @@ const Design = () => {
                 transition={{ duration: 0.4 }}
               >
                 {/* Project Header */}
-                <div className="mb-8">
+                <div className="mb-8 text-backdrop">
                   <h1 className="text-3xl md:text-4xl font-light mb-4">{selectedProject.title}</h1>
                   
                   {/* Metadata with icons - orange accent style (matches Photo pages) */}
@@ -251,7 +251,7 @@ const Design = () => {
 
                 {/* Content paragraphs with consistent max-width */}
                 {selectedProject.content && (
-                  <div className={`mb-8 ${TEXT_MAX_WIDTH}`}>
+                  <div className={`mb-8 ${TEXT_MAX_WIDTH} text-backdrop`}>
                     {selectedProject.content.split('\n\n').map((paragraph, i) => (
                       <p key={i} className="text-slate-300/90 leading-relaxed font-medium tracking-wide whitespace-pre-line mb-6">
                         {paragraph}

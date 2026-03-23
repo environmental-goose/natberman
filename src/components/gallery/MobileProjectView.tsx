@@ -29,7 +29,7 @@ const MobileProjectView = ({ title, description, date, location, client, onBack,
       </button>
 
       {/* Project Header */}
-      <div className="mb-8">
+      <div className="mb-8 text-backdrop">
         <h1 className="text-2xl font-light mb-3">{title}</h1>
         
         {/* Metadata with icons - all at top */}
