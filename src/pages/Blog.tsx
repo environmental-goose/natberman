@@ -143,7 +143,7 @@ const Blog = () => {
                   )}
                 </div>
 
-                <div className={`prose-blog ${TEXT_MAX_WIDTH}`}>
+                <div className={`prose-blog ${TEXT_MAX_WIDTH} text-backdrop`}>
                   <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
                 </div>
               </motion.div>
