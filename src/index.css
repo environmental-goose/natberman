@@ -128,13 +128,14 @@
   .text-backdrop {
     @apply relative;
     background: transparent;
-    background-color: transparent;
-    backdrop-filter: blur(1.5px);
-    -webkit-backdrop-filter: blur(1.5px);
-    border-radius: 2px;
-    padding: 0.25rem 0.4rem;
-    margin-left: -0.4rem;
-    margin-right: -0.4rem;
+    backdrop-filter: blur(0.7px);
+    -webkit-backdrop-filter: blur(0.7px);
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
   }
 
   /* Typography Utilities */
