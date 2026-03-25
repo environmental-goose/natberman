@@ -124,15 +124,17 @@
     background-size: var(--grid-size) var(--grid-size);
   }
 
-  /* Text Backdrop - subtle blur behind body text for readability */
+  /* Text Backdrop - very subtle blur behind body text for readability */
   .text-backdrop {
     @apply relative;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 4px;
-    padding: 0.75rem 1rem;
-    margin-left: -1rem;
-    margin-right: -1rem;
+    background: transparent;
+    background-color: transparent;
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 2px;
+    padding: 0.25rem 0.4rem;
+    margin-left: -0.4rem;
+    margin-right: -0.4rem;
   }
 
   /* Typography Utilities */
