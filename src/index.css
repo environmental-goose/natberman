@@ -127,15 +127,21 @@
   /* Text Backdrop - very subtle blur behind body text for readability */
   .text-backdrop {
     @apply relative;
-    background: transparent;
-    backdrop-filter: blur(0.7px);
-    -webkit-backdrop-filter: blur(0.7px);
-    border-radius: 4px;
     padding: 0.3rem 0.5rem;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
+  }
+
+  .text-backdrop::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(0.7px);
+    -webkit-backdrop-filter: blur(0.7px);
+    border-radius: 4px;
     -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
     mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+    z-index: -1;
   }
 
   /* Typography Utilities */
