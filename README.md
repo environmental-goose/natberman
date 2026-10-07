@@ -1,73 +1,79 @@
-# Welcome to your Lovable project
+# natberman.me
 
-## Project info
+Portfolio site. Vite + React + TypeScript + Tailwind.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Adding a project
 
-## How can I edit this code?
+Everything about a project lives in one folder under `content/`:
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+content/
+  design/<project-name>/project.md + photos
+  photo/<gallery-name>/project.md + photos
+  art/<project-name>/project.md + photos
+  about/                               portrait for the About page
 ```
 
-**Edit a file directly in GitHub**
+1. Create the folder and a starter `project.md`:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+   ```sh
+   npm run new -- design "Split Flap Clock"     # or: photo "Patagonia", art "Linocuts"
+   ```
 
-**Use GitHub Codespaces**
+2. Drop photos into the new folder. They appear in filename order, so name them
+   `01-hero.jpg`, `02-detail.jpg`, and so on. JPEG, PNG, WebP and GIF work. iPhone HEIC
+   files are converted to JPEG automatically when you run the site on your Mac.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. Fill in `project.md`:
 
-## What technologies are used for this project?
+   ```md
+   ---
+   title: "Split Flap Clock Restoration"   # heading on the project page
+   label: "Split Flap Clock"               # optional shorter name for the sidebar
+   year: "2025"                            # photo galleries use  date: "February 2025"
+   location: "Brooklyn, NY"
+   client: "Personal Project"              # design only: company name or "Personal Project"
+   order: 40                               # position in the sidebar, lowest first
+   draft: true                             # delete this line to publish
+   videos:                                 # optional, normal YouTube or Vimeo links
+     - https://www.youtube.com/watch?v=qEbs4oX95wQ
+   ---
 
-This project is built with:
+   Project text goes here. Leave a blank line between paragraphs.
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+4. Preview: `npm run dev`, then open http://localhost:8080. Drafts are visible here,
+   marked "(draft)", and the page reloads when you change anything in `content/`.
 
-## How can I deploy this project?
+5. Publish: delete the `draft: true` line, then commit and push to `main`.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+To reorder projects, change their `order` numbers. To remove a project, delete its folder
+or set `draft: true`.
 
-## Can I connect a custom domain to my Lovable project?
+## How it works
 
-Yes, you can!
+`scripts/build-content.mjs` reads `content/`, writes resized WebP copies of every photo
+(longest side 2000 px) to `public/media/`, and writes `src/generated/content.json`, which
+the pages read. Both outputs are generated and not committed. The script runs as part of
+`npm run dev` and `npm run build`, and only converts photos that are new or changed.
+It stops with a message naming the file if a project is missing its `project.md` or title.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The originals in `content/` are never modified.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Not managed by `content/`: blog posts (`src/data/blogPosts.ts`) and the About page text
+(`src/pages/About.tsx`).
+
+## Commands
+
+| Command | What it does |
+| --- | --- |
+| `npm install` | Install dependencies (once, and after pulling changes to `package.json`) |
+| `npm run dev` | Local preview with drafts and live reload |
+| `npm run new -- <design\|photo\|art> "Title"` | Create a new project folder |
+| `npm run build` | Production build into `dist/` |
+| `npm run content` | Run only the content step (add `-- --drafts` to include drafts) |
+
+## Deploying
+
+`.github/workflows/static.yml` builds the site and deploys it to GitHub Pages on every
+push to `main`.

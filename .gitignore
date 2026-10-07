@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated from content/ by scripts/build-content.mjs
+public/media
+src/generated
+
+# iPhone originals; a JPEG copy is made next to each one
+content/**/*.heic
+content/**/*.HEIC

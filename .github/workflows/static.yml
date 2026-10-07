@@ -33,6 +33,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Converted images are reused between deploys; only new or changed photos are processed.
+      - name: Restore converted images
+        uses: actions/cache@v4
+        with:
+          path: |
+            public/media
+            src/generated/media-cache.json
+          key: media-${{ hashFiles('content/**', 'scripts/build-content.mjs') }}
+          restore-keys: media-
+
       - name: Build
         run: npm run build
         env:
