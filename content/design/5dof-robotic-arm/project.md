@@ -1,5 +1,6 @@
 ---
 title: "5DOF Teleoperated Robotic Arm"
+active: true
 year: "2018"
 location: "Boston, MA"
 client: "Northeastern University"

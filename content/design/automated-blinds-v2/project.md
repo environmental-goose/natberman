@@ -1,5 +1,6 @@
 ---
 title: "Automated Blinds Gen 2"
+active: true
 year: "2024"
 location: "Brooklyn, NY"
 client: "Personal Project"

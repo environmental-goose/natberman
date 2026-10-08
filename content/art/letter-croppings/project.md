@@ -1,5 +1,6 @@
 ---
 title: "Letter Croppings"
+active: true
 order: 10
 ---
 

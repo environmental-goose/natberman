@@ -1,5 +1,6 @@
 ---
 title: "Denmark & Norway"
+active: true
 date: "August 2022"
 location: "Copenhagen, Denmark and Lofoten Islands, Norway"
 order: 60

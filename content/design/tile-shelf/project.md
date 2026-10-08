@@ -1,5 +1,6 @@
 ---
 title: "Tile Shelf"
+active: true
 year: "2022"
 location: "Boston, MA"
 client: "Personal Project"

@@ -1,6 +1,7 @@
 ---
 title: "Live METAR Map"
 label: "METAR Map"
+active: true
 year: "2019"
 location: "Boston, MA"
 client: "Personal Project"

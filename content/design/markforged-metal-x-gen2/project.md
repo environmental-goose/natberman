@@ -1,5 +1,6 @@
 ---
 title: "Markforged Metal X Gen 2"
+active: true
 year: "2020–2021"
 location: "Watertown, MA"
 client: "Markforged"

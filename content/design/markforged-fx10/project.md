@@ -1,5 +1,6 @@
 ---
 title: "Markforged FX10"
+active: true
 year: "2022–2024"
 location: "Watertown, MA"
 client: "Markforged"

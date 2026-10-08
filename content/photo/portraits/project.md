@@ -1,5 +1,6 @@
 ---
 title: "Portraits"
+active: true
 order: 90
 ---
 

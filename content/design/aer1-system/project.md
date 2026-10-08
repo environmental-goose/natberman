@@ -1,5 +1,6 @@
 ---
 title: "Aer1 System"
+active: true
 year: "2023–2025"
 location: "Brooklyn, NY"
 client: "Aerflo"

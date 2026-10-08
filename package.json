@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "content": "node scripts/build-content.mjs",
     "new": "node scripts/new-project.mjs",
+    "status": "node scripts/list-content.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "pretest": "node scripts/build-content.mjs",

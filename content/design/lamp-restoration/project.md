@@ -1,5 +1,6 @@
 ---
 title: "Lamp Restoration"
+active: true
 year: "2023"
 location: "Boston, MA"
 client: "Personal Project"

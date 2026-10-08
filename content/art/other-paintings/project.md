@@ -1,5 +1,6 @@
 ---
 title: "Other Paintings"
+active: true
 order: 60
 ---
 

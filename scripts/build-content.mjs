@@ -8,6 +8,9 @@
 //   public/media/<section>/<project-id>/*.webp  resized, web-ready images
 //   src/generated/content.json                  everything the pages need
 //
+// Each project.md has an "active" flag: true shows it on the site, false keeps it in
+// the repo but off the live site (its text and photos are not deployed at all).
+//
 // Run with `npm run content`. `npm run dev` and `npm run build` run it automatically.
 
 import { execFileSync } from "node:child_process";
@@ -32,6 +35,20 @@ const WEBP_QUALITY = 80;
 const RESIZABLE = new Set([".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff", ".avif"]);
 const COPIED = new Set([".gif"]); // animated, served as is
 const HEIC = new Set([".heic", ".heif"]);
+
+/**
+ * Reads the "active" flag from project.md. Missing means active.
+ * Accepts true/false, yes/no, on/off (any capitalization). The old "draft: true" still means inactive.
+ */
+function readActive(data, where, problems) {
+  if (data.active === undefined) return data.draft !== true;
+  if (typeof data.active === "boolean") return data.active;
+  const value = String(data.active).trim().toLowerCase();
+  if (["true", "yes", "on"].includes(value)) return true;
+  if (["false", "no", "off"].includes(value)) return false;
+  problems.push(`${where}: "active" must be true or false, not "${data.active}"`);
+  return false;
+}
 
 const naturalSort = (a, b) => a.localeCompare(b, "en", { numeric: true, sensitivity: "base" });
 const isHidden = (name) => name.startsWith(".") || name.startsWith("_");
@@ -117,10 +134,11 @@ function toEmbedUrl(url) {
 }
 
 /**
- * @param {{ quiet?: boolean, includeDrafts?: boolean }} options
- *   includeDrafts: show projects marked "draft: true" (used by `npm run dev` so you can preview them).
+ * @param {{ quiet?: boolean, includeHidden?: boolean }} options
+ *   includeHidden: also show projects with "active: false", labeled "(hidden)".
+ *   `npm run dev` does this so you can preview them; the live site never does.
  */
-export async function buildContent({ quiet = false, includeDrafts = false } = {}) {
+export async function buildContent({ quiet = false, includeHidden = false } = {}) {
   const log = quiet ? () => {} : console.log;
   const problems = [];
   const content = {};
@@ -168,9 +186,9 @@ export async function buildContent({ quiet = false, includeDrafts = false } = {}
       }
       const data = parsed.data;
       if (!data.title) problems.push(`${rel}/project.md: missing "title"`);
-      const draft = data.draft === true;
-      if (draft && !includeDrafts) {
-        log(`  draft, not published: ${rel}`);
+      const active = readActive(data, `${rel}/project.md`, problems);
+      if (!active && !includeHidden) {
+        log(`  hidden (active: false): ${rel}`);
         continue;
       }
 
@@ -203,7 +221,7 @@ export async function buildContent({ quiet = false, includeDrafts = false } = {}
       content[section].push({
         id,
         title,
-        label: String(data.label ?? title) + (draft ? " (draft)" : ""),
+        label: String(data.label ?? title) + (active ? "" : " (hidden)"),
         order: typeof data.order === "number" ? data.order : Number.MAX_SAFE_INTEGER,
         year: when == null ? undefined : String(when),
         location: data.location == null ? undefined : String(data.location),
@@ -251,7 +269,7 @@ export async function buildContent({ quiet = false, includeDrafts = false } = {}
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  buildContent({ includeDrafts: process.argv.includes("--drafts") }).catch((err) => {
+  buildContent({ includeHidden: process.argv.includes("--hidden") }).catch((err) => {
     console.error(`\n${err.message}\n`);
     process.exit(1);
   });

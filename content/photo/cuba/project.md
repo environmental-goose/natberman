@@ -1,5 +1,6 @@
 ---
 title: "Cuba"
+active: true
 date: "May 2019"
 location: "Havana and Vinales, Cuba"
 order: 80

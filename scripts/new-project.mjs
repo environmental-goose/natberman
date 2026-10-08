@@ -16,7 +16,7 @@ year: "${new Date().getFullYear()}"
 location: "Brooklyn, NY"
 client: "Personal Project"
 order: ${order}
-draft: true
+active: false  # true = live on the site, false = hidden
 # videos:
 #   - https://www.youtube.com/watch?v=...
 ---
@@ -34,7 +34,7 @@ title: ${JSON.stringify(title)}
 date: "Month ${new Date().getFullYear()}"
 location: "City, Country"
 order: ${order}
-draft: true
+active: false  # true = live on the site, false = hidden
 ---
 
 One or two sentences about the trip.
@@ -42,7 +42,7 @@ One or two sentences about the trip.
   art: (title, order) => `---
 title: ${JSON.stringify(title)}
 order: ${order}
-draft: true
+active: false  # true = live on the site, false = hidden
 ---
 
 A short description. Medium and materials.
@@ -88,4 +88,4 @@ fs.writeFileSync(path.join(dir, "project.md"), TEMPLATES[section](title, lowest 
 console.log(`Created content/${section}/${id}/
   1. Drop photos into that folder. They appear in filename order (01-hero.jpg, 02-detail.jpg, ...).
   2. Fill in project.md.
-  3. Preview with "npm run dev", then delete the "draft: true" line to publish.`);
+  3. Preview with "npm run dev", then set "active: true" to publish.`);

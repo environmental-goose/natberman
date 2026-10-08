@@ -1,5 +1,6 @@
 ---
 title: "Joan Miró Museum Pamphlet"
+active: true
 order: 50
 ---
 

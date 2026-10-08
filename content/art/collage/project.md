@@ -1,5 +1,6 @@
 ---
 title: "Collage"
+active: true
 order: 20
 ---
 

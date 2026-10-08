@@ -1,5 +1,6 @@
 ---
 title: "Thailand & Vietnam"
+active: true
 date: "February 2025"
 location: "Bangkok & Koh Lanta, Thailand - Hanoi, Vietnam"
 order: 10

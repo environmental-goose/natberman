@@ -1,5 +1,6 @@
 ---
 title: "Croatia"
+active: true
 date: "July 2023"
 location: "Hvar, Split, and Dubrovnik, Croatia"
 order: 40

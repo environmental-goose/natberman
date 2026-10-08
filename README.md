@@ -30,11 +30,11 @@ content/
    ---
    title: "Split Flap Clock Restoration"   # heading on the project page
    label: "Split Flap Clock"               # optional shorter name for the sidebar
+   active: true                            # true = live on the site, false = hidden
    year: "2025"                            # photo galleries use  date: "February 2025"
    location: "Brooklyn, NY"
    client: "Personal Project"              # design only: company name or "Personal Project"
    order: 40                               # position in the sidebar, lowest first
-   draft: true                             # delete this line to publish
    videos:                                 # optional, normal YouTube or Vimeo links
      - https://www.youtube.com/watch?v=qEbs4oX95wQ
    ---
@@ -42,13 +42,26 @@ content/
    Project text goes here. Leave a blank line between paragraphs.
    ```
 
-4. Preview: `npm run dev`, then open http://localhost:8080. Drafts are visible here,
-   marked "(draft)", and the page reloads when you change anything in `content/`.
+4. Preview: `npm run dev`, then open http://localhost:8080. Hidden projects are visible
+   here, marked "(hidden)", and the page reloads when you change anything in `content/`.
 
-5. Publish: delete the `draft: true` line, then commit and push to `main`.
+5. Publish: set `active: true`, then commit and push to `main`.
 
-To reorder projects, change their `order` numbers. To remove a project, delete its folder
-or set `draft: true`.
+## Showing and hiding projects
+
+Every `project.md` has an `active` line near the top:
+
+- `active: true`: the project is live on the site.
+- `active: false`: the project stays in the repo but is left off the live site entirely.
+  Its text and photos are not deployed, so it can't be found by URL either. `npm run dev`
+  still shows it, marked "(hidden)", so you can preview it.
+
+Change the value and push to `main` to apply it. `npm run status` lists every project and
+whether it is live or hidden. A missing `active` line counts as `true`, and a value other
+than true or false stops the build with a message naming the file.
+
+To reorder projects, change their `order` numbers. To remove a project for good, delete
+its folder.
 
 ## How it works
 
@@ -68,10 +81,11 @@ Not managed by `content/`: blog posts (`src/data/blogPosts.ts`) and the About pa
 | Command | What it does |
 | --- | --- |
 | `npm install` | Install dependencies (once, and after pulling changes to `package.json`) |
-| `npm run dev` | Local preview with drafts and live reload |
-| `npm run new -- <design\|photo\|art> "Title"` | Create a new project folder |
+| `npm run dev` | Local preview, including hidden projects, with live reload |
+| `npm run new -- <design\|photo\|art> "Title"` | Create a new project folder (starts hidden) |
+| `npm run status` | List every project as live or hidden |
 | `npm run build` | Production build into `dist/` |
-| `npm run content` | Run only the content step (add `-- --drafts` to include drafts) |
+| `npm run content` | Run only the content step (add `-- --hidden` to include hidden projects) |
 
 ## Deploying
 

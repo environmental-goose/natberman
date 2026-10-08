@@ -1,6 +1,7 @@
 ---
 title: "Split Flap Clock Restoration"
 label: "Split Flap Clock"
+active: true
 year: "2025"
 location: "Brooklyn, NY"
 client: "Personal Project"

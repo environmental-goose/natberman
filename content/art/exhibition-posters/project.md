@@ -1,5 +1,6 @@
 ---
 title: "Exhibition Posters"
+active: true
 order: 30
 ---
 

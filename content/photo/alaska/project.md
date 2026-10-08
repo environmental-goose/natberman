@@ -1,5 +1,6 @@
 ---
 title: "Alaska"
+active: true
 date: "September 2024"
 location: "Denali National Park, Kenai Fjords National Park"
 order: 20

@@ -1,8 +1,8 @@
 ---
 title: "Vegetable Garden Build"
+active: false
 client: "Personal Project"
 order: 130
-draft: true
 ---
 
 Last summer, with limited porch space I did my best to grow two Tomato plants but the incessant summer heat meant keeping them well cared for was difficult (enter Auto-watered Vegetables).  Well this year I moved into a new apartment and found myself with a neglected front garden.  The plot was overgrown with weeds, tall grass, and a gem of a hydrangea tucked into the corner (more on that later).  My girlfriend and I started out by clearing out every square inch of the existing top layer and get a feel for the depth and richness of the soil.

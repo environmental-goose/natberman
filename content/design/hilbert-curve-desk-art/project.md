@@ -1,5 +1,6 @@
 ---
 title: "Hilbert Curve Desk Art"
+active: true
 year: "2021"
 location: "Boston, MA"
 client: "Personal Project"

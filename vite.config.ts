@@ -4,7 +4,7 @@ import path from "path";
 import { buildContent, CONTENT_DIR } from "./scripts/build-content.mjs";
 
 // Turns the content/ folder into optimized images + src/generated/content.json.
-// In dev it also shows drafts and rebuilds whenever a file in content/ changes.
+// In dev it also shows hidden projects (active: false) and rebuilds whenever a file in content/ changes.
 function contentPlugin(): Plugin {
   let dev = false;
   return {
@@ -13,7 +13,7 @@ function contentPlugin(): Plugin {
       dev = config.command === "serve";
     },
     async buildStart() {
-      await buildContent({ includeDrafts: dev });
+      await buildContent({ includeHidden: dev });
     },
     configureServer(server) {
       server.watcher.add(CONTENT_DIR);
@@ -23,7 +23,7 @@ function contentPlugin(): Plugin {
         clearTimeout(timer);
         timer = setTimeout(async () => {
           try {
-            await buildContent({ includeDrafts: true, quiet: true });
+            await buildContent({ includeHidden: true, quiet: true });
             server.ws.send({ type: "full-reload" });
           } catch (err) {
             server.config.logger.error((err as Error).message);

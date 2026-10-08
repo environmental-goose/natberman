@@ -1,5 +1,6 @@
 ---
 title: "Automated Blind Conversion"
+active: true
 year: "2020"
 location: "Boston, MA"
 client: "Personal Project"
